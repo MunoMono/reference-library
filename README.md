@@ -4,6 +4,8 @@
 
 A public export of my complete reference library, maintained in **BibTeX** format and viewable online via GitHub Pages.
 
+Live version: [https://munomono.github.io/reference-library/review.html](https://munomono.github.io/reference-library/review.html)
+
 ---
 
 ## 📚 About
