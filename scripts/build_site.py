@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """
-Build a static HTML page at docs/index.html from library.bib, grouped by tags.
+Build a static HTML page at docs/index.html from library.bib, grouped by:
+- Zotero collections (if exported via Better BibTeX "Include collections")
+- Tags (BibTeX keywords; comma/semicolon separated)
 
-- Uses BibTeX `keywords` (comma or semicolon separated)
-- Renders a Tag Index + per-tag sections
-- Includes a client-side search box (filters by title, authors, venue, year, tag)
-- No external assets; single self-contained file
+Adds minimal TeX cleanup for labels (e.g., {\textbar} -> |). Self-contained HTML.
 
 Requires:
   pip install bibtexparser
@@ -14,7 +13,6 @@ Requires:
 import re
 import html
 from pathlib import Path
-
 import bibtexparser
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,13 +20,32 @@ BIB_PATH = ROOT / "library.bib"
 DOCS_DIR = ROOT / "docs"
 OUT = DOCS_DIR / "index.html"
 
+
+# ----------------------- helpers -----------------------
+def clean_tex(s: str) -> str:
+    if not s:
+        return ""
+    s = s.replace(r"{\textbar}", "|").replace(r"\textbar", "|")
+    s = s.replace(r"\&", "&")
+    s = re.sub(r"[{}]", "", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
 def norm_keywords(value: str):
     if not value:
         return []
     raw = re.split(r"[;,]", value)
-    cleaned = [w.strip() for w in raw if w.strip()]
-    # (group_key, display_label)
-    return [(w.lower(), w.strip()) for w in cleaned]
+    cleaned = [clean_tex(w.strip()) for w in raw if w.strip()]
+    return [(w.lower(), w) for w in cleaned]
+
+def norm_list(value: str):
+    if not value:
+        return []
+    raw = re.split(r"[;,\n]", value)
+    return [clean_tex(w.strip()) for w in raw if w.strip()]
+
+def entry_collections(e):
+    return norm_list(e.get("collections") or e.get("groups") or "")
 
 def format_authors(persons: str):
     if not persons:
@@ -55,48 +72,46 @@ def entry_html(e):
     venue = e.get("journal") or e.get("booktitle") or e.get("publisher") or ""
     doi = (e.get("doi") or "").strip()
     url = (e.get("url") or "").strip()
-    tags = [label.title() for _, label in norm_keywords(e.get("keywords","") or e.get("keyword",""))]
+    tags = [label for _, label in norm_keywords(e.get("keywords","") or e.get("keyword",""))]
+    colls = entry_collections(e)
 
-    safe = lambda s: html.escape(s, quote=True)
+    esc = lambda s: html.escape(s, quote=True)
 
     bits = []
     if title:
-        bits.append(f"<span class='title'><strong>{safe(title)}</strong></span>")
-    meta_parts = []
-    if authors: meta_parts.append(safe(authors))
-    if year:    meta_parts.append(safe(str(year)))
-    if venue:   meta_parts.append(safe(venue))
-    if typ:     meta_parts.append(safe(typ))
-    if meta_parts:
-        bits.append(" — " + ", ".join(meta_parts))
+        bits.append(f"<span class='title'><strong>{esc(title)}</strong></span>")
+    meta = []
+    if authors: meta.append(esc(authors))
+    if year:    meta.append(esc(str(year)))
+    if venue:   meta.append(esc(venue))
+    if typ:     meta.append(esc(typ))
+    if meta:
+        bits.append(" — " + ", ".join(meta))
 
     tail = []
     if doi:
-        tail.append(f"<a href='https://doi.org/{safe(doi)}' target='_blank' rel='noopener'>DOI: {safe(doi)}</a>")
+        tail.append(f"<a href='https://doi.org/{esc(doi)}' target='_blank' rel='noopener'>DOI: {esc(doi)}</a>")
     if url:
-        tail.append(f"<a href='{safe(url)}' target='_blank' rel='noopener'>Link</a>")
+        tail.append(f"<a href='{esc(url)}' target='_blank' rel='noopener'>Link</a>")
 
-    tags_html = ""
-    if tags:
-        tags_html = " ".join(f"<span class='tag'>{safe(t)}</span>" for t in tags)
+    tags_html = " ".join(f"<span class='tag'>{esc(t)}</span>" for t in tags) if tags else ""
+    colls_html = " ".join(f"<span class='tag coll'>{esc(c)}</span>" for c in colls) if colls else ""
 
     dataset_text = " ".join([
-        title or "",
-        authors or "",
-        venue or "",
-        year or "",
-        " ".join(tags)
+        title or "", authors or "", venue or "", year or "",
+        " ".join(tags), " ".join(colls)
     ]).lower()
 
-    line = f"""
+    return f"""
 <li class="entry" data-text="{html.escape(dataset_text)}">
-  <a id="{safe(key)}"></a>
+  <a id="{esc(key)}"></a>
   <div class="entry-main">{''.join(bits)}
     {' · ' + ' · '.join(tail) if tail else ''}
   </div>
-  <div class="entry-tags">{tags_html}</div>
+  <div class="entry-tags">{tags_html} {colls_html}</div>
 </li>""".strip()
-    return line
+# -------------------------------------------------------
+
 
 def build():
     if not BIB_PATH.exists():
@@ -105,49 +120,74 @@ def build():
     with open(BIB_PATH, "r", encoding="utf-8") as f:
         db = bibtexparser.load(f)
 
-    groups = {}
-    untagged = []
+    # Collections groups
+    coll_groups = {}
+    for e in db.entries:
+        for path in entry_collections(e):
+            k = path.lower()
+            coll_groups.setdefault(k, {"label": path, "entries": []})
+            coll_groups[k]["entries"].append(e)
+    ordered_colls = sorted(coll_groups.values(), key=lambda g: g["label"].lower())
 
+    # Tag groups
+    tag_groups, untagged = {}, []
     for e in db.entries:
         kws = norm_keywords(e.get("keywords","") or e.get("keyword",""))
         if not kws:
             untagged.append(e)
         else:
             for gkey, label in kws:
-                display = label.capitalize()
-                groups.setdefault(gkey, {"label": display, "entries": []})
-                groups[gkey]["entries"].append(e)
+                tag_groups.setdefault(gkey, {"label": label, "entries": []})
+                tag_groups[gkey]["entries"].append(e)
+    ordered_tags = sorted(tag_groups.values(), key=lambda g: g["label"].lower())
 
-    ordered_groups = sorted(groups.values(), key=lambda g: g["label"].lower())
+    # Build indices
+    coll_index_html = ""
+    if ordered_colls:
+        links = " · ".join(
+            f"<a href='#{g['label'].lower().replace(' ', '-').replace('>', '')}'>{html.escape(g['label'])}</a>"
+            for g in ordered_colls
+        )
+        coll_index_html = f"<nav class='tag-index'>{links}</nav>"
 
-    # Build Tag Index
     tag_index_html = ""
-    if ordered_groups:
+    if ordered_tags:
         links = " · ".join(
             f"<a href='#{g['label'].lower().replace(' ', '-')}'>{html.escape(g['label'])}</a>"
-            for g in ordered_groups
+            for g in ordered_tags
         )
         tag_index_html = f"<nav class='tag-index'>{links}</nav>"
 
-    # Build sections
-    sections = []
-    for g in ordered_groups:
-        section_items = "\n".join(entry_html(e) for e in sorted(g["entries"], key=entry_sort_key))
-        sections.append(f"""
+    # Sections
+    coll_sections = []
+    for g in ordered_colls:
+        items = "\n".join(entry_html(e) for e in sorted(g["entries"], key=entry_sort_key))
+        coll_sections.append(f"""
+<section id="{g['label'].lower().replace(' ', '-').replace('>', '')}" class="tag-section">
+  <h2>{html.escape(g['label'])}</h2>
+  <ul class="entries">
+    {items}
+  </ul>
+</section>""".strip())
+
+    tag_sections = []
+    for g in ordered_tags:
+        items = "\n".join(entry_html(e) for e in sorted(g["entries"], key=entry_sort_key))
+        tag_sections.append(f"""
 <section id="{g['label'].lower().replace(' ', '-')}" class="tag-section">
   <h2>{html.escape(g['label'])}</h2>
   <ul class="entries">
-    {section_items}
+    {items}
   </ul>
 </section>""".strip())
 
     if untagged:
-        section_items = "\n".join(entry_html(e) for e in sorted(untagged, key=entry_sort_key))
-        sections.append(f"""
+        items = "\n".join(entry_html(e) for e in sorted(untagged, key=entry_sort_key))
+        tag_sections.append(f"""
 <section id="untagged" class="tag-section">
   <h2>(Untagged)</h2>
   <ul class="entries">
-    {section_items}
+    {items}
   </ul>
 </section>""".strip())
 
@@ -166,6 +206,8 @@ def build():
   --bg: #fff;
   --chip: #eef;
   --chip-fg: #223;
+  --chip-coll: #eef7ee;
+  --chip-coll-fg: #1f5222;
   --border: #e5e7eb;
 }}
 html, body {{ margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }}
@@ -182,9 +224,9 @@ a:hover {{ text-decoration: underline; }}
 .tag-section h2 {{ margin: 20px 0 8px 0; border-bottom: 1px solid var(--border); padding-bottom: 6px; }}
 .entries {{ list-style: none; padding: 0; margin: 0; }}
 .entry {{ padding: 10px 0; border-bottom: 1px dashed var(--border); }}
-.entry .entry-main {{ }}
 .entry .entry-tags {{ margin-top: 6px; }}
 .tag {{ display: inline-block; background: var(--chip); color: var(--chip-fg); border-radius: 999px; padding: 2px 8px; margin-right: 6px; font-size: 12px; }}
+.tag.coll {{ background: var(--chip-coll); color: var(--chip-coll-fg); }}
 .footer {{ color: var(--muted); font-size: 14px; margin-top: 40px; }}
 .hidden {{ display: none !important; }}
 </style>
@@ -193,16 +235,18 @@ a:hover {{ text-decoration: underline; }}
 <main class="container">
   <header class="header">
     <h1>Reference library</h1>
-    <div class="meta">Generated from <code>library.bib</code>. Grouped by tag. Use the search below to filter.</div>
+    <div class="meta">Generated from <code>library.bib</code>. Grouped by <strong>collections</strong> and <strong>tags</strong>. Use the search below to filter.</div>
   </header>
 
   <div class="search">
-    <input id="q" type="search" placeholder="Search title, authors, venue, year, or tag…" aria-label="Search references" />
+    <input id="q" type="search" placeholder="Search title, authors, venue, year, tag, or collection…" aria-label="Search references" />
   </div>
 
-  {tag_index_html}
+  {coll_index_html}
+  {"".join(coll_sections)}
 
-  {"".join(sections)}
+  {tag_index_html}
+  {"".join(tag_sections)}
 
   <div class="footer">
     <p>Built from <code>library.bib</code>. To update: replace the BibTeX and re-run <code>python scripts/build_site.py</code>.</p>
@@ -218,10 +262,7 @@ a:hover {{ text-decoration: underline; }}
   function applyFilter() {{
     const needle = (q.value || '').trim().toLowerCase();
     if (!needle) {{
-      // show all
       entries.forEach(li => li.classList.remove('hidden'));
-      sections.forEach(sec => sec.classList.remove('hidden'));
-      // hide empty sections (none should be empty now)
       sections.forEach(sec => {{
         const anyVisible = Array.from(sec.querySelectorAll('.entry')).some(li => !li.classList.contains('hidden'));
         sec.classList.toggle('hidden', !anyVisible);
@@ -229,7 +270,7 @@ a:hover {{ text-decoration: underline; }}
       return;
     }}
     entries.forEach(li => {{
-      const hay = li.getAttribute('data-text') || '';
+      const hay = (li.getAttribute('data-text') || '').toLowerCase();
       li.classList.toggle('hidden', !hay.includes(needle));
     }});
     sections.forEach(sec => {{
@@ -247,6 +288,7 @@ a:hover {{ text-decoration: underline; }}
 """
     OUT.write_text(html_doc, encoding="utf-8")
     print(f"Wrote site to {OUT}")
+
 
 if __name__ == "__main__":
     build()
