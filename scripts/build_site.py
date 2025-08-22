@@ -4,7 +4,8 @@ Build a static HTML page at docs/index.html from library.bib, grouped by:
 - Zotero collections (if exported via Better BibTeX "Include collections")
 - Tags (BibTeX keywords; comma/semicolon separated)
 
-Adds minimal TeX cleanup for labels (e.g., {\textbar} -> |). Self-contained HTML.
+Adds minimal TeX cleanup for labels (e.g., {\textbar} -> |).
+Outputs HTML that links to docs/styles.css (no inline CSS).
 
 Requires:
   pip install bibtexparser
@@ -15,31 +16,11 @@ import html
 from pathlib import Path
 import bibtexparser
 
-def normalize_entry(entry: dict) -> dict:
-    """Normalize BibTeX entry fields for consistency."""
-    e = {k.lower(): v for k, v in entry.items()}
-    # Trim whitespace
-    for k in list(e):
-        if isinstance(e[k], str):
-            e[k] = e[k].strip()
-
-    # Map date → year if year missing
-    if not e.get("year") and e.get("date"):
-        import re
-        m = re.search(r"\d{4}", e["date"])
-        if m:
-            e["year"] = m.group(0)
-
-    # Normalize journal/booktitle → container
-    e["container"] = e.get("journal") or e.get("booktitle") or e.get("publisher", "")
-
-    return e
-
 ROOT = Path(__file__).resolve().parents[1]
 BIB_PATH = ROOT / "library.bib"
 DOCS_DIR = ROOT / "docs"
 OUT = DOCS_DIR / "index.html"
-
+STYLES = DOCS_DIR / "styles.css"  # referenced by the HTML (must exist)
 
 # ----------------------- helpers -----------------------
 def clean_tex(s: str) -> str:
@@ -219,37 +200,7 @@ def build():
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Reference Library</title>
-<style>
-:root {{
-  --fg: #111;
-  --muted: #666;
-  --bg: #fff;
-  --chip: #eef;
-  --chip-fg: #223;
-  --chip-coll: #eef7ee;
-  --chip-coll-fg: #1f5222;
-  --border: #e5e7eb;
-}}
-html, body {{ margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; }}
-a {{ color: #0b63c0; text-decoration: none; }}
-a:hover {{ text-decoration: underline; }}
-.container {{ max-width: 920px; margin: 0 auto; padding: 24px; }}
-.header h1 {{ margin: 0 0 6px 0; }}
-.header .meta {{ color: var(--muted); margin-bottom: 16px; }}
-.search {{ position: sticky; top: 0; background: var(--bg); padding: 12px 0; border-bottom: 1px solid var(--border); z-index: 1; }}
-.search input {{ width: 100%; padding: 10px 12px; font-size: 16px; border-radius: 8px; border: 1px solid var(--border); }}
-.tag-index {{ margin: 12px 0 20px 0; line-height: 1.8; }}
-.tag-index a {{ margin-right: 10px; white-space: nowrap; }}
-.tag-section {{ margin: 28px 0; }}
-.tag-section h2 {{ margin: 20px 0 8px 0; border-bottom: 1px solid var(--border); padding-bottom: 6px; }}
-.entries {{ list-style: none; padding: 0; margin: 0; }}
-.entry {{ padding: 10px 0; border-bottom: 1px dashed var(--border); }}
-.entry .entry-tags {{ margin-top: 6px; }}
-.tag {{ display: inline-block; background: var(--chip); color: var(--chip-fg); border-radius: 999px; padding: 2px 8px; margin-right: 6px; font-size: 12px; }}
-.tag.coll {{ background: var(--chip-coll); color: var(--chip-coll-fg); }}
-.footer {{ color: var(--muted); font-size: 14px; margin-top: 40px; }}
-.hidden {{ display: none !important; }}
-</style>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 <main class="container">
