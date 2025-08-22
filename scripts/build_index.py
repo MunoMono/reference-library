@@ -15,6 +15,26 @@ import re
 import sys
 from pathlib import Path
 
+def normalize_entry(entry: dict) -> dict:
+    """Normalize BibTeX entry fields for consistency."""
+    e = {k.lower(): v for k, v in entry.items()}
+    # Trim whitespace
+    for k in list(e):
+        if isinstance(e[k], str):
+            e[k] = e[k].strip()
+
+    # Map date → year if year missing
+    if not e.get("year") and e.get("date"):
+        import re
+        m = re.search(r"\d{4}", e["date"])
+        if m:
+            e["year"] = m.group(0)
+
+    # Normalize journal/booktitle → container
+    e["container"] = e.get("journal") or e.get("booktitle") or e.get("publisher", "")
+
+    return e
+
 try:
     import bibtexparser
 except ImportError:
