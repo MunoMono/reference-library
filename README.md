@@ -68,14 +68,48 @@ It is intended as a **shared dataset**:
 
 ## Tag index
 
-[Agenda setting paper](#agenda-setting-paper) · [Backlog to be read](#backlog-to-be-read) · [Consciousness-raising paper](#consciousness-raising-paper) · [Data driven | artefact paper](#data-driven-|-artefact-paper) · [Data driven | meta-study paper](#data-driven-|-meta-study-paper) · [Methods | demonstration of concept paper](#methods-|-demonstration-of-concept-paper) · [Methods | method introduction paper](#methods-|-method-introduction-paper) · [Methods | tutorial paper](#methods-|-tutorial-paper) · [PhD thesis](#phd-thesis) · [Position paper](#position-paper) · [Review paper](#review-paper) · [Reviewed](#reviewed) · [Theoretical paper](#theoretical-paper)
+[Agenda setting paper](#agenda-setting-paper) · [AI/ML/CE/RAG/NLP](#ai/ml/ce/rag/nlp) · [Archer](#archer) · [Archival Research | emerging](#archival-research-|-emerging) · [Archival Research | foundational](#archival-research-|-foundational) · [Backlog to be read](#backlog-to-be-read) · [Consciousness-raising paper](#consciousness-raising-paper) · [Context](#context) · [Core](#core) · [Critical librarianship](#critical-librarianship) · [Data driven | artefact paper](#data-driven-|-artefact-paper) · [Data driven | meta-study paper](#data-driven-|-meta-study-paper) · [Methodological toolkit](#methodological-toolkit) · [Methods | demonstration of concept paper](#methods-|-demonstration-of-concept-paper) · [Methods | method introduction paper](#methods-|-method-introduction-paper) · [Methods | tutorial paper](#methods-|-tutorial-paper) · [Not applicable](#not-applicable) · [PhD thesis](#phd-thesis) · [Position paper](#position-paper) · [Review paper](#review-paper) · [Reviewed](#reviewed) · [Taxonomy](#taxonomy) · [Theoretical framework](#theoretical-framework) · [Theoretical paper](#theoretical-paper) · [Thesis](#thesis)
 
 
 ### Agenda setting paper
 
-- <a id='cassellSAGEHandbookQualitative2018'></a>**The {{SAGE Handbook}} of Qualitative Business and Management Research Methods: Methods and Challenges**  — Cassell, Catherine et al., 2018, The SAGE Handbook of Qualitative Business and Management Research Methods: Methods and Challenges, Book · DOI: [10.4135/9781526430236](https://doi.org/10.4135/9781526430236) · [Link](https://doi.org/10.4135/9781526430236)
-- <a id='friedmanSheJiNext2020'></a>**She Ji: The next Five Years**  — Friedman, Ken et al., 2020, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2020.02.002](https://doi.org/10.1016/j.sheji.2020.02.002)
-- <a id='padillaVancouverStatementCollections'></a>**Vancouver Statement on Collections as Data**  — Padilla, T., Techreport · [Link](https://doi.org/10.5281/zenodo.8341519.)
+- <a id='Cassell2018SAGEHandbookQualitative'></a>**The {{SAGE Handbook}} of Qualitative Business and Management Research Methods: Methods and Challenges**  — Cassell, Catherine et al., 2018, The SAGE Handbook of Qualitative Business and Management Research Methods: Methods and Challenges, Book · DOI: [10.4135/9781526430236](https://doi.org/10.4135/9781526430236) · [Link](https://doi.org/10.4135/9781526430236)
+- <a id='Friedman2020SheJiNext'></a>**She Ji: The next Five Years**  — Friedman, Ken et al., 2020, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2020.02.002](https://doi.org/10.1016/j.sheji.2020.02.002)
+- <a id='PadillaVancouverStatementCollections'></a>**Vancouver Statement on Collections as Data**  — Padilla, T., Techreport · [Link](https://doi.org/10.5281/zenodo.8341519.)
+
+### AI/ML/CE/RAG/NLP
+
+- <a id='Mehrabi2021SurveyBiasFairness'></a>**A Survey on Bias and Fairness in Machine Learning**  — Mehrabi, Ninareh et al., 2021, ACM Computing Surveys, Article · DOI: [10.1145/3457607](https://doi.org/10.1145/3457607)
+- <a id='PadillaVancouverStatementCollections'></a>**Vancouver Statement on Collections as Data**  — Padilla, T., Techreport · [Link](https://doi.org/10.5281/zenodo.8341519.)
+- <a id='SchopfExploringLandscapeNatural'></a>**Exploring the Landscape of Natural Language Processing Research**  — Schopf, Tim et al., Techreport · [Link](https://github.com/sebischair/Exploring-)
+- <a id='Upadhayaya2024EfficientLLMContext'></a>**Efficient {{LLM}} Context Distillation**  — Upadhayaya, Rajesh et al., 2024 (arXiv submission date), Techreport
+- <a id='Wilkinson2016CommentFAIRGuiding'></a>**Comment: The {{FAIR}} Guiding Principles for Scientific Data Management and Stewardship**  — Wilkinson, Mark D. et al., 2016, Scientific Data, Article · DOI: [10.1038/sdata.2016.18](https://doi.org/10.1038/sdata.2016.18)
+
+### Archer
+
+- <a id='Archer1963SystematicMethodDesigners'></a>**Systematic Method for Designers**  — Archer, L Bruce, 1963, Design, Article
+- <a id='Archer1968StructureDesignProcesses'></a>**The Structure of Design Processes**  — Archer, L Bruce, 1968, Phdthesis
+- <a id='Archer1971TechnologicalInnovationMethodology'></a>**Technological Innovation--a Methodology**  — Archer, L Bruce, 1971, Science Policy Foundation {\textbar} Special publications series, Book
+- <a id='Archer1974DesignAwarenessPlanned'></a>**Design awareness and planned creativity in industry**  — Archer, L Bruce, 1974, {Office of Design, Department of Industry, Trade and Commerce (Ottawa); Design Council of Great Britain (London)}, Book
+- <a id='Archer1978TimeRevolutionArt'></a>**Time for a Revolution in Art and Design Education**  — Archer, L Bruce, 1978, Techreport
+- <a id='BoydDavis2017DialogueRealworldOperational'></a>**A Dialogue between the Real-World and the Operational Model--the Realities of Design in {{Bruce Archer}}'s 1968 Doctoral Thesis**  — Boyd Davis, Stephen & Gristwood, Simone, 2017, Design Studies, Article · DOI: [10.1016/j.destud.2017.11.005](https://doi.org/10.1016/j.destud.2017.11.005)
+- <a id='Davis2016ComputingDesignArt'></a>**Computing, Design, Art: {{Reflections}} on an Innovative Moment in History**  — Davis, Stephen Boyd & Gristwood, Simone, 2016, {{IFIP Advances}} in {{Information}} and {{Communication Technology}}, Inproceedings · DOI: [10.1007/978-3-319-47286-7_7](https://doi.org/10.1007/978-3-319-47286-7_7)
+
+### Archival Research | emerging
+
+- <a id='Colavizza2021ArchivesAIOverview'></a>**Archives and {{AI}}: {{An}} Overview of Current Debates and Future Perspectives**  — Colavizza, Giovanni et al., 2021, Journal on Computing and Cultural Heritage (JOCCH), Article · DOI: [10.1145/3479010](https://doi.org/10.1145/3479010) · [Link](https://doi.org/10.1145/3479010)
+- <a id='Gooding2022CriticallyAddressableData'></a>**Towards Critically Addressable Data for Digital Library User Studies**  — Gooding, Paul, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.1080/0361526](https://doi.org/10.1080/0361526) · [Link](https://papers.ssrn.com/s)
+- <a id='Hodel2022SupervisedUnsupervisedApproaches'></a>**Supervised and Unsupervised: Approaches to Machine Learning for Textual Entities**  — Hodel, T, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.1007/978-3-476-05446-3_20](https://doi.org/10.1007/978-3-476-05446-3_20) · [Link](http://link.springer.com/10.1007/978-3-476-05446-3_20)
+- <a id='Jaillant2022ArchivesAccessArtificial'></a>**Archives, Access and Artificial Intelligence - Working with Born-Digital and Digitized Archival Collections**  — Jaillant, L, 2022, Bielefeld University Press, Book · [Link](www.aura-network.net)
+- <a id='Jaillant2024AreUsersDigital'></a>**Are Users of Digital Archives Ready for the {{AI}} Era? {{Obstacles}} to the Application of Computational Research Methods and New Opportunities**  — Jaillant, Lise & Aske, Katherine, 2024, Journal on Computing and Cultural Heritage, Article · DOI: [10.1145/3631125](https://doi.org/10.1145/3631125)
+- <a id='Marciano2022NewDisciplineComputational'></a>**Towards a New Discipline of Computational Archival Science ({{CAS}})**  — Marciano, Richard, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · [Link](https://www.nationalarchives.)
+- <a id='Schofield2017ResearchDesignDigital'></a>**Research through Design and Digital Humanities in Practice: {{What}}, How and Who in an Archive Research Project**  — Schofield, Tom et al., 2017, Digital Scholarship in the Humanities, Article · DOI: [10.1093/llc/fqx005](https://doi.org/10.1093/llc/fqx005)
+- <a id='Terras2022InvitingAIArchives'></a>**Inviting {{AI}} into the Archives: The Reception of Handwritten Recognition Technology into Historical Manuscript Transcription**  — Terras, Melissa, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.16995/dscn.12](https://doi.org/10.16995/dscn.12)
+- <a id='Ventresca2017ArchivalResearchMethods'></a>**Archival Research Methods**  — Ventresca, Marc J. & Mohr, John W., 2017, The {{Blackwell Companion}} to {{Organizations}}, Incollection · DOI: [10.1002/9781405164061.ch35](https://doi.org/10.1002/9781405164061.ch35)
+
+### Archival Research | foundational
+
+- <a id='Gilliland2004BuildingInfrastructureArchival'></a>**Building an Infrastructure for Archival Research**  — Gilliland, Anne & McKemmish, Sue, 2004, Archival Science, Article · DOI: [10.1007/s10502-006-6742-6](https://doi.org/10.1007/s10502-006-6742-6)
 
 ### Backlog to be read
 
@@ -89,65 +123,110 @@ It is intended as a **shared dataset**:
 
 ### Consciousness-raising paper
 
-- <a id='archerDesignAwarenessPlanned1974'></a>**Design awareness and planned creativity in industry**  — Archer, L Bruce, 1974, {Office of Design, Department of Industry, Trade and Commerce (Ottawa); Design Council of Great Britain (London)}, Book
-- <a id='bongiovanniTheoryPracticeDesign2021'></a>**Theory and Practice of Design Thinking: {{Perspectives}} of Designers and Business Consultants**  — Bongiovanni, Ivano & Louis, Cynthea Premala, 2021, International Journal of Design Creativity and Innovation, Article · DOI: [10.1080/21650349.2021.1929501](https://doi.org/10.1080/21650349.2021.1929501)
-- <a id='davisComputingDesignArt2016'></a>**Computing, Design, Art: {{Reflections}} on an Innovative Moment in History**  — Davis, Stephen Boyd & Gristwood, Simone, 2016, {{IFIP Advances}} in {{Information}} and {{Communication Technology}}, Inproceedings · DOI: [10.1007/978-3-319-47286-7_7](https://doi.org/10.1007/978-3-319-47286-7_7)
+- <a id='Archer1974DesignAwarenessPlanned'></a>**Design awareness and planned creativity in industry**  — Archer, L Bruce, 1974, {Office of Design, Department of Industry, Trade and Commerce (Ottawa); Design Council of Great Britain (London)}, Book
+- <a id='Bongiovanni2021TheoryPracticeDesign'></a>**Theory and Practice of Design Thinking: {{Perspectives}} of Designers and Business Consultants**  — Bongiovanni, Ivano & Louis, Cynthea Premala, 2021, International Journal of Design Creativity and Innovation, Article · DOI: [10.1080/21650349.2021.1929501](https://doi.org/10.1080/21650349.2021.1929501)
+- <a id='Davis2016ComputingDesignArt'></a>**Computing, Design, Art: {{Reflections}} on an Innovative Moment in History**  — Davis, Stephen Boyd & Gristwood, Simone, 2016, {{IFIP Advances}} in {{Information}} and {{Communication Technology}}, Inproceedings · DOI: [10.1007/978-3-319-47286-7_7](https://doi.org/10.1007/978-3-319-47286-7_7)
 - <a id='Drabinski2019WhatCriticalCritical'></a>**What Is Critical about Critical Librarianship?**  — Drabinski, Emily, 2019, Art Libraries Journal, Article · DOI: [10.1017/alj.2019.3](https://doi.org/10.1017/alj.2019.3)
-- <a id='freire1970'></a>**Pedagogy of the Oppressed**  — Freire, Paulo, 1970, Continuum, Book
 - <a id='Freire2014PedagogyOppressed30th'></a>**Pedagogy of the Oppressed: 30th {{Anniversary Edition**  — Freire, Paulo & Macedo, Donaldo P., 2014, Bloomsbury Publishing, Book
 - <a id='Gooding2022CriticallyAddressableData'></a>**Towards Critically Addressable Data for Digital Library User Studies**  — Gooding, Paul, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.1080/0361526](https://doi.org/10.1080/0361526) · [Link](https://papers.ssrn.com/s)
-- <a id='mehrabiSurveyBiasFairness2021'></a>**A Survey on Bias and Fairness in Machine Learning**  — Mehrabi, Ninareh et al., 2021, ACM Computing Surveys, Article · DOI: [10.1145/3457607](https://doi.org/10.1145/3457607)
+- <a id='Mehrabi2021SurveyBiasFairness'></a>**A Survey on Bias and Fairness in Machine Learning**  — Mehrabi, Ninareh et al., 2021, ACM Computing Surveys, Article · DOI: [10.1145/3457607](https://doi.org/10.1145/3457607)
 - <a id='Mortati2022NewDesignKnowledge'></a>**New Design Knowledge and the Fifth Order of Design**  — Mortati, Marzia, 2022, Design Issues, Article · DOI: [10.1162/desi_a_00695](https://doi.org/10.1162/desi_a_00695)
-- <a id='songRethinkingDesignEthics2025'></a>**Rethinking Design Ethics from the Perspective of Spinoza**  — Song, Sujin & Jun, Soojin, 2025, Design Issues, Article · DOI: [10.1162/DESI_A_00793](https://doi.org/10.1162/DESI_A_00793) · [Link](https://dx.doi.org/10.1162/desi_a_00793)
+- <a id='Song2025RethinkingDesignEthics'></a>**Rethinking Design Ethics from the Perspective of Spinoza**  — Song, Sujin & Jun, Soojin, 2025, Design Issues, Article · DOI: [10.1162/DESI_A_00793](https://doi.org/10.1162/DESI_A_00793) · [Link](https://dx.doi.org/10.1162/desi_a_00793)
+
+### Context
+
+- <a id='Bayazit2004InvestigatingDesignReview'></a>**Investigating Design: {{A}} Review of Forty Years of Design Research**  — Bayazit, Nigan, 2004, Design Issues, Article · DOI: [10.1162/074793604772933739](https://doi.org/10.1162/074793604772933739)
+- <a id='Buchanan2019SurroundingsEnvironmentsFourth'></a>**Surroundings and Environments in Fourth Order Design**  — Buchanan, Richard, 2019, Design Issues, Article · DOI: [10.1162/desi_a_00517](https://doi.org/10.1162/desi_a_00517)
+- <a id='Dixon2024DesignMakingThings'></a>**Design and Making Things Better: Relating the Pragmatism of {{John Dewey}} and {{Richard McKeon}} in Design Inquiry**  — Dixon, Brian & Kaszynska, Patrycja, 2024, Design Issues, Article · DOI: [10.1162/desi_a_00778](https://doi.org/10.1162/desi_a_00778) · [Link](https://direct.mit.edu/desi/article/40/4/29/124765/Design-and-Making-Things-Better-Relating-the)
+- <a id='Friedman2020SheJiNext'></a>**She Ji: The next Five Years**  — Friedman, Ken et al., 2020, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2020.02.002](https://doi.org/10.1016/j.sheji.2020.02.002)
+- <a id='Lee2021CritiqueDesignThinking'></a>**Critique of Design Thinking in Organizations: Strongholds and Shortcomings of the Making Paradigm**  — Lee, Kipum, 2021, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2021.10.003](https://doi.org/10.1016/j.sheji.2021.10.003)
+- <a id='Lee2024InstitutionsObjectsFourth'></a>**Institutions as Objects in Fourth Order Design**  — Lee, Kipum, 2024, She Ji, Article · DOI: [10.1016/j.sheji.2024.08.001](https://doi.org/10.1016/j.sheji.2024.08.001)
+- <a id='Lissack2024ResponsibleUseLarge'></a>**Responsible Use of Large Language Models: An Analogy with the Oxford Tutorial System**  — Lissack, Michael & Meagher, Brenden, 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.001](https://doi.org/10.1016/j.sheji.2024.11.001) · [Link](https://linkinghub.elsevier.com/retrieve/pii/S2405872624000959)
+- <a id='Mortati2022NewDesignKnowledge'></a>**New Design Knowledge and the Fifth Order of Design**  — Mortati, Marzia, 2022, Design Issues, Article · DOI: [10.1162/desi_a_00695](https://doi.org/10.1162/desi_a_00695)
+- <a id='Song2025RethinkingDesignEthics'></a>**Rethinking Design Ethics from the Perspective of Spinoza**  — Song, Sujin & Jun, Soojin, 2025, Design Issues, Article · DOI: [10.1162/DESI_A_00793](https://doi.org/10.1162/DESI_A_00793) · [Link](https://dx.doi.org/10.1162/desi_a_00793)
+- <a id='Valtonen2020ApproachingChangeDesign'></a>**Approaching Change with and in Design**  — Valtonen, Anna, 2020, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2020.08.004](https://doi.org/10.1016/j.sheji.2020.08.004)
+- <a id='Hernandez-Ramirez2024FutureEndDesign'></a>**The Future End of Design Work: {{A}} Critical Overview of Managerialism, Generative {{AI}}, and the Nature of Knowledge Work, and Why Craft Remains Relevant**  — {Hern{\'a}ndez-Ram{\'i}rez}, Rodrigo & Ferreira, Jo{\~a}o Batalheiro, 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.002](https://doi.org/10.1016/j.sheji.2024.11.002) · [Link](https://linkinghub.elsevier.com/retrieve/pii/S2405872624000960)
+- <a id='vanUffelen2024DealingWickedProblems'></a>**Dealing with Wicked Problems: Normative Paradigms for Design Thinking**  — {van Uffelen}, Nynke et al., 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.003](https://doi.org/10.1016/j.sheji.2024.11.003)
+
+### Core
+
+- <a id='Archer1968'></a>**The Structure of Design Processes**  — Archer, Bruce, 1968, Phdthesis
+- <a id='Buchanan2019'></a>**Surroundings and Environments in Fourth Order Design**  — Buchanan, Richard, 2019, Design Issues, Article · DOI: [10.1162/desi_a_00517](https://doi.org/10.1162/desi_a_00517)
+- <a id='Colavizza2021'></a>**Archives and {{AI}}: {{An}} Overview of Current Debates and Future Perspectives**  — Colavizza, Giovanni & others, 2021, Journal on Computing and Cultural Heritage (JOCCH), Article · DOI: [10.1145/3479010](https://doi.org/10.1145/3479010)
+- <a id='CopeKalantzis2011'></a>**Design in Principle and Practice: {{A}} Reconsideration of the Terms of Design Engagement**  — Cope, Bill & Kalantzis, Mary, 2011, Design Journal, Article · DOI: [10.2752/175630610X12877385838768](https://doi.org/10.2752/175630610X12877385838768)
+- <a id='Cross1982'></a>**Designerly Ways of Knowing**  — Cross, Nigel, 1982, Design Studies, Article
+- <a id='Cross2007Book'></a>**Designerly Ways of Knowing**  — Cross, Nigel, 2007, Birkh{\"a}user, Book
+- <a id='Cross2007'></a>**Forty Years of Design Research**  — Cross, Nigel, 2007, Design Studies, Article · DOI: [10.1016/j.destud.2006.11.004](https://doi.org/10.1016/j.destud.2006.11.004)
+- <a id='BoydDavisGristwood2017'></a>**A Dialogue between the Real-World and the Operational Model--the Realities of Design in {{Bruce Archer}}'s 1968 Doctoral Thesis**  — Davis, Stephen Boyd & Gristwood, Sarah, 2017, Design Studies, Article · DOI: [10.1016/j.destud.2017.11.005](https://doi.org/10.1016/j.destud.2017.11.005)
+- <a id='DixonKaszynska2024'></a>**Design and Making Things Better: Relating the Pragmatism of {{John Dewey}} and {{Richard McKeon}} in Design Inquiry**  — Dixon, B. & Kaszynska, P., 2024, Design Issues, Article · DOI: [10.1162/desi_a_00778](https://doi.org/10.1162/desi_a_00778)
+- <a id='Gooding2022'></a>**Towards Critically Addressable Data for Digital Library User Studies**  — Gooding, Paul, 2022, Archives, Access and Artificial Intelligence: {{Working}} with Born-Digital and Digitized Archival Collections, Incollection
+- <a id='Jaillant2022'></a>**Archives, Access and Artificial Intelligence: {{Working}} with Born-Digital and Digitized Archival Collections**  — Jaillant, L., 2022, Bielefeld University Press, Book
+- <a id='Kaszynska2022'></a>**Practice Research in Design: {{Towards}} a Novel Definition**  — Kaszynska, P. et al., 2022, Techreport · [Link](https://www.arts.ac.uk/ual-social-design-institute/publications/practice-research-in-design-towards-a-novel-definition)
+- <a id='Kimbell2012'></a>**Rethinking Design Thinking: {{Part II**  — Kimbell, Lucy, 2012, Design and Culture, Article · DOI: [10.2752/175470812X13281948975413](https://doi.org/10.2752/175470812X13281948975413)
+- <a id='vanUffelen2024'></a>**Dealing with Wicked Problems: Normative Paradigms for Design Thinking**  — {van Uffelen}, N. et al., 2024, She Ji: The Journal of Design, Economics, and Innovation, Article · DOI: [10.1016/j.sheji.2024.11.003](https://doi.org/10.1016/j.sheji.2024.11.003)
+
+### Critical librarianship
+
+- <a id='Beilin2018CriticalLibrarianshipAcademic'></a>**Critical Librarianship as an Academic Pursuit**  — Beilin, Ian, 2018, The Politics of Theory and the Practice of Critical Librarianship, Incollection · [Link](http://libraryjuicepress.com/journals/index.php/jclis.)
+- <a id='Drabinski2019WhatCriticalCritical'></a>**What Is Critical about Critical Librarianship?**  — Drabinski, Emily, 2019, Art Libraries Journal, Article · DOI: [10.1017/alj.2019.3](https://doi.org/10.1017/alj.2019.3)
 
 ### Data driven | artefact paper
 
-- <a id='leeCritiqueDesignThinking2021'></a>**Critique of Design Thinking in Organizations: Strongholds and Shortcomings of the Making Paradigm**  — Lee, Kipum, 2021, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2021.10.003](https://doi.org/10.1016/j.sheji.2021.10.003)
-- <a id='leeInstitutionsObjectsFourth2024'></a>**Institutions as Objects in Fourth Order Design**  — Lee, Kipum, 2024, She Ji, Article · DOI: [10.1016/j.sheji.2024.08.001](https://doi.org/10.1016/j.sheji.2024.08.001)
-- <a id='schopfExploringLandscapeNatural'></a>**Exploring the Landscape of Natural Language Processing Research**  — Schopf, Tim et al., Techreport · [Link](https://github.com/sebischair/Exploring-)
+- <a id='Lee2021CritiqueDesignThinking'></a>**Critique of Design Thinking in Organizations: Strongholds and Shortcomings of the Making Paradigm**  — Lee, Kipum, 2021, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2021.10.003](https://doi.org/10.1016/j.sheji.2021.10.003)
+- <a id='Lee2024InstitutionsObjectsFourth'></a>**Institutions as Objects in Fourth Order Design**  — Lee, Kipum, 2024, She Ji, Article · DOI: [10.1016/j.sheji.2024.08.001](https://doi.org/10.1016/j.sheji.2024.08.001)
+- <a id='SchopfExploringLandscapeNatural'></a>**Exploring the Landscape of Natural Language Processing Research**  — Schopf, Tim et al., Techreport · [Link](https://github.com/sebischair/Exploring-)
 
 ### Data driven | meta-study paper
 
-- <a id='bathlaExploringDynamicsDesign2024'></a>**Exploring the Dynamics of Design Thinking in Management Education and Training: {{A}} Critical Review, Taxonomic Analysis and Practical Implications**  — Bathla, Arushi et al., 2024, European Journal of Innovation Management, Article · DOI: [10.1108/EJIM-12-2023-1108](https://doi.org/10.1108/EJIM-12-2023-1108)
+- <a id='Bathla2024ExploringDynamicsDesign'></a>**Exploring the Dynamics of Design Thinking in Management Education and Training: {{A}} Critical Review, Taxonomic Analysis and Practical Implications**  — Bathla, Arushi et al., 2024, European Journal of Innovation Management, Article · DOI: [10.1108/EJIM-12-2023-1108](https://doi.org/10.1108/EJIM-12-2023-1108)
 - <a id='meiSurveyContextEngineering2025'></a>**A Survey of Context Engineering for Large Language Models**  — Mei, Lingrui et al., 2025, Misc · [Link](https://github.com/Meirtz/Awesome-Context-Engineering)
+
+### Methodological toolkit
+
+- <a id='MarcianoReframingDigitalCuration'></a>**Reframing Digital Curation Practices through a Computational Thinking Framework**  — Marciano, Richard et al., Techreport · [Link](http://cases.umd.edu)
 
 ### Methods | demonstration of concept paper
 
-- <a id='marcianoReframingDigitalCuration'></a>**Reframing Digital Curation Practices through a Computational Thinking Framework**  — Marciano, Richard et al., Techreport · [Link](http://cases.umd.edu)
+- <a id='Cassell2018SAGEHandbookQualitative'></a>**The {{SAGE Handbook}} of Qualitative Business and Management Research Methods: Methods and Challenges**  — Cassell, Catherine et al., 2018, The SAGE Handbook of Qualitative Business and Management Research Methods: Methods and Challenges, Book · DOI: [10.4135/9781526430236](https://doi.org/10.4135/9781526430236) · [Link](https://doi.org/10.4135/9781526430236)
+- <a id='MarcianoReframingDigitalCuration'></a>**Reframing Digital Curation Practices through a Computational Thinking Framework**  — Marciano, Richard et al., Techreport · [Link](http://cases.umd.edu)
 
 ### Methods | method introduction paper
 
-- <a id='archerSystematicMethodDesigners1963'></a>**Systematic Method for Designers**  — Archer, L Bruce, 1963, Design, Article
-- <a id='hodelSupervisedUnsupervisedApproaches2022'></a>**Supervised and Unsupervised: Approaches to Machine Learning for Textual Entities**  — Hodel, T, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.1007/978-3-476-05446-3_20](https://doi.org/10.1007/978-3-476-05446-3_20) · [Link](http://link.springer.com/10.1007/978-3-476-05446-3_20)
+- <a id='Archer1963SystematicMethodDesigners'></a>**Systematic Method for Designers**  — Archer, L Bruce, 1963, Design, Article
+- <a id='Hodel2022SupervisedUnsupervisedApproaches'></a>**Supervised and Unsupervised: Approaches to Machine Learning for Textual Entities**  — Hodel, T, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.1007/978-3-476-05446-3_20](https://doi.org/10.1007/978-3-476-05446-3_20) · [Link](http://link.springer.com/10.1007/978-3-476-05446-3_20)
 - <a id='Jaillant2022ArchivesAccessArtificial'></a>**Archives, Access and Artificial Intelligence - Working with Born-Digital and Digitized Archival Collections**  — Jaillant, L, 2022, Bielefeld University Press, Book · [Link](www.aura-network.net)
 - <a id='King1994DesigningSocialInquiry'></a>**Designing Social Inquiry: {{Scientific}} Inference in Qualitative Research**  — King, G et al., 1994, Princeton University Press, Book
-- <a id='king1994'></a>**Designing Social Inquiry: {{Scientific}} Inference in Qualitative Research**  — King, Gary et al., 1994, Princeton University Press, Book
-- <a id='upadhayayaEfficientLLMContext2024'></a>**Efficient {{LLM}} Context Distillation**  — Upadhayaya, Rajesh et al., 2024 (arXiv submission date), Techreport
+- <a id='Upadhayaya2024EfficientLLMContext'></a>**Efficient {{LLM}} Context Distillation**  — Upadhayaya, Rajesh et al., 2024 (arXiv submission date), Techreport
 
 ### Methods | tutorial paper
 
-- <a id='gillilandBuildingInfrastructureArchival2004'></a>**Building an Infrastructure for Archival Research**  — Gilliland, Anne & McKemmish, Sue, 2004, Archival Science, Article · DOI: [10.1007/s10502-006-6742-6](https://doi.org/10.1007/s10502-006-6742-6)
-- <a id='lissackResponsibleUseLarge2024'></a>**Responsible Use of Large Language Models: An Analogy with the Oxford Tutorial System**  — Lissack, Michael & Meagher, Brenden, 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.001](https://doi.org/10.1016/j.sheji.2024.11.001) · [Link](https://linkinghub.elsevier.com/retrieve/pii/S2405872624000959)
-- <a id='petreUnwrittenRulesPhD2010'></a>**The Unwritten Rules of {{PhD}} Research**  — Petre, Marian & Rugg, Gordon, 2010, Open University Press, Book
-- <a id='valtonenApproachingChangeDesign2020'></a>**Approaching Change with and in Design**  — Valtonen, Anna, 2020, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2020.08.004](https://doi.org/10.1016/j.sheji.2020.08.004)
-- <a id='wilkinsonCommentFAIRGuiding2016'></a>**Comment: The {{FAIR}} Guiding Principles for Scientific Data Management and Stewardship**  — Wilkinson, Mark D. et al., 2016, Scientific Data, Article · DOI: [10.1038/sdata.2016.18](https://doi.org/10.1038/sdata.2016.18)
-- <a id='estellem.p.dereks.p.HowGetPhD2015'></a>**How to Get a {{PhD}}:  {{A}} Handbook for Students and Their Supervisors**  — {Estelle M. P. Derek S. P.}, 2015, Open University Press (part of McGraw-Hill Education), Book
+- <a id='Gilliland2004BuildingInfrastructureArchival'></a>**Building an Infrastructure for Archival Research**  — Gilliland, Anne & McKemmish, Sue, 2004, Archival Science, Article · DOI: [10.1007/s10502-006-6742-6](https://doi.org/10.1007/s10502-006-6742-6)
+- <a id='Lissack2024ResponsibleUseLarge'></a>**Responsible Use of Large Language Models: An Analogy with the Oxford Tutorial System**  — Lissack, Michael & Meagher, Brenden, 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.001](https://doi.org/10.1016/j.sheji.2024.11.001) · [Link](https://linkinghub.elsevier.com/retrieve/pii/S2405872624000959)
+- <a id='Petre2010UnwrittenRulesPhD'></a>**The Unwritten Rules of {{PhD}} Research**  — Petre, Marian & Rugg, Gordon, 2010, Open University Press, Book
+- <a id='Valtonen2020ApproachingChangeDesign'></a>**Approaching Change with and in Design**  — Valtonen, Anna, 2020, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2020.08.004](https://doi.org/10.1016/j.sheji.2020.08.004)
+- <a id='Wilkinson2016CommentFAIRGuiding'></a>**Comment: The {{FAIR}} Guiding Principles for Scientific Data Management and Stewardship**  — Wilkinson, Mark D. et al., 2016, Scientific Data, Article · DOI: [10.1038/sdata.2016.18](https://doi.org/10.1038/sdata.2016.18)
+- <a id='EstelleM.P.DerekS.P.2015HowGetPhD'></a>**How to Get a {{PhD}}:  {{A}} Handbook for Students and Their Supervisors**  — {Estelle M. P. Derek S. P.}, 2015, Open University Press (part of McGraw-Hill Education), Book
+
+### Not applicable
+
+- <a id='Brown2009DesignActionHow'></a>**Design for Action How to Use Design Thinking to Make Great Things Actually Happen**  — Brown, Tim & Martin, Roger, 2009, Harvard Business Review, Article
+- <a id='Cope2011DesignPrinciplePractice'></a>**Design in Principle and Practice: {{A}} Reconsideration of the Terms of Design Engagement**  — Cope, Bill & Kalantzis, Mary, 2011, Design Journal, Article · DOI: [10.2752/175630610X12877385838768](https://doi.org/10.2752/175630610X12877385838768)
 
 ### PhD thesis
 
 - <a id='Archer1968StructureDesignProcesses'></a>**The Structure of Design Processes**  — Archer, L Bruce, 1968, Phdthesis
-- <a id='yeonEnhancingMuscleSensing2024'></a>**Enhancing Muscle Sensing Modalitiesfor Advanced Bionics**  — Yeon, Seong Ho, 2024, Phdthesis
-- <a id='guerin-garnettCorporveillanceDancingAI2024'></a>**Corporveillance: Dancing with {{A}}.{{I}}.**  — {Gu{\'e}rin-Garnett}, Nigel, 2024, Phdthesis
+- <a id='Yeon2024EnhancingMuscleSensing'></a>**Enhancing Muscle Sensing Modalitiesfor Advanced Bionics**  — Yeon, Seong Ho, 2024, Phdthesis
+- <a id='Guerin-Garnett2024CorporveillanceDancingAI'></a>**Corporveillance: Dancing with {{A}}.{{I}}.**  — {Gu{\'e}rin-Garnett}, Nigel, 2024, Phdthesis
 
 ### Position paper
 
-- <a id='liuAutomaticTaxonomyConstruction2012'></a>**Automatic Taxonomy Construction from Keywords**  — Liu, Xueqing et al., 2012, Proceedings of {{KDD}}'12 -- 18th {{ACM SIGKDD}} International Conference on Knowledge Discovery and Data Mining, Inproceedings · DOI: [10.1145/2339530.2339754](https://doi.org/10.1145/2339530.2339754) · [Link](http://www.wikipedia.org/)
-- <a id='terrasInvitingAIArchives2022'></a>**Inviting {{AI}} into the Archives: The Reception of Handwritten Recognition Technology into Historical Manuscript Transcription**  — Terras, Melissa, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.16995/dscn.12](https://doi.org/10.16995/dscn.12)
+- <a id='Liu2012AutomaticTaxonomyConstruction'></a>**Automatic Taxonomy Construction from Keywords**  — Liu, Xueqing et al., 2012, Proceedings of {{KDD}}'12 -- 18th {{ACM SIGKDD}} International Conference on Knowledge Discovery and Data Mining, Inproceedings · DOI: [10.1145/2339530.2339754](https://doi.org/10.1145/2339530.2339754) · [Link](http://www.wikipedia.org/)
+- <a id='Terras2022InvitingAIArchives'></a>**Inviting {{AI}} into the Archives: The Reception of Handwritten Recognition Technology into Historical Manuscript Transcription**  — Terras, Melissa, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.16995/dscn.12](https://doi.org/10.16995/dscn.12)
 - <a id='vanUffelen2024DealingWickedProblems'></a>**Dealing with Wicked Problems: Normative Paradigms for Design Thinking**  — {van Uffelen}, Nynke et al., 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.003](https://doi.org/10.1016/j.sheji.2024.11.003)
 
 ### Review paper
 
-- <a id='brownDesignActionHow2009'></a>**Design for Action How to Use Design Thinking to Make Great Things Actually Happen**  — Brown, Tim & Martin, Roger, 2009, Harvard Business Review, Article
+- <a id='Brown2009DesignActionHow'></a>**Design for Action How to Use Design Thinking to Make Great Things Actually Happen**  — Brown, Tim & Martin, Roger, 2009, Harvard Business Review, Article
 
 ### Reviewed
 
@@ -155,47 +234,47 @@ It is intended as a **shared dataset**:
 - <a id='Jaillant2024AreUsersDigital'></a>**Are Users of Digital Archives Ready for the {{AI}} Era? {{Obstacles}} to the Application of Computational Research Methods and New Opportunities**  — Jaillant, Lise & Aske, Katherine, 2024, Journal on Computing and Cultural Heritage, Article · DOI: [10.1145/3631125](https://doi.org/10.1145/3631125)
 - <a id='Mortati2022NewDesignKnowledge'></a>**New Design Knowledge and the Fifth Order of Design**  — Mortati, Marzia, 2022, Design Issues, Article · DOI: [10.1162/desi_a_00695](https://doi.org/10.1162/desi_a_00695)
 
+### Taxonomy
+
+- <a id='Liu2012AutomaticTaxonomyConstruction'></a>**Automatic Taxonomy Construction from Keywords**  — Liu, Xueqing et al., 2012, Proceedings of {{KDD}}'12 -- 18th {{ACM SIGKDD}} International Conference on Knowledge Discovery and Data Mining, Inproceedings · DOI: [10.1145/2339530.2339754](https://doi.org/10.1145/2339530.2339754) · [Link](http://www.wikipedia.org/)
+
+### Theoretical framework
+
+- <a id='Buchanan2001DesignNewRhetoric'></a>**Design and the New Rhetoric: {{Productive}} Arts in the Philosophy of Culture**  — Buchanan, Richard, 2001, Philosophy \& Rhetoric, Article · DOI: [10.1162/07479360152681056](https://doi.org/10.1162/07479360152681056) · [Link](https://www.jstor.org/stable/40238091)
+- <a id='Bunnin2003BlackwellCompanionPhilosophy'></a>**The {{Blackwell}} Companion to Philosophy**  — Bunnin, Nicholas & {Tsui-James}, E P, 2003, Blackwell, Book · [Link](https://onlinelibrary.wiley.com/doi/)
+- <a id='Kimbell2012RethinkingDesignThinking'></a>**Rethinking Design Thinking: Part {{II**  — Kimbell, Lucy, 2012, Design and Culture, Article · DOI: [10.2752/175470812X13281948975413](https://doi.org/10.2752/175470812X13281948975413)
+
 ### Theoretical paper
 
 - <a id='Archer1971TechnologicalInnovationMethodology'></a>**Technological Innovation--a Methodology**  — Archer, L Bruce, 1971, Science Policy Foundation {\textbar} Special publications series, Book
-- <a id='archerTimeRevolutionArt1978'></a>**Time for a Revolution in Art and Design Education**  — Archer, L Bruce, 1978, Techreport
-- <a id='bayazitInvestigatingDesignReview2004'></a>**Investigating Design: {{A}} Review of Forty Years of Design Research**  — Bayazit, Nigan, 2004, Design Issues, Article · DOI: [10.1162/074793604772933739](https://doi.org/10.1162/074793604772933739)
-- <a id='beilinCriticalLibrarianshipAcademic2018'></a>**Critical Librarianship as an Academic Pursuit**  — Beilin, Ian, 2018, The Politics of Theory and the Practice of Critical Librarianship, Incollection · [Link](http://libraryjuicepress.com/journals/index.php/jclis.)
+- <a id='Archer1978TimeRevolutionArt'></a>**Time for a Revolution in Art and Design Education**  — Archer, L Bruce, 1978, Techreport
+- <a id='Bayazit2004InvestigatingDesignReview'></a>**Investigating Design: {{A}} Review of Forty Years of Design Research**  — Bayazit, Nigan, 2004, Design Issues, Article · DOI: [10.1162/074793604772933739](https://doi.org/10.1162/074793604772933739)
+- <a id='Beilin2018CriticalLibrarianshipAcademic'></a>**Critical Librarianship as an Academic Pursuit**  — Beilin, Ian, 2018, The Politics of Theory and the Practice of Critical Librarianship, Incollection · [Link](http://libraryjuicepress.com/journals/index.php/jclis.)
 - <a id='BoydDavis2017DialogueRealworldOperational'></a>**A Dialogue between the Real-World and the Operational Model--the Realities of Design in {{Bruce Archer}}'s 1968 Doctoral Thesis**  — Boyd Davis, Stephen & Gristwood, Simone, 2017, Design Studies, Article · DOI: [10.1016/j.destud.2017.11.005](https://doi.org/10.1016/j.destud.2017.11.005)
-- <a id='buchananDesignNewRhetoric2001'></a>**Design and the New Rhetoric: {{Productive}} Arts in the Philosophy of Culture**  — Buchanan, Richard, 2001, Philosophy \& Rhetoric, Article · DOI: [10.1162/07479360152681056](https://doi.org/10.1162/07479360152681056) · [Link](https://www.jstor.org/stable/40238091)
 - <a id='Buchanan2019SurroundingsEnvironmentsFourth'></a>**Surroundings and Environments in Fourth Order Design**  — Buchanan, Richard, 2019, Design Issues, Article · DOI: [10.1162/desi_a_00517](https://doi.org/10.1162/desi_a_00517)
-- <a id='bunninBlackwellCompanionPhilosophy2003'></a>**The {{Blackwell}} Companion to Philosophy**  — Bunnin, Nicholas & {Tsui-James}, E P, 2003, Blackwell, Book · [Link](https://onlinelibrary.wiley.com/doi/)
+- <a id='Bunnin2003BlackwellCompanionPhilosophy'></a>**The {{Blackwell}} Companion to Philosophy**  — Bunnin, Nicholas & {Tsui-James}, E P, 2003, Blackwell, Book · [Link](https://onlinelibrary.wiley.com/doi/)
 - <a id='Colavizza2021ArchivesAIOverview'></a>**Archives and {{AI}}: {{An}} Overview of Current Debates and Future Perspectives**  — Colavizza, Giovanni et al., 2021, Journal on Computing and Cultural Heritage (JOCCH), Article · DOI: [10.1145/3479010](https://doi.org/10.1145/3479010) · [Link](https://doi.org/10.1145/3479010)
 - <a id='Cope2011DesignPrinciplePractice'></a>**Design in Principle and Practice: {{A}} Reconsideration of the Terms of Design Engagement**  — Cope, Bill & Kalantzis, Mary, 2011, Design Journal, Article · DOI: [10.2752/175630610X12877385838768](https://doi.org/10.2752/175630610X12877385838768)
 - <a id='Cross2007FortyYearsDesign'></a>**Forty Years of Design Research**  — Cross, Nigel, 2007, Design Studies, Article · DOI: [10.1016/j.destud.2006.11.004](https://doi.org/10.1016/j.destud.2006.11.004)
 - <a id='Dixon2024DesignMakingThings'></a>**Design and Making Things Better: Relating the Pragmatism of {{John Dewey}} and {{Richard McKeon}} in Design Inquiry**  — Dixon, Brian & Kaszynska, Patrycja, 2024, Design Issues, Article · DOI: [10.1162/desi_a_00778](https://doi.org/10.1162/desi_a_00778) · [Link](https://direct.mit.edu/desi/article/40/4/29/124765/Design-and-Making-Things-Better-Relating-the)
-- <a id='geertz1973'></a>**The Interpretation of Cultures: {{Selected}} Essays**  — Geertz, Clifford, 1973, Basic Books, Book
+- <a id='Freire2014PedagogyOppressed30th'></a>**Pedagogy of the Oppressed: 30th {{Anniversary Edition**  — Freire, Paulo & Macedo, Donaldo P., 2014, Bloomsbury Publishing, Book
 - <a id='GeertzInterpretationCultures'></a>**The {{Interpretation}} of {{Cultures**  — Geertz, Clifford, Article
-- <a id='horkheimer1937'></a>**Traditional and Critical Theory**  — Horkheimer, Max, 1937, Critical Theory: {{Selected}} Essays, Incollection
 - <a id='Horkheimer2002CriticalTheorySelected'></a>**Critical Theory: Selected Essays**  — Horkheimer, Max & Horkheimer, Max, 2002, Continuum, Book
 - <a id='Jaillant2024AreUsersDigital'></a>**Are Users of Digital Archives Ready for the {{AI}} Era? {{Obstacles}} to the Application of Computational Research Methods and New Opportunities**  — Jaillant, Lise & Aske, Katherine, 2024, Journal on Computing and Cultural Heritage, Article · DOI: [10.1145/3631125](https://doi.org/10.1145/3631125)
 - <a id='Kaszynska2022PracticeResearchDesign'></a>**Practice Research in Design: {{Towards}} a Novel Definition**  — Kaszynska, Patrycja et al., 2022, Techreport · [Link](https://www.arts.ac.uk/ual-social-design-institute/publications/practice-research-in-design-towards-a-novel-definition)
-- <a id='Kimbell2012RethinkingDesignThinking'></a>**Rethinking Design Thinking: Part {{II**  — Kimbell, Lucy, 2012, Design and Culture, Article · DOI: [10.2752/175470812X13281948975413](https://doi.org/10.2752/175470812X13281948975413)
-- <a id='marcianoNewDisciplineComputational2022'></a>**Towards a New Discipline of Computational Archival Science ({{CAS}})**  — Marciano, Richard, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · [Link](https://www.nationalarchives.)
-- <a id='schofieldResearchDesignDigital2017'></a>**Research through Design and Digital Humanities in Practice: {{What}}, How and Who in an Archive Research Project**  — Schofield, Tom et al., 2017, Digital Scholarship in the Humanities, Article · DOI: [10.1093/llc/fqx005](https://doi.org/10.1093/llc/fqx005)
-- <a id='ventrescaArchivalResearchMethods2017'></a>**Archival Research Methods**  — Ventresca, Marc J. & Mohr, John W., 2017, The {{Blackwell Companion}} to {{Organizations}}, Incollection · DOI: [10.1002/9781405164061.ch35](https://doi.org/10.1002/9781405164061.ch35)
-- <a id='hernandez-ramirezFutureEndDesign2024'></a>**The Future End of Design Work: {{A}} Critical Overview of Managerialism, Generative {{AI}}, and the Nature of Knowledge Work, and Why Craft Remains Relevant**  — {Hern{\'a}ndez-Ram{\'i}rez}, Rodrigo & Ferreira, Jo{\~a}o Batalheiro, 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.002](https://doi.org/10.1016/j.sheji.2024.11.002) · [Link](https://linkinghub.elsevier.com/retrieve/pii/S2405872624000960)
+- <a id='Marciano2022NewDisciplineComputational'></a>**Towards a New Discipline of Computational Archival Science ({{CAS}})**  — Marciano, Richard, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · [Link](https://www.nationalarchives.)
+- <a id='Schofield2017ResearchDesignDigital'></a>**Research through Design and Digital Humanities in Practice: {{What}}, How and Who in an Archive Research Project**  — Schofield, Tom et al., 2017, Digital Scholarship in the Humanities, Article · DOI: [10.1093/llc/fqx005](https://doi.org/10.1093/llc/fqx005)
+- <a id='Ventresca2017ArchivalResearchMethods'></a>**Archival Research Methods**  — Ventresca, Marc J. & Mohr, John W., 2017, The {{Blackwell Companion}} to {{Organizations}}, Incollection · DOI: [10.1002/9781405164061.ch35](https://doi.org/10.1002/9781405164061.ch35)
+- <a id='Hernandez-Ramirez2024FutureEndDesign'></a>**The Future End of Design Work: {{A}} Critical Overview of Managerialism, Generative {{AI}}, and the Nature of Knowledge Work, and Why Craft Remains Relevant**  — {Hern{\'a}ndez-Ram{\'i}rez}, Rodrigo & Ferreira, Jo{\~a}o Batalheiro, 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.002](https://doi.org/10.1016/j.sheji.2024.11.002) · [Link](https://linkinghub.elsevier.com/retrieve/pii/S2405872624000960)
+
+### Thesis
+
+- <a id='Petre2010UnwrittenRulesPhD'></a>**The Unwritten Rules of {{PhD}} Research**  — Petre, Marian & Rugg, Gordon, 2010, Open University Press, Book
+- <a id='Yeon2024EnhancingMuscleSensing'></a>**Enhancing Muscle Sensing Modalitiesfor Advanced Bionics**  — Yeon, Seong Ho, 2024, Phdthesis
+- <a id='EstelleM.P.DerekS.P.2015HowGetPhD'></a>**How to Get a {{PhD}}:  {{A}} Handbook for Students and Their Supervisors**  — {Estelle M. P. Derek S. P.}, 2015, Open University Press (part of McGraw-Hill Education), Book
+- <a id='Guerin-Garnett2024CorporveillanceDancingAI'></a>**Corporveillance: Dancing with {{A}}.{{I}}.**  — {Gu{\'e}rin-Garnett}, Nigel, 2024, Phdthesis
 
 ### (Untagged)
 
-- <a id='archer1968_structure'></a>**The Structure of Design Processes**  — Archer, L. Bruce, 1968, Phdthesis
-- <a id='archer1971_technological_innovation'></a>**Technological Innovation -- a Methodology**  — Archer, L. Bruce, 1971, Science Policy Foundation Special Publications Series, Incollection
 - <a id='Archer1971'></a>**Technological Innovation--a Methodology**  — Archer, L. Bruce, 1971, Misc
 - <a id='Archer1971'></a>**Technological Innovation--a Methodology**  — Archer, L. Bruce, 1971, Misc
-- <a id='boyddavis2017_dialogue'></a>**A Dialogue between the Real-World and the Operational Model -- the Realities of Design in Bruce Archer's 1968 Doctoral Thesis**  — Boyd Davis, Stephen & Gristwood, Scarlett, 2017, Design Studies, Article · DOI: [10.1016/j.destud.2017.11.005](https://doi.org/10.1016/j.destud.2017.11.005)
-- <a id='buchanan2019_fourthorder'></a>**Surroundings and Environments in Fourth Order Design**  — Buchanan, Richard, 2019, Design Issues, Article · DOI: [10.1162/desi_a_00517](https://doi.org/10.1162/desi_a_00517)
-- <a id='colavizza2021_archives_ai'></a>**Archives and {{AI}}: {{An}} Overview of Current Debates and Future Perspectives**  — Colavizza, Giovanni et al., 2021, Journal on Computing and Cultural Heritage (JOCCH), Article · DOI: [10.1145/3479010](https://doi.org/10.1145/3479010)
-- <a id='cope2011_design_principle_practice'></a>**Design in Principle and Practice: A Reconsideration of the Terms of Design Engagement**  — Cope, Bill & Kalantzis, Mary, 2011, The Design Journal, Article · DOI: [10.2752/175630610X12877385838768](https://doi.org/10.2752/175630610X12877385838768)
-- <a id='cross1982_designerly'></a>**Designerly Ways of Knowing**  — Cross, Nigel, 1982, Design Studies, Article · DOI: [10.1016/0142-694X(82)90040-0](https://doi.org/10.1016/0142-694X(82)90040-0)
-- <a id='cross2007_forty_years'></a>**Forty Years of Design Research**  — Cross, Nigel, 2007, Design Studies, Article · DOI: [10.1016/j.destud.2006.11.004](https://doi.org/10.1016/j.destud.2006.11.004)
-- <a id='dixon2024_pragmatism_design'></a>**Design and Making Things Better: {{Relating}} the Pragmatism of John Dewey and Richard {{McKeon}} in Design Inquiry**  — Dixon, Ben & Kaszynska, Patrycja, 2024, Design Issues, Article · DOI: [10.1162/desi_a_00778](https://doi.org/10.1162/desi_a_00778)
-- <a id='gooding2022_critically_addressable'></a>**Towards Critically Addressable Data for Digital Library User Studies**  — Gooding, Paul, 2022, Archives, Access and Artificial Intelligence: {{Working}} with Born-Digital and Digitized Archival Collections, Incollection
-- <a id='jaillant2022_archives_access_ai'></a>**Archives, Access and Artificial Intelligence: {{Working}} with Born-Digital and Digitized Archival Collections**  — Jaillant, Lise, 2022, Bielefeld University Press, Book
-- <a id='kaszynska2022_practice_research'></a>**Practice Research in Design: {{Towards}} a Novel Definition**  — Kaszynska, Patrycja et al., 2022, Techreport
-- <a id='kimbell2012_rethinkingii'></a>**Rethinking Design Thinking: {{Part II**  — Kimbell, Lucy, 2012, Design and Culture, Article · DOI: [10.2752/175470812X13281948975413](https://doi.org/10.2752/175470812X13281948975413)
-- <a id='vanuffelen2024_wicked'></a>**Dealing with Wicked Problems: {{Normative}} Paradigms for Design Thinking**  — {van Uffelen}, Niels et al., 2024, She Ji: The Journal of Design, Economics, and Innovation, Article · DOI: [10.1016/j.sheji.2024.11.003](https://doi.org/10.1016/j.sheji.2024.11.003)
