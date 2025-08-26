@@ -1,26 +1,29 @@
 #!/usr/bin/env python3
 """
 Build a static HTML page at docs/index.html from library.bib, grouped by:
-- Zotero collections (if exported via Better BibTeX "Include collections")
+- Zotero collections (Better BibTeX "Include collections")
 - Tags (BibTeX keywords; comma/semicolon separated)
 
 Adds minimal TeX cleanup for labels (e.g., {\textbar} -> |).
-Outputs HTML that links to docs/styles.css (no inline CSS).
-
-Requires:
-  pip install bibtexparser
+Outputs HTML that links to docs/styles.css (no inline CSS for styles, but charts are inlined as SVG).
 """
 
 import re
 import html
+import unicodedata
 from pathlib import Path
 import bibtexparser
+
+# chart generator (make sure we can import it when run as a script)
+import sys as _sys
+_sys.path.append(str(Path(__file__).resolve().parent))
+from generate_charts import build_charts
 
 ROOT = Path(__file__).resolve().parents[1]
 BIB_PATH = ROOT / "library.bib"
 DOCS_DIR = ROOT / "docs"
 OUT = DOCS_DIR / "index.html"
-STYLES = DOCS_DIR / "styles.css"  # referenced by the HTML (must exist)
+STYLES = DOCS_DIR / "styles.css"
 
 # ----------------------- helpers -----------------------
 def clean_tex(s: str) -> str:
@@ -64,6 +67,44 @@ def entry_sort_key(e):
     title = (e.get("title") or "").lower()
     return (author, year, title)
 
+# ------------ tag color key mapping (server-side) ------------
+def canon(s: str) -> str:
+    if not s:
+        return ""
+    s = unicodedata.normalize("NFKC", s)
+    s = s.casefold()
+    s = s.replace("–", "-").replace("—", "-").replace("’", "'")
+    s = re.sub(r"\s*\|\s*", " | ", s)
+    s = re.sub(r"[^a-z0-9|]+", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s
+
+SPECIAL_TAGS_CANON = {
+    canon("Theoretical paper"): "theoretical",
+    canon("Consciousness-raising paper"): "consciousness-raising",
+    canon("Consciousness raising paper"): "consciousness-raising",
+    canon("Agenda setting paper"): "agenda-setting",
+    canon("Review paper"): "review",
+    canon("Position paper"): "position",
+    canon("PhD thesis"): "phd-thesis",
+}
+
+SPECIAL_PREFIXES = [
+    (canon("Data driven |"), "data-driven"),
+    (canon("Methods |"), "methods"),
+]
+
+def tag_key(label: str) -> str:
+    c = canon(label)
+    if c in SPECIAL_TAGS_CANON:
+        return SPECIAL_TAGS_CANON[c]
+    for pref, key in SPECIAL_PREFIXES:
+        if c.startswith(pref):
+            return key
+    return ""
+
+# ------------------------------------------------------------
+
 def entry_html(e):
     key = e.get("ID", "")
     typ = (e.get("ENTRYTYPE") or "").capitalize()
@@ -95,7 +136,16 @@ def entry_html(e):
     if url:
         tail.append(f"<a href='{esc(url)}' target='_blank' rel='noopener'>Link</a>")
 
-    tags_html = " ".join(f"<span class='tag'>{esc(t)}</span>" for t in tags) if tags else ""
+    # Attach data-key for special tags so CSS can recolor them
+    tag_spans = []
+    for t in tags:
+        k = tag_key(t)
+        if k:
+            tag_spans.append(f"<span class='tag' data-key='{esc(k)}'>{esc(t)}</span>")
+        else:
+            tag_spans.append(f"<span class='tag'>{esc(t)}</span>")
+
+    tags_html = " ".join(tag_spans) if tag_spans else ""
     colls_html = " ".join(f"<span class='tag coll'>{esc(c)}</span>" for c in colls) if colls else ""
 
     dataset_text = " ".join([
@@ -120,6 +170,13 @@ def build():
 
     with open(BIB_PATH, "r", encoding="utf-8") as f:
         db = bibtexparser.load(f)
+
+    # ---- generate charts (writes SVGs into docs/) ----
+    charts = build_charts(BIB_PATH, DOCS_DIR)
+    paper_svg_path = DOCS_DIR / charts["paper_types_svg"]
+    coll_svg_path  = DOCS_DIR / charts["collections_svg"]
+    paper_svg_inline = paper_svg_path.read_text(encoding="utf-8")
+    coll_svg_inline  = coll_svg_path.read_text(encoding="utf-8")
 
     # Collections groups
     coll_groups = {}
@@ -194,13 +251,15 @@ def build():
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
+    # ---------- HTML ----------
     html_doc = f"""<!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
 <title>Reference Library</title>
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
 <main class="container">
@@ -212,6 +271,15 @@ def build():
   <div class="search">
     <input id="q" type="search" placeholder="Search title, authors, venue, year, tag, or collection…" aria-label="Search references" />
   </div>
+
+  <!-- Charts directly under the search box -->
+  <section id="overview" class="tag-section" style="margin-top:1.25rem;">
+    <h2>Overview</h2>
+    <div class="entries" style="list-style:none; display:grid; gap:1rem;">
+      <figure style="margin:0;">{paper_svg_inline}</figure>
+      <figure style="margin:0;">{coll_svg_inline}</figure>
+    </div>
+  </section>
 
   {coll_index_html}
   {"".join(coll_sections)}
@@ -227,7 +295,9 @@ def build():
 <script>
 (function() {{
   const q = document.getElementById('q');
-  const sections = Array.from(document.querySelectorAll('.tag-section'));
+  const allSections = Array.from(document.querySelectorAll('.tag-section'));
+  // Exclude the overview section from hide/show logic
+  const sections = allSections.filter(sec => sec.id !== 'overview');
   const entries = Array.from(document.querySelectorAll('.entry'));
 
   function applyFilter() {{
@@ -259,7 +329,6 @@ def build():
 """
     OUT.write_text(html_doc, encoding="utf-8")
     print(f"Wrote site to {OUT}")
-
 
 if __name__ == "__main__":
     build()
