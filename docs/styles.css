@@ -145,6 +145,67 @@ code{
 .header .meta{ color: var(--muted); margin-bottom: 1rem; }
 
 /* ----------------------------------------------------- */
+/* Charts (Overview)                                     */
+/* ----------------------------------------------------- */
+
+/* Card polish for the two charts */
+#overview figure{
+  margin: 0;
+  background: color-mix(in oklab, var(--bg) 92%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .75rem;
+  box-shadow: var(--shadow);
+}
+
+/* SVG should scale to the card width */
+#overview svg{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Desktop/tablet: stack naturally */
+#overview .entries{
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Mobile: force horizontal scroll for the chart cards */
+@media (max-width: 720px){
+  /* Override the inline grid style with higher specificity + !important */
+  #overview .entries{
+    display: block !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;               /* keep cards on one row */
+    padding-bottom: .5rem;             /* room for scrollbar/thumb */
+  }
+
+  /* Make each chart a fixed-width inline block so the container scrolls */
+  #overview .entries > figure{
+    display: inline-block;
+    vertical-align: top;
+    width: 680px;                      /* tune as you like */
+    margin-right: 1rem;
+    white-space: normal;               /* allow labels to wrap inside */
+  }
+
+  /* Optional: subtler mobile scrollbar */
+  #overview .entries::-webkit-scrollbar{ height: 8px; }
+  #overview .entries::-webkit-scrollbar-thumb{
+    background: color-mix(in oklab, var(--muted) 35%, transparent);
+    border-radius: 999px;
+  }
+  #overview .entries::-webkit-scrollbar-track{
+    background: color-mix(in oklab, var(--bg) 85%, transparent);
+  }
+}
+
+
+/* ----------------------------------------------------- */
 /* Search                                                */
 /* ----------------------------------------------------- */
 .search{
