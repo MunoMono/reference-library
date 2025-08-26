@@ -11,7 +11,7 @@ Live version: [https://munomono.github.io/reference-library/index.html](https://
 ## 📚 About
 
 This repository contains the full set of references collected for my research projects.  
-It functions as a **reference library**, not just a bibliography for a single paper.  
+It functions as a **reference library**, not just a bibliography for a single paper.  Yeah.
 
 - **Format**: [BibTeX](https://en.wikipedia.org/wiki/BibTeX) (`library.bib`)  
 - **Viewer**: static site generated at `docs/index.html`  
