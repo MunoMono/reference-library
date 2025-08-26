@@ -117,6 +117,7 @@ It is intended as a **shared dataset**:
 - <a id='Cross1982DesignerlyWaysKnowing'></a>**Designerly Ways of Knowing**  — Cross, Nigel, 1982, Design Studies, Article
 - <a id='Cross2007FortyYearsDesign'></a>**Forty Years of Design Research**  — Cross, Nigel, 2007, Design Studies, Article · DOI: [10.1016/j.destud.2006.11.004](https://doi.org/10.1016/j.destud.2006.11.004)
 - <a id='Freire2014PedagogyOppressed30th'></a>**Pedagogy of the Oppressed: 30th {{Anniversary Edition**  — Freire, Paulo & Macedo, Donaldo P., 2014, Bloomsbury Publishing, Book
+- <a id='Geertz2009InterpretationCulturesSelected'></a>**The Interpretation of Cultures: Selected Essays**  — Geertz, Clifford, 2009, Basic Books, Book
 - <a id='GeertzInterpretationCultures'></a>**The {{Interpretation}} of {{Cultures**  — Geertz, Clifford, Article
 - <a id='Horkheimer2002CriticalTheorySelected'></a>**Critical Theory: Selected Essays**  — Horkheimer, Max & Horkheimer, Max, 2002, Continuum, Book
 - <a id='King1994DesigningSocialInquiry'></a>**Designing Social Inquiry: {{Scientific}} Inference in Qualitative Research**  — King, G et al., 1994, Princeton University Press, Book
@@ -242,6 +243,7 @@ It is intended as a **shared dataset**:
 
 - <a id='Buchanan2001DesignNewRhetoric'></a>**Design and the New Rhetoric: {{Productive}} Arts in the Philosophy of Culture**  — Buchanan, Richard, 2001, Philosophy \& Rhetoric, Article · DOI: [10.1162/07479360152681056](https://doi.org/10.1162/07479360152681056) · [Link](https://www.jstor.org/stable/40238091)
 - <a id='Bunnin2003BlackwellCompanionPhilosophy'></a>**The {{Blackwell}} Companion to Philosophy**  — Bunnin, Nicholas & {Tsui-James}, E P, 2003, Blackwell, Book · [Link](https://onlinelibrary.wiley.com/doi/)
+- <a id='Geertz2009InterpretationCulturesSelected'></a>**The Interpretation of Cultures: Selected Essays**  — Geertz, Clifford, 2009, Basic Books, Book
 - <a id='Kimbell2012RethinkingDesignThinking'></a>**Rethinking Design Thinking: Part {{II**  — Kimbell, Lucy, 2012, Design and Culture, Article · DOI: [10.2752/175470812X13281948975413](https://doi.org/10.2752/175470812X13281948975413)
 
 ### Theoretical paper
@@ -257,7 +259,6 @@ It is intended as a **shared dataset**:
 - <a id='Cope2011DesignPrinciplePractice'></a>**Design in Principle and Practice: {{A}} Reconsideration of the Terms of Design Engagement**  — Cope, Bill & Kalantzis, Mary, 2011, Design Journal, Article · DOI: [10.2752/175630610X12877385838768](https://doi.org/10.2752/175630610X12877385838768)
 - <a id='Cross2007FortyYearsDesign'></a>**Forty Years of Design Research**  — Cross, Nigel, 2007, Design Studies, Article · DOI: [10.1016/j.destud.2006.11.004](https://doi.org/10.1016/j.destud.2006.11.004)
 - <a id='Dixon2024DesignMakingThings'></a>**Design and Making Things Better: Relating the Pragmatism of {{John Dewey}} and {{Richard McKeon}} in Design Inquiry**  — Dixon, Brian & Kaszynska, Patrycja, 2024, Design Issues, Article · DOI: [10.1162/desi_a_00778](https://doi.org/10.1162/desi_a_00778) · [Link](https://direct.mit.edu/desi/article/40/4/29/124765/Design-and-Making-Things-Better-Relating-the)
-- <a id='Freire2014PedagogyOppressed30th'></a>**Pedagogy of the Oppressed: 30th {{Anniversary Edition**  — Freire, Paulo & Macedo, Donaldo P., 2014, Bloomsbury Publishing, Book
 - <a id='GeertzInterpretationCultures'></a>**The {{Interpretation}} of {{Cultures**  — Geertz, Clifford, Article
 - <a id='Horkheimer2002CriticalTheorySelected'></a>**Critical Theory: Selected Essays**  — Horkheimer, Max & Horkheimer, Max, 2002, Continuum, Book
 - <a id='Jaillant2024AreUsersDigital'></a>**Are Users of Digital Archives Ready for the {{AI}} Era? {{Obstacles}} to the Application of Computational Research Methods and New Opportunities**  — Jaillant, Lise & Aske, Katherine, 2024, Journal on Computing and Cultural Heritage, Article · DOI: [10.1145/3631125](https://doi.org/10.1145/3631125)
