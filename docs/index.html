@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark" />
 <title>Reference Library</title>
-<link rel="stylesheet" href="styles.css?v=7" />
+<link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
 <main class="container">
@@ -74,7 +74,7 @@
 <button class="pill" data-collection="9 Critical librarianship ▸ Information ethics">9 Critical librarianship ▸ Information ethics</button>
 <button class="pill" data-collection="★ Core">★ Core</button></div></section>
 
-  <!-- Flat list primarily for client-side sorting via pills -->
+  <!-- Flat list primarily for client-side filtering via pills -->
   <section id="flat" class="tag-section" style="margin-top:1rem;">
     <h2>All entries</h2>
     <ul id="entries" class="entries">
@@ -1761,23 +1761,23 @@
 
 <script>
 (function() {
-  // ===== Live search across all sections (unchanged) =====
+  // ===== Live search across all sections =====
   const q = document.getElementById('q');
   const allSections = Array.from(document.querySelectorAll('.tag-section'));
   const sections = allSections.filter(sec => sec.id !== 'overview'); // don't hide overview
-  const entries = Array.from(document.querySelectorAll('.entry'));
+  const entriesAll = Array.from(document.querySelectorAll('.entry'));
 
   function applyFilter() {
     const needle = (q.value || '').trim().toLowerCase();
     if (!needle) {
-      entries.forEach(li => li.classList.remove('hidden'));
+      entriesAll.forEach(li => li.classList.remove('hidden'));
       sections.forEach(sec => {
         const anyVisible = Array.from(sec.querySelectorAll('.entry')).some(li => !li.classList.contains('hidden'));
         sec.classList.toggle('hidden', !anyVisible);
       });
       return;
     }
-    entries.forEach(li => {
+    entriesAll.forEach(li => {
       const hay = (li.getAttribute('data-text') || '').toLowerCase();
       li.classList.toggle('hidden', !hay.includes(needle));
     });
@@ -1788,35 +1788,66 @@
   }
   q.addEventListener('input', applyFilter);
 
-  // ===== Clickable collection pills: sort the flat list (#entries) =====
+  // ===== Collection pills: filter the FLAT list + jump to first result =====
+  const flatSection = document.getElementById('flat');
   const list   = document.querySelector('#entries');
   const pills  = Array.from(document.querySelectorAll('.pill'));
   const flatEntries = list ? Array.from(list.querySelectorAll('.entry')) : [];
 
-  function entryHasCollection(entry, label) {
-    const data = (entry.getAttribute('data-collections') || "").toLowerCase();
-    return data.includes(label.toLowerCase());
+  // Unicode-friendly normalization: collapse spaces & strip zero-width chars
+  const ZW = /[\u200B-\u200D\uFEFF]/g;
+  function norm(s) {
+    return (s || "")
+      .normalize('NFKC')
+      .replace(ZW, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase();
   }
 
-  function sortByCollection(label) {
-    if (!list) return;
-    const sorted = flatEntries.slice().sort((a, b) => {
-      const ah = entryHasCollection(a, label) ? 0 : 1;
-      const bh = entryHasCollection(b, label) ? 0 : 1;
-      if (ah !== bh) return ah - bh;
-      return (a.dataset.title || "").localeCompare(b.dataset.title || "", undefined, {sensitivity:'base'});
+  function clearPillFilter() {
+    flatEntries.forEach(li => li.classList.remove('hidden'));
+    pills.forEach(p => p.classList.remove('active'));
+    flatSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function filterByCollection(label) {
+    const needle = norm(label);
+    let firstShown = null;
+    flatEntries.forEach(li => {
+      const data = norm(li.getAttribute('data-collections') || "");
+      const show = data.includes(needle);
+      li.classList.toggle('hidden', !show);
+      if (show && !firstShown) firstShown = li;
     });
-    list.innerHTML = "";
-    for (const e of sorted) list.appendChild(e);
+    flatSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (firstShown) {
+      firstShown.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const visible = flatEntries.filter(el => !el.classList.contains('hidden'));
+      if (visible.length === 1) {
+        const anchor = firstShown.querySelector('a[id]');
+        if (anchor) location.hash = anchor.id;
+      }
+    }
   }
 
   pills.forEach(p => {
     p.addEventListener('click', () => {
-      pills.forEach(x => x.classList.remove('active'));
-      p.classList.add('active');
       const label = p.dataset.collection || p.textContent.trim();
-      sortByCollection(label);
+      const already = p.classList.contains('active');
+      pills.forEach(x => x.classList.remove('active'));
+      if (already) {
+        clearPillFilter();
+      } else {
+        p.classList.add('active');
+        filterByCollection(label);
+      }
     });
+  });
+
+  // ESC to clear
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') clearPillFilter();
   });
 })();
 </script>

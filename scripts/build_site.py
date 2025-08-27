@@ -3,10 +3,10 @@
 Build a static HTML page at docs/index.html from library.bib.
 
 Enhancements:
-- Pull Zotero Collections via API (for top-of-page clickable "pills")
-- Keep existing grouping sections (Collections + Tags) for browsing
-- Add a flat "All entries" list that can be client-side sorted by clicking a pill
-- Emit data attributes on each entry for fast search/sort:
+- Pull Zotero Collections via API (top-of-page clickable "pills")
+- Keep grouping sections (Collections + Tags) for browsing
+- Add a flat "All entries" list that pills can FILTER (and jump to first match)
+- Emit data attributes on each entry for fast search/filter:
   - data-text (search haystack)
   - data-title (secondary sort)
   - data-collections (pipe-separated collection paths)
@@ -24,7 +24,7 @@ import bibtexparser
 import sys as _sys
 _sys.path.append(str(Path(__file__).resolve().parent))
 from generate_charts import build_charts
-from zotero_api import fetch_collections, build_collection_paths  # NEW
+from zotero_api import fetch_collections, build_collection_paths  # API pills
 
 ROOT = Path(__file__).resolve().parents[1]
 BIB_PATH = ROOT / "library.bib"
@@ -161,8 +161,12 @@ def entry_html(e, *, include_anchor: bool = True) -> str:
         " ".join(tags), " ".join(colls)
     ]).lower()
 
-    # NEW: data-collections + data-title (used by the pills sorter)
-    data_attr = f" data-text=\"{html.escape(dataset_text)}\" data-title=\"{esc(title)}\" data-collections=\"{esc('|'.join(colls))}\""
+    # NEW: data-collections + data-title (used by pill filter)
+    data_attr = (
+        f' data-text="{html.escape(dataset_text)}"'
+        f' data-title="{esc(title)}"'
+        f' data-collections="{esc("|".join(colls))}"'
+    )
 
     anchor = f"<a id='{esc(key)}'></a>" if include_anchor and key else ""
 
@@ -278,7 +282,7 @@ def build():
   </ul>
 </section>""".strip())
 
-    # Flat list (for pill-driven sorting) — includes per-entry anchors
+    # Flat list (for pill-driven filtering) — includes per-entry anchors
     all_entries_html = "\n".join(entry_html(e, include_anchor=True) for e in sorted(db.entries, key=entry_sort_key))
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
@@ -291,7 +295,7 @@ def build():
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark" />
 <title>Reference Library</title>
-<link rel="stylesheet" href="styles.css?v=7" />
+<link rel="stylesheet" href="styles.css?v=8" />
 </head>
 <body>
 <main class="container">
@@ -306,7 +310,7 @@ def build():
 
   {"<section class='collections'><div class='pill-row' role='list'>" + collection_pills_html + "</div></section>" if collection_pills_html else ""}
 
-  <!-- Flat list primarily for client-side sorting via pills -->
+  <!-- Flat list primarily for client-side filtering via pills -->
   <section id="flat" class="tag-section" style="margin-top:1rem;">
     <h2>All entries</h2>
     <ul id="entries" class="entries">
@@ -336,23 +340,23 @@ def build():
 
 <script>
 (function() {{
-  // ===== Live search across all sections (unchanged) =====
+  // ===== Live search across all sections =====
   const q = document.getElementById('q');
   const allSections = Array.from(document.querySelectorAll('.tag-section'));
   const sections = allSections.filter(sec => sec.id !== 'overview'); // don't hide overview
-  const entries = Array.from(document.querySelectorAll('.entry'));
+  const entriesAll = Array.from(document.querySelectorAll('.entry'));
 
   function applyFilter() {{
     const needle = (q.value || '').trim().toLowerCase();
     if (!needle) {{
-      entries.forEach(li => li.classList.remove('hidden'));
+      entriesAll.forEach(li => li.classList.remove('hidden'));
       sections.forEach(sec => {{
         const anyVisible = Array.from(sec.querySelectorAll('.entry')).some(li => !li.classList.contains('hidden'));
         sec.classList.toggle('hidden', !anyVisible);
       }});
       return;
     }}
-    entries.forEach(li => {{
+    entriesAll.forEach(li => {{
       const hay = (li.getAttribute('data-text') || '').toLowerCase();
       li.classList.toggle('hidden', !hay.includes(needle));
     }});
@@ -363,35 +367,66 @@ def build():
   }}
   q.addEventListener('input', applyFilter);
 
-  // ===== Clickable collection pills: sort the flat list (#entries) =====
+  // ===== Collection pills: filter the FLAT list + jump to first result =====
+  const flatSection = document.getElementById('flat');
   const list   = document.querySelector('#entries');
   const pills  = Array.from(document.querySelectorAll('.pill'));
   const flatEntries = list ? Array.from(list.querySelectorAll('.entry')) : [];
 
-  function entryHasCollection(entry, label) {{
-    const data = (entry.getAttribute('data-collections') || "").toLowerCase();
-    return data.includes(label.toLowerCase());
+  // Unicode-friendly normalization: collapse spaces & strip zero-width chars
+  const ZW = /[\\u200B-\\u200D\\uFEFF]/g;
+  function norm(s) {{
+    return (s || "")
+      .normalize('NFKC')
+      .replace(ZW, '')
+      .replace(/\\s+/g, ' ')
+      .trim()
+      .toLowerCase();
   }}
 
-  function sortByCollection(label) {{
-    if (!list) return;
-    const sorted = flatEntries.slice().sort((a, b) => {{
-      const ah = entryHasCollection(a, label) ? 0 : 1;
-      const bh = entryHasCollection(b, label) ? 0 : 1;
-      if (ah !== bh) return ah - bh;
-      return (a.dataset.title || "").localeCompare(b.dataset.title || "", undefined, {{sensitivity:'base'}});
+  function clearPillFilter() {{
+    flatEntries.forEach(li => li.classList.remove('hidden'));
+    pills.forEach(p => p.classList.remove('active'));
+    flatSection?.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+  }}
+
+  function filterByCollection(label) {{
+    const needle = norm(label);
+    let firstShown = null;
+    flatEntries.forEach(li => {{
+      const data = norm(li.getAttribute('data-collections') || "");
+      const show = data.includes(needle);
+      li.classList.toggle('hidden', !show);
+      if (show && !firstShown) firstShown = li;
     }});
-    list.innerHTML = "";
-    for (const e of sorted) list.appendChild(e);
+    flatSection?.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+    if (firstShown) {{
+      firstShown.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+      const visible = flatEntries.filter(el => !el.classList.contains('hidden'));
+      if (visible.length === 1) {{
+        const anchor = firstShown.querySelector('a[id]');
+        if (anchor) location.hash = anchor.id;
+      }}
+    }}
   }}
 
   pills.forEach(p => {{
     p.addEventListener('click', () => {{
-      pills.forEach(x => x.classList.remove('active'));
-      p.classList.add('active');
       const label = p.dataset.collection || p.textContent.trim();
-      sortByCollection(label);
+      const already = p.classList.contains('active');
+      pills.forEach(x => x.classList.remove('active'));
+      if (already) {{
+        clearPillFilter();
+      }} else {{
+        p.classList.add('active');
+        filterByCollection(label);
+      }}
     }});
+  }});
+
+  // ESC to clear
+  document.addEventListener('keydown', (e) => {{
+    if (e.key === 'Escape') clearPillFilter();
   }});
 }})();
 </script>
