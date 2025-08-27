@@ -2,96 +2,293 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Zotero Child Collections</title>
-<style>
-body { font-family: sans-serif; background:#111; color:#eee; }
-h1 { font-weight: normal; }
-.pill-row { margin:1rem 0; display:flex; flex-wrap:wrap; gap:.5rem; }
-.pill { padding:.5rem 1rem; border:none; border-radius:999px; cursor:pointer; background:#333; color:#eee; }
-.pill.active { background:#06c; color:#fff; }
-.hidden { display:none; }
-a { color:#6cf; }
-</style>
+<title>Reference library</title>
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h1>Child Collections</h1>
-<div class="pill-row"><button class="pill" data-target="8FVVU4ZY">8 Taxonomy &gt; Taxonomic theory</button>
-<button class="pill" data-target="IER3WWNQ">11 Context &gt; Design Studies</button>
-<button class="pill" data-target="JF9FAWGF">11 Context &gt; Visible Language</button>
-<button class="pill" data-target="TGF92FPS">12 Not applicable &gt; Admin / misc.</button>
-<button class="pill" data-target="6UVHG6KT">12 Not applicable &gt; Off-topic</button>
-<button class="pill" data-target="VDLK34QE">11 Context &gt; Others</button>
-<button class="pill" data-target="V2N59NEI">11 Context &gt; Design Issues</button>
-<button class="pill" data-target="P4ZG6YLC">11 Context &gt; She Ji</button>
-<button class="pill" data-target="7CSAUFAG">10 Thesis &gt; Other institutions</button>
-<button class="pill" data-target="ZT4IL8L3">10 Thesis &gt; RMIT</button>
-<button class="pill" data-target="UTM5U4DR">10 Thesis &gt; MIT</button>
-<button class="pill" data-target="42HWU45W">10 Thesis &gt; RCA</button>
-<button class="pill" data-target="K9LV4LMY">4 Archival Research | emerging &gt; Open access and infrastructures</button>
-<button class="pill" data-target="ZLXARABL">9 Critical librarianship &gt; Classification and power</button>
-<button class="pill" data-target="Q8QWS3AV">9 Critical librarianship &gt; Information ethics</button>
-<button class="pill" data-target="XQWFLVR6">8 Taxonomy &gt; Knowledge organisation theory</button>
-<button class="pill" data-target="HS7QVVJR">8 Taxonomy &gt; Library / archival taxonomies</button>
-<button class="pill" data-target="L4FZ3E4F">8 Taxonomy &gt; Design methods taxonomies</button>
-<button class="pill" data-target="UAH97PFJ">7 AI/ML/CE/RAG/NLP &gt; Applications in design and archives</button>
-<button class="pill" data-target="JRHRKKBJ">7 AI/ML/CE/RAG/NLP &gt; Academic CS papers</button>
-<button class="pill" data-target="IRXT7833">6 Methodological toolkit &gt; Hybrid / systems approaches (decision-support, prototyping)</button>
-<button class="pill" data-target="8EEAMCFQ">6 Methodological toolkit &gt; Quantitative (stats, modelling, surveys)</button>
-<button class="pill" data-target="U7973NKG">6 Methodological toolkit &gt; Qualitative (interviews, ethnography, discourse analysis)</button>
-<button class="pill" data-target="9BNV2G8Q">5 Theoretical framework &gt; Design research paradigms</button>
-<button class="pill" data-target="2BRQA859">5 Theoretical framework &gt; Critical theory</button>
-<button class="pill" data-target="W9KVS39Q">5 Theoretical framework &gt; Interpretivism</button>
-<button class="pill" data-target="R5NKBKTA">4 Archival Research | emerging &gt; AI/ML in archives (humanities perspective)</button>
-<button class="pill" data-target="L25XRPQP">4 Archival Research | emerging &gt; Contemporary archival theory</button>
-<button class="pill" data-target="WIUNALRG">4 Archival Research | emerging &gt; Digital humanities</button>
-<button class="pill" data-target="S9JTINSK">3 Archival Research | foundational &gt; Historiography and philosophy of archives</button>
-<button class="pill" data-target="7HIMR7TQ">2 DDR archive &gt; Related archives (V&amp;A, Design Council, BL)</button>
-<button class="pill" data-target="TA7YZYSB">2 DDR archive &gt; Secondary analysis</button>
-<button class="pill" data-target="58N9J289">2 DDR archive &gt; Primary documents</button>
-<button class="pill" data-target="4ZKT5HP3">1 Archer &gt; Secondary commentary</button>
-<button class="pill" data-target="FSERK7XR">1 Archer &gt; Articles and papers</button>
-<button class="pill" data-target="PEXXRRAZ">1 Archer &gt; Monographs and thesis</button>
-<button class="pill" data-target="D6Z6QAUF">0 Backlog (to be read) &gt; ​​​​​Grey literature</button>
-<button class="pill" data-target="ZLNCNF4Q">0 Backlog (to be read) &gt; Books</button>
-<button class="pill" data-target="DGKHIJ65">0 Backlog (to be read) &gt; ​​Journal articles</button>
-<button class="pill" data-target="U7RPE7H7">0 Backlog (to be read) &gt; ​​☆ Low priority</button>
-<button class="pill" data-target="ZYEIQIEQ">0 Backlog (to be read) &gt; ​★High priority</button></div>
+<h1>Reference library</h1>
+<div class="pill-row"><button class="pill" data-target="ZLNCNF4Q" data-label="0 Backlog (to be read) &gt; Books">0 Backlog (to be read) &gt; Books</button>
+<button class="pill" data-target="DGKHIJ65" data-label="0 Backlog (to be read) &gt; ​​Journal articles">0 Backlog (to be read) &gt; ​​Journal articles</button>
+<button class="pill" data-target="D6Z6QAUF" data-label="0 Backlog (to be read) &gt; ​​​​​Grey literature">0 Backlog (to be read) &gt; ​​​​​Grey literature</button>
+<button class="pill" data-target="U7RPE7H7" data-label="0 Backlog (to be read) &gt; ​​☆ Low priority">0 Backlog (to be read) &gt; ​​☆ Low priority</button>
+<button class="pill" data-target="ZYEIQIEQ" data-label="0 Backlog (to be read) &gt; ​★High priority">0 Backlog (to be read) &gt; ​★High priority</button>
+<button class="pill" data-target="FSERK7XR" data-label="1 Archer &gt; Articles and papers">1 Archer &gt; Articles and papers</button>
+<button class="pill" data-target="PEXXRRAZ" data-label="1 Archer &gt; Monographs and thesis">1 Archer &gt; Monographs and thesis</button>
+<button class="pill" data-target="4ZKT5HP3" data-label="1 Archer &gt; Secondary commentary">1 Archer &gt; Secondary commentary</button>
+<button class="pill" data-target="58N9J289" data-label="2 DDR archive &gt; Primary documents">2 DDR archive &gt; Primary documents</button>
+<button class="pill" data-target="7HIMR7TQ" data-label="2 DDR archive &gt; Related archives (V&amp;A, Design Council, BL)">2 DDR archive &gt; Related archives (V&amp;A, Design Council, BL)</button>
+<button class="pill" data-target="TA7YZYSB" data-label="2 DDR archive &gt; Secondary analysis">2 DDR archive &gt; Secondary analysis</button>
+<button class="pill" data-target="S9JTINSK" data-label="3 Archival Research | foundational &gt; Historiography and philosophy of archives">3 Archival Research | foundational &gt; Historiography and philosophy of archives</button>
+<button class="pill" data-target="R5NKBKTA" data-label="4 Archival Research | emerging &gt; AI/ML in archives (humanities perspective)">4 Archival Research | emerging &gt; AI/ML in archives (humanities perspective)</button>
+<button class="pill" data-target="L25XRPQP" data-label="4 Archival Research | emerging &gt; Contemporary archival theory">4 Archival Research | emerging &gt; Contemporary archival theory</button>
+<button class="pill" data-target="WIUNALRG" data-label="4 Archival Research | emerging &gt; Digital humanities">4 Archival Research | emerging &gt; Digital humanities</button>
+<button class="pill" data-target="K9LV4LMY" data-label="4 Archival Research | emerging &gt; Open access and infrastructures">4 Archival Research | emerging &gt; Open access and infrastructures</button>
+<button class="pill" data-target="2BRQA859" data-label="5 Theoretical framework &gt; Critical theory">5 Theoretical framework &gt; Critical theory</button>
+<button class="pill" data-target="9BNV2G8Q" data-label="5 Theoretical framework &gt; Design research paradigms">5 Theoretical framework &gt; Design research paradigms</button>
+<button class="pill" data-target="W9KVS39Q" data-label="5 Theoretical framework &gt; Interpretivism">5 Theoretical framework &gt; Interpretivism</button>
+<button class="pill" data-target="IRXT7833" data-label="6 Methodological toolkit &gt; Hybrid / systems approaches (decision-support, prototyping)">6 Methodological toolkit &gt; Hybrid / systems approaches (decision-support, prototyping)</button>
+<button class="pill" data-target="U7973NKG" data-label="6 Methodological toolkit &gt; Qualitative (interviews, ethnography, discourse analysis)">6 Methodological toolkit &gt; Qualitative (interviews, ethnography, discourse analysis)</button>
+<button class="pill" data-target="8EEAMCFQ" data-label="6 Methodological toolkit &gt; Quantitative (stats, modelling, surveys)">6 Methodological toolkit &gt; Quantitative (stats, modelling, surveys)</button>
+<button class="pill" data-target="JRHRKKBJ" data-label="7 AI/ML/CE/RAG/NLP &gt; Academic CS papers">7 AI/ML/CE/RAG/NLP &gt; Academic CS papers</button>
+<button class="pill" data-target="UAH97PFJ" data-label="7 AI/ML/CE/RAG/NLP &gt; Applications in design and archives">7 AI/ML/CE/RAG/NLP &gt; Applications in design and archives</button>
+<button class="pill" data-target="L4FZ3E4F" data-label="8 Taxonomy &gt; Design methods taxonomies">8 Taxonomy &gt; Design methods taxonomies</button>
+<button class="pill" data-target="XQWFLVR6" data-label="8 Taxonomy &gt; Knowledge organisation theory">8 Taxonomy &gt; Knowledge organisation theory</button>
+<button class="pill" data-target="HS7QVVJR" data-label="8 Taxonomy &gt; Library / archival taxonomies">8 Taxonomy &gt; Library / archival taxonomies</button>
+<button class="pill" data-target="8FVVU4ZY" data-label="8 Taxonomy &gt; Taxonomic theory">8 Taxonomy &gt; Taxonomic theory</button>
+<button class="pill" data-target="ZLXARABL" data-label="9 Critical librarianship &gt; Classification and power">9 Critical librarianship &gt; Classification and power</button>
+<button class="pill" data-target="Q8QWS3AV" data-label="9 Critical librarianship &gt; Information ethics">9 Critical librarianship &gt; Information ethics</button>
+<button class="pill" data-target="UTM5U4DR" data-label="10 Thesis &gt; MIT">10 Thesis &gt; MIT</button>
+<button class="pill" data-target="7CSAUFAG" data-label="10 Thesis &gt; Other institutions">10 Thesis &gt; Other institutions</button>
+<button class="pill" data-target="42HWU45W" data-label="10 Thesis &gt; RCA">10 Thesis &gt; RCA</button>
+<button class="pill" data-target="ZT4IL8L3" data-label="10 Thesis &gt; RMIT">10 Thesis &gt; RMIT</button>
+<button class="pill" data-target="V2N59NEI" data-label="11 Context &gt; Design Issues">11 Context &gt; Design Issues</button>
+<button class="pill" data-target="IER3WWNQ" data-label="11 Context &gt; Design Studies">11 Context &gt; Design Studies</button>
+<button class="pill" data-target="VDLK34QE" data-label="11 Context &gt; Others">11 Context &gt; Others</button>
+<button class="pill" data-target="P4ZG6YLC" data-label="11 Context &gt; She Ji">11 Context &gt; She Ji</button>
+<button class="pill" data-target="JF9FAWGF" data-label="11 Context &gt; Visible Language">11 Context &gt; Visible Language</button>
+<button class="pill" data-target="TGF92FPS" data-label="12 Not applicable &gt; Admin / misc.">12 Not applicable &gt; Admin / misc.</button>
+<button class="pill" data-target="6UVHG6KT" data-label="12 Not applicable &gt; Off-topic">12 Not applicable &gt; Off-topic</button></div>
+
+<section id='ZLNCNF4Q' class='coll-section hidden'>
+  <h2>0 Backlog (to be read) &gt; Books</h2>
+  <ul></ul>
+</section>
+
+<section id='DGKHIJ65' class='coll-section hidden'>
+  <h2>0 Backlog (to be read) &gt; ​​Journal articles</h2>
+  <ul></ul>
+</section>
+
+<section id='D6Z6QAUF' class='coll-section hidden'>
+  <h2>0 Backlog (to be read) &gt; ​​​​​Grey literature</h2>
+  <ul></ul>
+</section>
+
+<section id='U7RPE7H7' class='coll-section hidden'>
+  <h2>0 Backlog (to be read) &gt; ​​☆ Low priority</h2>
+  <ul></ul>
+</section>
+
+<section id='ZYEIQIEQ' class='coll-section hidden'>
+  <h2>0 Backlog (to be read) &gt; ​★High priority</h2>
+  <ul><li>– A survey of context engineering for large language models — Mei, Yao, Ge, Wang, Bi, Cai, Liu, Li, Li, Zhang, Zhou, Mao, Xia, Guo, Liu — 2025 · <a href='https://github.com/Meirtz/Awesome-Context-Engineering'>Link</a></li></ul>
+</section>
+
+<section id='FSERK7XR' class='coll-section hidden'>
+  <h2>1 Archer &gt; Articles and papers</h2>
+  <ul><li>– Archer, Bruce. 1995. The Nature of Research. Co-design, interdisciplinary journal of design. 6-13</li>
+<li>– Time for a revolution in art and design education — Archer — 1978</li></ul>
+</section>
+
+<section id='PEXXRRAZ' class='coll-section hidden'>
+  <h2>1 Archer &gt; Monographs and thesis</h2>
+  <ul><li>– Technological innovation–a methodology — Archer — 1971</li>
+<li>– Design awareness and planned creativity in industry — Archer — 1974</li>
+<li>– The structure of design processes — Archer — 1968</li>
+<li>– Systematic method for designers — Archer — 1963 — Design</li></ul>
+</section>
+
+<section id='4ZKT5HP3' class='coll-section hidden'>
+  <h2>1 Archer &gt; Secondary commentary</h2>
+  <ul><li>– A dialogue between the real-world and the operational model–the realities of design in Bruce Archer&#x27;s 1968 doctoral thesis — Boyd Davis, Gristwood — 2017 — Design Studies · <a href='https://doi.org/10.1016/j.destud.2017.11.005'>DOI</a></li>
+<li>– Computing, design, art: Reflections on an innovative moment in history — Davis, Gristwood — 2016 · <a href='https://doi.org/10.1007/978-3-319-47286-7_7'>DOI</a></li></ul>
+</section>
+
+<section id='58N9J289' class='coll-section hidden'>
+  <h2>2 DDR archive &gt; Primary documents</h2>
+  <ul></ul>
+</section>
+
+<section id='7HIMR7TQ' class='coll-section hidden'>
+  <h2>2 DDR archive &gt; Related archives (V&amp;A, Design Council, BL)</h2>
+  <ul></ul>
+</section>
+
+<section id='TA7YZYSB' class='coll-section hidden'>
+  <h2>2 DDR archive &gt; Secondary analysis</h2>
+  <ul></ul>
+</section>
+
+<section id='S9JTINSK' class='coll-section hidden'>
+  <h2>3 Archival Research | foundational &gt; Historiography and philosophy of archives</h2>
+  <ul><li>– Building an infrastructure for archival research — Gilliland, McKemmish — 2004 — Archival Science · <a href='https://doi.org/10.1007/s10502-006-6742-6'>DOI</a></li></ul>
+</section>
+
+<section id='R5NKBKTA' class='coll-section hidden'>
+  <h2>4 Archival Research | emerging &gt; AI/ML in archives (humanities perspective)</h2>
+  <ul><li>– Archives and AI: An overview of current debates and future perspectives — Colavizza, Blanke, Jeurgens, Noordegraaf — 2021 — Journal on Computing and Cultural Heritage (JOCCH) · <a href='https://doi.org/10.1145/3479010'>DOI</a> · <a href='https://doi.org/10.1145/3479010'>Link</a></li>
+<li>– Supervised and unsupervised: approaches to machine learning for textual entities — Hodel — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections · <a href='http://link.springer.com/10.1007/978-3-476-05446-3_20'>Link</a></li>
+<li>– Inviting AI into the archives: the reception of handwritten recognition technology into historical manuscript transcription — Terras — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections</li></ul>
+</section>
+
+<section id='L25XRPQP' class='coll-section hidden'>
+  <h2>4 Archival Research | emerging &gt; Contemporary archival theory</h2>
+  <ul><li>– Are users of digital archives ready for the AI era? Obstacles to the application of computational research methods and new opportunities — Jaillant, Aske — 2024 — Journal on Computing and Cultural Heritage · <a href='https://doi.org/10.1145/3631125'>DOI</a></li>
+<li>– Archival research methods — Ventresca, Mohr — 2017 — The Blackwell Companion to Organizations</li>
+<li>– Archives, access and artificial intelligence - working with born-digital and digitized archival collections — Jaillant — 2022 · <a href='www.aura-network.net'>Link</a></li></ul>
+</section>
+
+<section id='WIUNALRG' class='coll-section hidden'>
+  <h2>4 Archival Research | emerging &gt; Digital humanities</h2>
+  <ul><li>– Towards critically addressable data for digital library user studies — Gooding — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections · <a href='https://papers.ssrn.com/s'>Link</a></li>
+<li>– Towards a new discipline of computational archival science (CAS) — Marciano — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections · <a href='https://www.nationalarchives.'>Link</a></li>
+<li>– Research through design and digital humanities in practice: What, how and who in an archive research project — Schofield, Whitelaw, Kirk — 2017 — Digital Scholarship in the Humanities · <a href='https://doi.org/10.1093/llc/fqx005'>DOI</a></li></ul>
+</section>
+
+<section id='K9LV4LMY' class='coll-section hidden'>
+  <h2>4 Archival Research | emerging &gt; Open access and infrastructures</h2>
+  <ul></ul>
+</section>
+
+<section id='2BRQA859' class='coll-section hidden'>
+  <h2>5 Theoretical framework &gt; Critical theory</h2>
+  <ul><li>– Pedagogy of the oppressed: 30th Anniversary Edition — Freire, Macedo — 2014</li>
+<li>– Critical theory: selected essays — Horkheimer, Horkheimer — 2002</li></ul>
+</section>
+
+<section id='9BNV2G8Q' class='coll-section hidden'>
+  <h2>5 Theoretical framework &gt; Design research paradigms</h2>
+  <ul><li>– Rethinking design thinking: part II — Kimbell — 2012 — Design and Culture · <a href='https://doi.org/10.2752/175470812X13281948975413'>DOI</a></li>
+<li>– Design and the new rhetoric: Productive arts in the philosophy of culture — Buchanan — 2001 — Philosophy &amp; Rhetoric · <a href='https://doi.org/10.1162/07479360152681056'>DOI</a> · <a href='https://www.jstor.org/stable/40238091'>Link</a></li>
+<li>– Forty years of design research — Cross — 2007 — Design Studies · <a href='https://doi.org/10.1016/j.destud.2006.11.004'>DOI</a></li></ul>
+</section>
+
+<section id='W9KVS39Q' class='coll-section hidden'>
+  <h2>5 Theoretical framework &gt; Interpretivism</h2>
+  <ul><li>– The interpretation of cultures: selected essays — Geertz — 2009</li>
+<li>– Designing social inquiry: Scientific inference in qualitative research — King, Keohane, Verba — 1994</li>
+<li>– kkv_1994_caps-1-e-3</li></ul>
+</section>
+
+<section id='IRXT7833' class='coll-section hidden'>
+  <h2>6 Methodological toolkit &gt; Hybrid / systems approaches (decision-support, prototyping)</h2>
+  <ul><li>– Reframing digital curation practices through a computational thinking framework — Marciano, Jain, Mckinley, Pradhan, Silva, Agarrat, Kocienda, Mir, Santos, Suri, Frisch, Krauss, Mullane, Schams, Turabi, Hunt, Liu, Patterson, Szu, Shiue, Vasselli, Xu · <a href='http://cases.umd.edu'>Link</a></li></ul>
+</section>
+
+<section id='U7973NKG' class='coll-section hidden'>
+  <h2>6 Methodological toolkit &gt; Qualitative (interviews, ethnography, discourse analysis)</h2>
+  <ul><li>– The SAGE Handbook of qualitative business and management research methods: methods and challenges — Cassell, Cunliffe, Grandy — 2018 · <a href='https://doi.org/10.4135/9781526430236'>Link</a></li></ul>
+</section>
+
+<section id='8EEAMCFQ' class='coll-section hidden'>
+  <h2>6 Methodological toolkit &gt; Quantitative (stats, modelling, surveys)</h2>
+  <ul></ul>
+</section>
+
+<section id='JRHRKKBJ' class='coll-section hidden'>
+  <h2>7 AI/ML/CE/RAG/NLP &gt; Academic CS papers</h2>
+  <ul><li>– Vancouver statement on collections as data — Padilla · <a href='https://doi.org/10.5281/zenodo.8341519.'>Link</a></li>
+<li>– Efficient LLM context distillation — Upadhayaya, Osti, Smith, Kottmyer — 2024 (arXiv submission date)</li>
+<li>– A survey on bias and fairness in machine learning — Mehrabi, Morstatter, Saxena, Lerman, Galstyan — 2021 — ACM Computing Surveys · <a href='https://doi.org/10.1145/3457607'>DOI</a></li>
+<li>– Exploring the landscape of natural language processing research — Schopf, Arabi, Matthes · <a href='https://github.com/sebischair/Exploring-'>Link</a></li></ul>
+</section>
+
+<section id='UAH97PFJ' class='coll-section hidden'>
+  <h2>7 AI/ML/CE/RAG/NLP &gt; Applications in design and archives</h2>
+  <ul><li>– Comment: the FAIR guiding principles for scientific data management and stewardship — Wilkinson, Dumontier, Aalbersberg, Appleton, Axton, Baak, Blomberg, Boiten, da Silva Santos, Bourne, Bouwman, Brookes, Clark, Crosas, Dillo, Dumon, Edmunds, Evelo, Finkers, Gonzalez-Beltran, Gray, Groth, Goble, Grethe, Heringa, t Hoen, Hooft, Kuhn, Kok, Kok, Lusher, Martone, Mons, Packer, Persson, Rocca-Serra, Roos, van Schaik, Sansone, Schultes, Sengstag, Slater, Strawn, Swertz, Thompson, Van Der Lei, Van Mulligen, Velterop, Waagmeester, Wittenburg, Wolstencroft, Zhao, Mons — 2016 — Scientific Data · <a href='https://doi.org/10.1038/sdata.2016.18'>DOI</a></li></ul>
+</section>
+
+<section id='L4FZ3E4F' class='coll-section hidden'>
+  <h2>8 Taxonomy &gt; Design methods taxonomies</h2>
+  <ul></ul>
+</section>
+
+<section id='XQWFLVR6' class='coll-section hidden'>
+  <h2>8 Taxonomy &gt; Knowledge organisation theory</h2>
+  <ul><li>– Automatic taxonomy construction from keywords — Liu, Song, Liu, Wang — 2012 · <a href='https://doi.org/10.1145/2339530.2339754'>DOI</a> · <a href='http://www.wikipedia.org/'>Link</a></li></ul>
+</section>
+
+<section id='HS7QVVJR' class='coll-section hidden'>
+  <h2>8 Taxonomy &gt; Library / archival taxonomies</h2>
+  <ul></ul>
+</section>
 
 <section id='8FVVU4ZY' class='coll-section hidden'>
   <h2>8 Taxonomy &gt; Taxonomic theory</h2>
-  <ul><li>Design history: understanding theory and method — Fallan — 2010</li>
-<li>(untitled)</li>
-<li>(untitled)</li>
-<li>Design research through practice: from the lab, field, and showroom — Koskinen — 2011</li>
-<li>Preface_2012_Design-Research-Through-Practice</li>
-<li>No-title-available_2012_Design-Research-Through-Practice</li>
-<li>No-title-available_2012_Design-Research-Through-Practice1</li>
-<li>Copyright_2012_Design-Research-Through-Practice</li>
-<li>Acknowledgments_2012_Design-Research-Through-Practice</li>
-<li>Front-matter_2012_Design-Research-Through-Practice</li>
-<li>Foreword_2012_Design-Research-Through-Practice</li>
-<li>10---Building-Research-Programs_2012_Design-Research-Through-Practice</li>
-<li>9---Constructive-Design-Research-in-Socie_2012_Design-Research-Through-Pract</li>
-<li>8---Design-Things--Models--Scenarios--Prot_2012_Design-Research-Through-Prac</li>
-<li>7---How-to-Work-with-Theory_2012_Design-Research-Through-Practice</li>
-<li>6---Showroom--Research-Meets-Design-and-A_2012_Design-Research-Through-Pract</li>
-<li>5---Field--How-to-Follow-Design-Through-So_2012_Design-Research-Through-Prac</li>
-<li>4---Lab--Can-You-Really-Study-Design-in-the-L_2012_Design-Research-Through-P</li>
-<li>3---Research-Programs_2012_Design-Research-Through-Practice</li>
-<li>2---The-Coming-of-Age-of-Constructive-Design_2012_Design-Research-Through-Pr</li>
-<li>PDF</li>
-<li>Records and their imaginaries: imagining the impossible, making possible the imagined — Gilliland, Caswell — 3/2016 — Archival Science · <a href='https://doi.org/10.1007/s10502-015-9259-z'>DOI</a> · <a href='http://link.springer.com/10.1007/s10502-015-9259-z'>Link</a></li>
-<li>PDF</li>
-<li>Archival and recordkeeping research — Gilliland, McKemmish — 2018 — Research Methods · <a href='https://linkinghub.elsevier.com/retrieve/pii/B9780081022207000042'>Link</a></li>
-<li>PDF · <a href='https://pdf.sciencedirectassets.com/318569/3-s2.0-C20160039323/3-s2.0-B9780081022207000042/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEDIaCXVzLWVhc3QtMSJGMEQCICkYaDL%2FKev9oRz0YoVU7NN7ok11uobTAtdmNtD5UKEhAiAgKKrzhFet%2B4vy7%2BMkb8A2Xw81%2B9sxSJk%2FnHjdykwi4Cq7BQiK%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAUaDDA1OTAwMzU0Njg2NSIMjNoexlOuc5Rzh9yjKo8FJQ0rQSFXI6M9J5wpYni26WjAicZQpUIJO0mgYQAPUAiZjY%2FiROJA%2B9JO%2FmjlwTQLCunCtrZC6uMgU3MJoMFPeOSqfcI0NESJ9ltKVKUdClWEFpQKIFXiyQNkm5QETp1R%2BG6eNZMdV1WHUdcJ%2BYN97KueK4IjCY3fkGaon4487Ijf6R%2Fc2YbbkU1HIlNia43PYSxC12dFnRR3%2BL7ZawPC%2FbG%2BFW0Ncrgfxr%2BQbsHY4TsjEq7wr0Zy9bc7SgxRI97UDMmBcBY81vmq%2BJfxWJsBbs593Ero06c7AxPfOYvK7ZuIJgh%2F5xWRYzXuvrfeSFM51fj6tqpYHOaU%2Bv3oixRSbqCn4bRa8nkP1WGXtEpWbQviZScOokbevY1ox6v25rO6FPubbRFirDo4uabwAHl3yNnBBgGXZmxqMRFMD8qeIxpScEI6F6MxiOec5pIj9fGf1hqcXYxiz7GuvGr69SSFkxMqIUKaOh1gQWljSXMvScqD8yf4WROmICvzdf3stT3Hgb%2Fm8wjc2cE9Tp0qKqiDd6MBNFH6u1KWkcoruQrjtgM4qyGKDIfXkSVA2RGhkStPyIH4x3kgU3i%2F9aKM%2Fg7pR97HKPm8QmdjOnnB%2FYnTFhSkDE0Upjc8wmUqKdgkCP6ERQR3aImM%2FvUyJ%2FBZZqDpyZ2KThb1w24Eikl3FhtMCDyag99NeG%2FRvrDRaRCUmGceTa%2Ba5vLaWHpZGET8ll5Ql%2F21Y6IFADmw7BT5tkLiu0nwCOl%2FpNGFau6D0HOSclRNCzsdI7NmhYqMDjfm8G1fpVE7qKj%2Bh7w2GnPMxTUtJlRke3WPW9Sif8pPCA7XaFVtn%2BnSGf9osJWIfxU4cdNphMnc%2BWD6QElcA5TA1QLlzzCJm7vFBjqyAWyNqkZUV7VTllWSf0fOvKhrPpjsoCT2W9uglcMe6%2BgW0FRpkzl2MpAhZbhySN50m6MJ%2F73ognaCo8urkLm9tVm150uSoUuk07kY0wF4pv4s8EqSrhPBUwl9meVFrkiW5qgOtO9wfX3FH1WKPm%2BIlgYJ7au95XQBIp0r2JK3fA7fqDmkXZbhwmUfHQRB34fCSAVT6A8qSRkG71HqBApfuAj7jlHXqVBhfIGjTQ2MFHR7KhQ%3D&amp;X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;X-Amz-Date=20250827T101239Z&amp;X-Amz-SignedHeaders=host&amp;X-Amz-Expires=300&amp;X-Amz-Credential=ASIAQ3PHCVTYYUYISGIX%2F20250827%2Fus-east-1%2Fs3%2Faws4_request&amp;X-Amz-Signature=98f25547e9e16d48bacdcde676203c723be8a3c50bda7edc631c6060ca34b8e7&amp;hash=bdf3800ba4609aeb3e599907183464a8282807ec4eb72ca7b79cacb8f9cbe314&amp;host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&amp;pii=B9780081022207000042&amp;tid=spdf-47e43716-7fcd-4889-8ada-10f129fbf5c6&amp;sid=af23a16d498fb74ecd0870b037234741cb2fgxrqa&amp;type=client&amp;tsoh=d3d3LXNjaWVuY2VkaXJlY3QtY29tLmNodWxhLmlkbS5vY2xjLm9yZw%3D%3D&amp;rh=d3d3LXNjaWVuY2VkaXJlY3QtY29tLmNodWxhLmlkbS5vY2xjLm9yZw%3D%3D&amp;ua=02125857530e050404&amp;rr=975acaafe8d8a6d9&amp;cc=au&amp;kca=eyJrZXkiOiI5eC9Ed3hqSTRQMXZaakdzUlZ3Q05wZUpxa2pLS0tqZzN1R2dYR2YzeFpKNmlSVmZBVmNWWVEwOTI2VnVmcFY0blluSGxxZnpDWGllRmQyRVFSdlM3VzBFZ3lCUjZ0akF0aWJRL1hPOE1Kc0N6bVBMbXNsanZMeFVmZnV4TTZCc1RqWVJEdU1JMVZzeHc4VEtMZEJwK2xmMVpEZ1FRTlBMeEs0dnlDNFZLTHNkcTF6dTFnPT0iLCJpdiI6Ijc2YzY0N2Y4OTgwZmQ4N2VmMDVjZTAwOGRmN2I2NTQxIn0=_1756289570134'>Link</a></li>
-<li>(untitled)</li>
-<li>Sorting things out: classification and its consequences — Bowker, Star — 1999</li>
-<li>PDF · <a href='https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=1903164e809a51032399b8b2c8365572469d5897'>Link</a></li></ul>
+  <ul><li>– Design history: understanding theory and method — Fallan — 2010</li>
+<li>– Design research through practice: from the lab, field, and showroom — Koskinen — 2011</li>
+<li>– Preface_2012_Design-Research-Through-Practice</li>
+<li>– No-title-available_2012_Design-Research-Through-Practice</li>
+<li>– No-title-available_2012_Design-Research-Through-Practice1</li>
+<li>– Copyright_2012_Design-Research-Through-Practice</li>
+<li>– Acknowledgments_2012_Design-Research-Through-Practice</li>
+<li>– Front-matter_2012_Design-Research-Through-Practice</li>
+<li>– Foreword_2012_Design-Research-Through-Practice</li>
+<li>– 10---Building-Research-Programs_2012_Design-Research-Through-Practice</li>
+<li>– 9---Constructive-Design-Research-in-Socie_2012_Design-Research-Through-Pract</li>
+<li>– 8---Design-Things--Models--Scenarios--Prot_2012_Design-Research-Through-Prac</li>
+<li>– 7---How-to-Work-with-Theory_2012_Design-Research-Through-Practice</li>
+<li>– 6---Showroom--Research-Meets-Design-and-A_2012_Design-Research-Through-Pract</li>
+<li>– 5---Field--How-to-Follow-Design-Through-So_2012_Design-Research-Through-Prac</li>
+<li>– 4---Lab--Can-You-Really-Study-Design-in-the-L_2012_Design-Research-Through-P</li>
+<li>– 3---Research-Programs_2012_Design-Research-Through-Practice</li>
+<li>– 2---The-Coming-of-Age-of-Constructive-Design_2012_Design-Research-Through-Pr</li>
+<li>– Records and their imaginaries: imagining the impossible, making possible the imagined — Gilliland, Caswell — 3/2016 — Archival Science · <a href='https://doi.org/10.1007/s10502-015-9259-z'>DOI</a> · <a href='http://link.springer.com/10.1007/s10502-015-9259-z'>Link</a></li>
+<li>– Archival and recordkeeping research — Gilliland, McKemmish — 2018 — Research Methods · <a href='https://linkinghub.elsevier.com/retrieve/pii/B9780081022207000042'>Link</a></li>
+<li>– Sorting things out: classification and its consequences — Bowker, Star — 1999</li></ul>
+</section>
+
+<section id='ZLXARABL' class='coll-section hidden'>
+  <h2>9 Critical librarianship &gt; Classification and power</h2>
+  <ul><li>– What is critical about critical librarianship? — Drabinski — 2019 — Art Libraries Journal · <a href='https://doi.org/10.1017/alj.2019.3'>DOI</a></li></ul>
+</section>
+
+<section id='Q8QWS3AV' class='coll-section hidden'>
+  <h2>9 Critical librarianship &gt; Information ethics</h2>
+  <ul></ul>
+</section>
+
+<section id='UTM5U4DR' class='coll-section hidden'>
+  <h2>10 Thesis &gt; MIT</h2>
+  <ul><li>– Enhancing muscle sensing modalitiesfor advanced bionics — Yeon — May 2024</li></ul>
+</section>
+
+<section id='7CSAUFAG' class='coll-section hidden'>
+  <h2>10 Thesis &gt; Other institutions</h2>
+  <ul></ul>
+</section>
+
+<section id='42HWU45W' class='coll-section hidden'>
+  <h2>10 Thesis &gt; RCA</h2>
+  <ul><li>– Corporveillance: dancing with A.I. — Guérin-Garnett — July 2024</li></ul>
+</section>
+
+<section id='ZT4IL8L3' class='coll-section hidden'>
+  <h2>10 Thesis &gt; RMIT</h2>
+  <ul></ul>
+</section>
+
+<section id='V2N59NEI' class='coll-section hidden'>
+  <h2>11 Context &gt; Design Issues</h2>
+  <ul><li>– Rethinking design ethics from the perspective of spinoza — Song, Jun — 2025 — Design Issues · <a href='https://doi.org/10.1162/DESI_A_00793'>DOI</a> · <a href='https://dx.doi.org/10.1162/desi_a_00793'>Link</a></li>
+<li>– Design and making things better: relating the pragmatism of John Dewey and Richard McKeon in design inquiry — Dixon, Kaszynska — 2024 — Design Issues · <a href='https://doi.org/10.1162/desi_a_00778'>DOI</a> · <a href='https://direct.mit.edu/desi/article/40/4/29/124765/Design-and-Making-Things-Better-Relating-the'>Link</a></li>
+<li>– New design knowledge and the fifth order of design — Mortati — 2022 — Design Issues · <a href='https://doi.org/10.1162/desi_a_00695'>DOI</a></li>
+<li>– Surroundings and environments in fourth order design — Buchanan — 2019 — Design Issues · <a href='https://doi.org/10.1162/desi_a_00517'>DOI</a></li>
+<li>– Investigating design: A review of forty years of design research — Bayazit — 2004 — Design Issues · <a href='https://doi.org/https://doi.org/10.1162/074793604772933739'>DOI</a></li></ul>
 </section>
 
 <section id='IER3WWNQ' class='coll-section hidden'>
   <h2>11 Context &gt; Design Studies</h2>
   <ul></ul>
+</section>
+
+<section id='VDLK34QE' class='coll-section hidden'>
+  <h2>11 Context &gt; Others</h2>
+  <ul><li>– Exploring the dynamics of design thinking in management education and training: A critical review, taxonomic analysis and practical implications — Bathla, Chawla, Hofaidhllaoui, Dabic — 2024 — European Journal of Innovation Management · <a href='https://doi.org/10.1108/EJIM-12-2023-1108'>DOI</a></li>
+<li>– Theory and practice of design thinking: Perspectives of designers and business consultants — Bongiovanni, Louis — 2021 — International Journal of Design Creativity and Innovation · <a href='https://doi.org/10.1080/21650349.2021.1929501'>DOI</a></li>
+<li>– Practice research in design: Towards a novel definition — Kaszynska, Kimbell, Bailey — 2022 · <a href='https://www.arts.ac.uk/ual-social-design-institute/publications/practice-research-in-design-towards-a-novel-definition'>Link</a></li></ul>
+</section>
+
+<section id='P4ZG6YLC' class='coll-section hidden'>
+  <h2>11 Context &gt; She Ji</h2>
+  <ul><li>– The future end of design work: A critical overview of managerialism, generative AI, and the nature of knowledge work, and why craft remains relevant — Hernández-Ramírez, Ferreira — 2024 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2024.11.002'>DOI</a> · <a href='https://linkinghub.elsevier.com/retrieve/pii/S2405872624000960'>Link</a></li>
+<li>– Dealing with wicked problems: normative paradigms for design thinking — van Uffelen, Vermaas, Pesch — 2024 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2024.11.003'>DOI</a></li>
+<li>– Approaching change with and in design — Valtonen — 2020 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2020.08.004'>DOI</a></li>
+<li>– Critique of design thinking in organizations: strongholds and shortcomings of the making paradigm — Lee — 2021 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2021.10.003'>DOI</a></li>
+<li>– Responsible use of large language models: an analogy with the oxford tutorial system — Lissack, Meagher — 2024 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2024.11.001'>DOI</a> · <a href='https://linkinghub.elsevier.com/retrieve/pii/S2405872624000959'>Link</a></li>
+<li>– Institutions as objects in fourth order design — Lee — 2024 — She Ji · <a href='https://doi.org/10.1016/j.sheji.2024.08.001'>DOI</a></li>
+<li>– She ji: the next five years — Friedman, Lou, Ma — 2020 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2020.02.002'>DOI</a></li></ul>
 </section>
 
 <section id='JF9FAWGF' class='coll-section hidden'>
@@ -106,277 +303,18 @@ a { color:#6cf; }
 
 <section id='6UVHG6KT' class='coll-section hidden'>
   <h2>12 Not applicable &gt; Off-topic</h2>
-  <ul><li>Design in principle and practice: A reconsideration of the terms of design engagement — Cope, Kalantzis — 2011 — Design Journal · <a href='https://doi.org/10.2752/175630610X12877385838768'>DOI</a></li>
-<li>Design for action how to use design thinking to make great things actually happen — Brown, Martin — 2009 — Harvard Business Review</li>
-<li>PDF</li>
-<li>PDF</li></ul>
+  <ul><li>– Design in principle and practice: A reconsideration of the terms of design engagement — Cope, Kalantzis — 2011 — Design Journal · <a href='https://doi.org/10.2752/175630610X12877385838768'>DOI</a></li>
+<li>– Design for action how to use design thinking to make great things actually happen — Brown, Martin — 2009 — Harvard Business Review</li></ul>
 </section>
 
-<section id='VDLK34QE' class='coll-section hidden'>
-  <h2>11 Context &gt; Others</h2>
-  <ul><li>Exploring the dynamics of design thinking in management education and training: A critical review, taxonomic analysis and practical implications — Bathla, Chawla, Hofaidhllaoui, Dabic — 2024 — European Journal of Innovation Management · <a href='https://doi.org/10.1108/EJIM-12-2023-1108'>DOI</a></li>
-<li>Theory and practice of design thinking: Perspectives of designers and business consultants — Bongiovanni, Louis — 2021 — International Journal of Design Creativity and Innovation · <a href='https://doi.org/10.1080/21650349.2021.1929501'>DOI</a></li>
-<li>Practice research in design: Towards a novel definition — Kaszynska, Kimbell, Bailey — 2022 · <a href='https://www.arts.ac.uk/ual-social-design-institute/publications/practice-research-in-design-towards-a-novel-definition'>Link</a></li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>(untitled)</li>
-<li>(untitled)</li></ul>
-</section>
 
-<section id='V2N59NEI' class='coll-section hidden'>
-  <h2>11 Context &gt; Design Issues</h2>
-  <ul><li>Rethinking design ethics from the perspective of spinoza — Song, Jun — 2025 — Design Issues · <a href='https://doi.org/10.1162/DESI_A_00793'>DOI</a> · <a href='https://dx.doi.org/10.1162/desi_a_00793'>Link</a></li>
-<li>Design and making things better: relating the pragmatism of John Dewey and Richard McKeon in design inquiry — Dixon, Kaszynska — 2024 — Design Issues · <a href='https://doi.org/10.1162/desi_a_00778'>DOI</a> · <a href='https://direct.mit.edu/desi/article/40/4/29/124765/Design-and-Making-Things-Better-Relating-the'>Link</a></li>
-<li>New design knowledge and the fifth order of design — Mortati — 2022 — Design Issues · <a href='https://doi.org/10.1162/desi_a_00695'>DOI</a></li>
-<li>Surroundings and environments in fourth order design — Buchanan — 2019 — Design Issues · <a href='https://doi.org/10.1162/desi_a_00517'>DOI</a></li>
-<li>Investigating design: A review of forty years of design research — Bayazit — 2004 — Design Issues · <a href='https://doi.org/https://doi.org/10.1162/074793604772933739'>DOI</a></li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='P4ZG6YLC' class='coll-section hidden'>
-  <h2>11 Context &gt; She Ji</h2>
-  <ul><li>The future end of design work: A critical overview of managerialism, generative AI, and the nature of knowledge work, and why craft remains relevant — Hernández-Ramírez, Ferreira — 2024 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2024.11.002'>DOI</a> · <a href='https://linkinghub.elsevier.com/retrieve/pii/S2405872624000960'>Link</a></li>
-<li>Dealing with wicked problems: normative paradigms for design thinking — van Uffelen, Vermaas, Pesch — 2024 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2024.11.003'>DOI</a></li>
-<li>Approaching change with and in design — Valtonen — 2020 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2020.08.004'>DOI</a></li>
-<li>Critique of design thinking in organizations: strongholds and shortcomings of the making paradigm — Lee — 2021 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2021.10.003'>DOI</a></li>
-<li>Responsible use of large language models: an analogy with the oxford tutorial system — Lissack, Meagher — 2024 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2024.11.001'>DOI</a> · <a href='https://linkinghub.elsevier.com/retrieve/pii/S2405872624000959'>Link</a></li>
-<li>Institutions as objects in fourth order design — Lee — 2024 — She Ji · <a href='https://doi.org/10.1016/j.sheji.2024.08.001'>DOI</a></li>
-<li>She ji: the next five years — Friedman, Lou, Ma — 2020 — She ji: the journal of design, economics, and innovation · <a href='https://doi.org/10.1016/j.sheji.2020.02.002'>DOI</a></li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>(untitled)</li></ul>
-</section>
-
-<section id='7CSAUFAG' class='coll-section hidden'>
-  <h2>10 Thesis &gt; Other institutions</h2>
-  <ul></ul>
-</section>
-
-<section id='ZT4IL8L3' class='coll-section hidden'>
-  <h2>10 Thesis &gt; RMIT</h2>
-  <ul></ul>
-</section>
-
-<section id='UTM5U4DR' class='coll-section hidden'>
-  <h2>10 Thesis &gt; MIT</h2>
-  <ul><li>Enhancing muscle sensing modalitiesfor advanced bionics — Yeon — May 2024</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='42HWU45W' class='coll-section hidden'>
-  <h2>10 Thesis &gt; RCA</h2>
-  <ul><li>Corporveillance: dancing with A.I. — Guérin-Garnett — July 2024</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='K9LV4LMY' class='coll-section hidden'>
-  <h2>4 Archival Research | emerging &gt; Open access and infrastructures</h2>
-  <ul></ul>
-</section>
-
-<section id='ZLXARABL' class='coll-section hidden'>
-  <h2>9 Critical librarianship &gt; Classification and power</h2>
-  <ul><li>What is critical about critical librarianship? — Drabinski — 2019 — Art Libraries Journal · <a href='https://doi.org/10.1017/alj.2019.3'>DOI</a></li>
-<li>PDF</li></ul>
-</section>
-
-<section id='Q8QWS3AV' class='coll-section hidden'>
-  <h2>9 Critical librarianship &gt; Information ethics</h2>
-  <ul></ul>
-</section>
-
-<section id='XQWFLVR6' class='coll-section hidden'>
-  <h2>8 Taxonomy &gt; Knowledge organisation theory</h2>
-  <ul><li>Automatic taxonomy construction from keywords — Liu, Song, Liu, Wang — 2012 · <a href='https://doi.org/10.1145/2339530.2339754'>DOI</a> · <a href='http://www.wikipedia.org/'>Link</a></li>
-<li>PDF</li></ul>
-</section>
-
-<section id='HS7QVVJR' class='coll-section hidden'>
-  <h2>8 Taxonomy &gt; Library / archival taxonomies</h2>
-  <ul></ul>
-</section>
-
-<section id='L4FZ3E4F' class='coll-section hidden'>
-  <h2>8 Taxonomy &gt; Design methods taxonomies</h2>
-  <ul></ul>
-</section>
-
-<section id='UAH97PFJ' class='coll-section hidden'>
-  <h2>7 AI/ML/CE/RAG/NLP &gt; Applications in design and archives</h2>
-  <ul><li>Comment: the FAIR guiding principles for scientific data management and stewardship — Wilkinson, Dumontier, Aalbersberg, Appleton, Axton, Baak, Blomberg, Boiten, da Silva Santos, Bourne, Bouwman, Brookes, Clark, Crosas, Dillo, Dumon, Edmunds, Evelo, Finkers, Gonzalez-Beltran, Gray, Groth, Goble, Grethe, Heringa, t Hoen, Hooft, Kuhn, Kok, Kok, Lusher, Martone, Mons, Packer, Persson, Rocca-Serra, Roos, van Schaik, Sansone, Schultes, Sengstag, Slater, Strawn, Swertz, Thompson, Van Der Lei, Van Mulligen, Velterop, Waagmeester, Wittenburg, Wolstencroft, Zhao, Mons — 2016 — Scientific Data · <a href='https://doi.org/10.1038/sdata.2016.18'>DOI</a></li>
-<li>PDF</li></ul>
-</section>
-
-<section id='JRHRKKBJ' class='coll-section hidden'>
-  <h2>7 AI/ML/CE/RAG/NLP &gt; Academic CS papers</h2>
-  <ul><li>Vancouver statement on collections as data — Padilla · <a href='https://doi.org/10.5281/zenodo.8341519.'>Link</a></li>
-<li>Efficient LLM context distillation — Upadhayaya, Osti, Smith, Kottmyer — 2024 (arXiv submission date)</li>
-<li>A survey on bias and fairness in machine learning — Mehrabi, Morstatter, Saxena, Lerman, Galstyan — 2021 — ACM Computing Surveys · <a href='https://doi.org/10.1145/3457607'>DOI</a></li>
-<li>Exploring the landscape of natural language processing research — Schopf, Arabi, Matthes · <a href='https://github.com/sebischair/Exploring-'>Link</a></li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>(untitled)</li></ul>
-</section>
-
-<section id='IRXT7833' class='coll-section hidden'>
-  <h2>6 Methodological toolkit &gt; Hybrid / systems approaches (decision-support, prototyping)</h2>
-  <ul><li>Reframing digital curation practices through a computational thinking framework — Marciano, Jain, Mckinley, Pradhan, Silva, Agarrat, Kocienda, Mir, Santos, Suri, Frisch, Krauss, Mullane, Schams, Turabi, Hunt, Liu, Patterson, Szu, Shiue, Vasselli, Xu · <a href='http://cases.umd.edu'>Link</a></li>
-<li>PDF</li></ul>
-</section>
-
-<section id='8EEAMCFQ' class='coll-section hidden'>
-  <h2>6 Methodological toolkit &gt; Quantitative (stats, modelling, surveys)</h2>
-  <ul></ul>
-</section>
-
-<section id='U7973NKG' class='coll-section hidden'>
-  <h2>6 Methodological toolkit &gt; Qualitative (interviews, ethnography, discourse analysis)</h2>
-  <ul><li>The SAGE Handbook of qualitative business and management research methods: methods and challenges — Cassell, Cunliffe, Grandy — 2018 · <a href='https://doi.org/10.4135/9781526430236'>Link</a></li>
-<li>PDF</li></ul>
-</section>
-
-<section id='9BNV2G8Q' class='coll-section hidden'>
-  <h2>5 Theoretical framework &gt; Design research paradigms</h2>
-  <ul><li>Rethinking design thinking: part II — Kimbell — 2012 — Design and Culture · <a href='https://doi.org/10.2752/175470812X13281948975413'>DOI</a></li>
-<li>Design and the new rhetoric: Productive arts in the philosophy of culture — Buchanan — 2001 — Philosophy &amp; Rhetoric · <a href='https://doi.org/10.1162/07479360152681056'>DOI</a> · <a href='https://www.jstor.org/stable/40238091'>Link</a></li>
-<li>Forty years of design research — Cross — 2007 — Design Studies · <a href='https://doi.org/10.1016/j.destud.2006.11.004'>DOI</a></li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='2BRQA859' class='coll-section hidden'>
-  <h2>5 Theoretical framework &gt; Critical theory</h2>
-  <ul><li>Pedagogy of the oppressed: 30th Anniversary Edition — Freire, Macedo — 2014</li>
-<li>Critical theory: selected essays — Horkheimer, Horkheimer — 2002</li>
-<li>PDF</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='W9KVS39Q' class='coll-section hidden'>
-  <h2>5 Theoretical framework &gt; Interpretivism</h2>
-  <ul><li>The interpretation of cultures: selected essays — Geertz — 2009</li>
-<li>PDF</li>
-<li>Designing social inquiry: Scientific inference in qualitative research — King, Keohane, Verba — 1994</li>
-<li>kkv_1994_caps-1-e-3</li></ul>
-</section>
-
-<section id='R5NKBKTA' class='coll-section hidden'>
-  <h2>4 Archival Research | emerging &gt; AI/ML in archives (humanities perspective)</h2>
-  <ul><li>Archives and AI: An overview of current debates and future perspectives — Colavizza, Blanke, Jeurgens, Noordegraaf — 2021 — Journal on Computing and Cultural Heritage (JOCCH) · <a href='https://doi.org/10.1145/3479010'>DOI</a> · <a href='https://doi.org/10.1145/3479010'>Link</a></li>
-<li>Supervised and unsupervised: approaches to machine learning for textual entities — Hodel — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections · <a href='http://link.springer.com/10.1007/978-3-476-05446-3_20'>Link</a></li>
-<li>Inviting AI into the archives: the reception of handwritten recognition technology into historical manuscript transcription — Terras — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='L25XRPQP' class='coll-section hidden'>
-  <h2>4 Archival Research | emerging &gt; Contemporary archival theory</h2>
-  <ul><li>Are users of digital archives ready for the AI era? Obstacles to the application of computational research methods and new opportunities — Jaillant, Aske — 2024 — Journal on Computing and Cultural Heritage · <a href='https://doi.org/10.1145/3631125'>DOI</a></li>
-<li>Archival research methods — Ventresca, Mohr — 2017 — The Blackwell Companion to Organizations</li>
-<li>Archives, access and artificial intelligence - working with born-digital and digitized archival collections — Jaillant — 2022 · <a href='www.aura-network.net'>Link</a></li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>(untitled)</li></ul>
-</section>
-
-<section id='WIUNALRG' class='coll-section hidden'>
-  <h2>4 Archival Research | emerging &gt; Digital humanities</h2>
-  <ul><li>Towards critically addressable data for digital library user studies — Gooding — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections · <a href='https://papers.ssrn.com/s'>Link</a></li>
-<li>Towards a new discipline of computational archival science (CAS) — Marciano — 2022 — Archives, access and artificial intelligence working with born-digital and digitized archival collections · <a href='https://www.nationalarchives.'>Link</a></li>
-<li>Research through design and digital humanities in practice: What, how and who in an archive research project — Schofield, Whitelaw, Kirk — 2017 — Digital Scholarship in the Humanities · <a href='https://doi.org/10.1093/llc/fqx005'>DOI</a></li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='S9JTINSK' class='coll-section hidden'>
-  <h2>3 Archival Research | foundational &gt; Historiography and philosophy of archives</h2>
-  <ul><li>Building an infrastructure for archival research — Gilliland, McKemmish — 2004 — Archival Science · <a href='https://doi.org/10.1007/s10502-006-6742-6'>DOI</a></li>
-<li>PDF</li></ul>
-</section>
-
-<section id='7HIMR7TQ' class='coll-section hidden'>
-  <h2>2 DDR archive &gt; Related archives (V&amp;A, Design Council, BL)</h2>
-  <ul></ul>
-</section>
-
-<section id='TA7YZYSB' class='coll-section hidden'>
-  <h2>2 DDR archive &gt; Secondary analysis</h2>
-  <ul></ul>
-</section>
-
-<section id='58N9J289' class='coll-section hidden'>
-  <h2>2 DDR archive &gt; Primary documents</h2>
-  <ul></ul>
-</section>
-
-<section id='4ZKT5HP3' class='coll-section hidden'>
-  <h2>1 Archer &gt; Secondary commentary</h2>
-  <ul><li>A dialogue between the real-world and the operational model–the realities of design in Bruce Archer&#x27;s 1968 doctoral thesis — Boyd Davis, Gristwood — 2017 — Design Studies · <a href='https://doi.org/10.1016/j.destud.2017.11.005'>DOI</a></li>
-<li>Computing, design, art: Reflections on an innovative moment in history — Davis, Gristwood — 2016 · <a href='https://doi.org/10.1007/978-3-319-47286-7_7'>DOI</a></li>
-<li>PDF</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='FSERK7XR' class='coll-section hidden'>
-  <h2>1 Archer &gt; Articles and papers</h2>
-  <ul><li> — Archer — 1995 — Co-design, interdisciplinary journal of design</li>
-<li>Archer, Bruce. 1995. The Nature of Research. Co-design, interdisciplinary journal of design. 6-13</li>
-<li>Time for a revolution in art and design education — Archer — 1978</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='PEXXRRAZ' class='coll-section hidden'>
-  <h2>1 Archer &gt; Monographs and thesis</h2>
-  <ul><li>Technological innovation–a methodology — Archer — 1971</li>
-<li>Design awareness and planned creativity in industry — Archer — 1974</li>
-<li>The structure of design processes — Archer — 1968</li>
-<li>Systematic method for designers — Archer — 1963 — Design</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li>
-<li>PDF</li></ul>
-</section>
-
-<section id='D6Z6QAUF' class='coll-section hidden'>
-  <h2>0 Backlog (to be read) &gt; ​​​​​Grey literature</h2>
-  <ul></ul>
-</section>
-
-<section id='ZLNCNF4Q' class='coll-section hidden'>
-  <h2>0 Backlog (to be read) &gt; Books</h2>
-  <ul></ul>
-</section>
-
-<section id='DGKHIJ65' class='coll-section hidden'>
-  <h2>0 Backlog (to be read) &gt; ​​Journal articles</h2>
-  <ul></ul>
-</section>
-
-<section id='U7RPE7H7' class='coll-section hidden'>
-  <h2>0 Backlog (to be read) &gt; ​​☆ Low priority</h2>
-  <ul></ul>
-</section>
-
-<section id='ZYEIQIEQ' class='coll-section hidden'>
-  <h2>0 Backlog (to be read) &gt; ​★High priority</h2>
-  <ul><li>A survey of context engineering for large language models — Mei, Yao, Ge, Wang, Bi, Cai, Liu, Li, Li, Zhang, Zhou, Mao, Xia, Guo, Liu — 2025 · <a href='https://github.com/Meirtz/Awesome-Context-Engineering'>Link</a></li>
-<li>PDF</li></ul>
+<section id="overview">
+  <h2>Entries per sub-collection</h2>
+  <div class="chart-scroll">
+    <div class="chart-container">
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
 </section>
 
 <script>
@@ -388,10 +326,47 @@ pills.forEach(p => {
     p.classList.add('active');
     sections.forEach(sec => sec.classList.add('hidden'));
     const show = document.getElementById(p.dataset.target);
-    if (show) show.classList.remove('hidden');
+    if (show) {
+      show.classList.remove('hidden');
+      show.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   });
 });
 if (pills.length) pills[0].click();
+
+const ctx = document.getElementById('barChart').getContext('2d');
+const data = [{'label': '0 Backlog (to be read)', 'value': 0}, {'label': '0 Backlog (to be read) > Books', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b\u200bJournal articles', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b\u200b\u200b\u200b\u200bGrey literature', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b\u200b☆ Low priority', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b★High priority', 'value': 1}, {'label': '1 Archer', 'value': 0}, {'label': '1 Archer > Articles and papers', 'value': 2}, {'label': '1 Archer > Monographs and thesis', 'value': 4}, {'label': '1 Archer > Secondary commentary', 'value': 2}, {'label': '2 DDR archive', 'value': 0}, {'label': '2 DDR archive > Primary documents', 'value': 0}, {'label': '2 DDR archive > Related archives (V&A, Design Council, BL)', 'value': 0}, {'label': '2 DDR archive > Secondary analysis', 'value': 0}, {'label': '3 Archival Research | foundational', 'value': 0}, {'label': '3 Archival Research | foundational > Historiography and philosophy of archives', 'value': 1}, {'label': '4 Archival Research | emerging', 'value': 0}, {'label': '4 Archival Research | emerging > AI/ML in archives (humanities perspective)', 'value': 3}, {'label': '4 Archival Research | emerging > Contemporary archival theory', 'value': 3}, {'label': '4 Archival Research | emerging > Digital humanities', 'value': 3}, {'label': '4 Archival Research | emerging > Open access and infrastructures', 'value': 0}, {'label': '5 Theoretical framework', 'value': 0}, {'label': '5 Theoretical framework > Critical theory', 'value': 2}, {'label': '5 Theoretical framework > Design research paradigms', 'value': 3}, {'label': '5 Theoretical framework > Interpretivism', 'value': 3}, {'label': '6 Methodological toolkit', 'value': 0}, {'label': '6 Methodological toolkit > Hybrid / systems approaches (decision-support, prototyping)', 'value': 1}, {'label': '6 Methodological toolkit > Qualitative (interviews, ethnography, discourse analysis)', 'value': 1}, {'label': '6 Methodological toolkit > Quantitative (stats, modelling, surveys)', 'value': 0}, {'label': '7 AI/ML/CE/RAG/NLP', 'value': 0}, {'label': '7 AI/ML/CE/RAG/NLP > Academic CS papers', 'value': 4}, {'label': '7 AI/ML/CE/RAG/NLP > Applications in design and archives', 'value': 1}, {'label': '8 Taxonomy', 'value': 0}, {'label': '8 Taxonomy > Design methods taxonomies', 'value': 0}, {'label': '8 Taxonomy > Knowledge organisation theory', 'value': 1}, {'label': '8 Taxonomy > Library / archival taxonomies', 'value': 0}, {'label': '8 Taxonomy > Taxonomic theory', 'value': 21}, {'label': '9 Critical librarianship', 'value': 0}, {'label': '9 Critical librarianship > Classification and power', 'value': 1}, {'label': '9 Critical librarianship > Information ethics', 'value': 0}, {'label': '10 Thesis', 'value': 0}, {'label': '10 Thesis > MIT', 'value': 1}, {'label': '10 Thesis > Other institutions', 'value': 0}, {'label': '10 Thesis > RCA', 'value': 1}, {'label': '10 Thesis > RMIT', 'value': 0}, {'label': '11 Context', 'value': 0}, {'label': '11 Context > Design Issues', 'value': 5}, {'label': '11 Context > Design Studies', 'value': 0}, {'label': '11 Context > Others', 'value': 3}, {'label': '11 Context > She Ji', 'value': 7}, {'label': '11 Context > Visible Language', 'value': 0}, {'label': '12 Not applicable', 'value': 0}, {'label': '12 Not applicable > Admin / misc.', 'value': 0}, {'label': '12 Not applicable > Off-topic', 'value': 2}, {'label': '★ Core', 'value': 0}];
+const chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: data.map(d => d.label),
+    datasets: [{
+      label: 'Entries',
+      data: data.map(d => d.value),
+      backgroundColor: '#0f62fe'
+    }]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      x: { grid: { color: '#393939' }, ticks: { color: '#f4f4f4' } },
+      y: { grid: { color: '#393939' }, ticks: { color: '#f4f4f4' } }
+    },
+    onClick: (e, elements) => {
+      if (elements.length > 0) {
+        const index = elements[0].index;
+        const label = chart.data.labels[index];
+        const pill = Array.from(pills).find(p => p.dataset.label === label);
+        if (pill) pill.click();
+      }
+    }
+  }
+});
 </script>
 </body>
 </html>
