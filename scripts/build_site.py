@@ -3,14 +3,16 @@
 Reference library with:
 - Pills sorted by numeric prefix
 - Items rendered per sub-collection
-- Scrollable vertical bar chart (static data from list_breadcrumbs.sh)
+- Scrollable vertical bar chart (API-driven counts)
 - Chart bars clickable -> activate pill + scroll
+- Last updated date in footer
 """
 
 import html
 import re
 import requests
 from pathlib import Path
+from datetime import datetime
 
 # --- Config ---
 USER_ID = "3436801"
@@ -115,12 +117,15 @@ def build():
         for c in children_sorted
     )
 
-    # Sections
+    # Sections + counts
     sections_html = ""
+    counts = {paths[c["key"]]: 0 for c in children_sorted}
+
     for c in children_sorted:
         key = c["key"]
         items = fetch_items(key)
         entries = [item_html(it) for it in items if item_html(it)]
+        counts[paths[key]] = len(entries)
         items_html = "\n".join(entries)
         sections_html += f"""
 <section id='{key}' class='coll-section hidden'>
@@ -129,68 +134,13 @@ def build():
 </section>
 """
 
-    # Hardcoded chart data (from list_breadcrumbs.sh run)
-    chart_data = [
-        {"label": "Taxonomic theory", "value": 21},
-        {"label": "★ Core", "value": 14},
-        {"label": "Design Studies", "value": 0},
-        {"label": "Visible Language", "value": 0},
-        {"label": "Admin / misc.", "value": 0},
-        {"label": "Off-topic", "value": 2},
-        {"label": "12 Not applicable", "value": 0},
-        {"label": "Others", "value": 3},
-        {"label": "Design Issues", "value": 5},
-        {"label": "She Ji", "value": 7},
-        {"label": "11 Context", "value": 0},
-        {"label": "Other institutions", "value": 0},
-        {"label": "RMIT", "value": 0},
-        {"label": "MIT", "value": 1},
-        {"label": "RCA", "value": 1},
-        {"label": "10 Thesis", "value": 2},
-        {"label": "Open access and infrastructures", "value": 0},
-        {"label": "Classification and power", "value": 1},
-        {"label": "Information ethics", "value": 0},
-        {"label": "9 Critical librarianship", "value": 1},
-        {"label": "Knowledge organisation theory", "value": 1},
-        {"label": "Library / archival taxonomies", "value": 0},
-        {"label": "Design methods taxonomies", "value": 0},
-        {"label": "8 Taxonomy", "value": 0},
-        {"label": "Applications in design and archives", "value": 1},
-        {"label": "Academic CS papers", "value": 4},
-        {"label": "7 AI/ML/CE/RAG/NLP", "value": 0},
-        {"label": "Hybrid / systems approaches (decision-support, prototyping)", "value": 1},
-        {"label": "Quantitative (stats, modelling, surveys)", "value": 0},
-        {"label": "Qualitative (interviews, ethnography, discourse analysis)", "value": 1},
-        {"label": "6 Methodological toolkit", "value": 0},
-        {"label": "Design research paradigms", "value": 3},
-        {"label": "Critical theory", "value": 2},
-        {"label": "Interpretivism", "value": 3},
-        {"label": "5 Theoretical framework", "value": 1},
-        {"label": "AI/ML in archives (humanities perspective)", "value": 3},
-        {"label": "Contemporary archival theory", "value": 3},
-        {"label": "Digital humanities", "value": 3},
-        {"label": "4 Archival Research | emerging", "value": 0},
-        {"label": "Historiography and philosophy of archives", "value": 1},
-        {"label": "3 Archival Research | foundational", "value": 0},
-        {"label": "Related archives (V&A, Design Council, BL)", "value": 0},
-        {"label": "Secondary analysis", "value": 0},
-        {"label": "Primary documents", "value": 0},
-        {"label": "2 DDR archive", "value": 0},
-        {"label": "Secondary commentary", "value": 2},
-        {"label": "Articles and papers", "value": 3},
-        {"label": "Monographs and thesis", "value": 4},
-        {"label": "1 Archer", "value": 0},
-        {"label": "Grey literature", "value": 0},
-        {"label": "Books", "value": 0},
-        {"label": "Journal articles", "value": 0},
-        {"label": "☆ Low priority", "value": 0},
-        {"label": "★High priority", "value": 1},
-        {"label": "0 Backlog (to be read)", "value": 8},
-    ]
+    # Chart data
+    chart_data = [{"label": k, "value": v} for k, v in counts.items()]
     chart_data.sort(key=lambda d: sort_key(d["label"]))
-
-    # Chart height = 25px per bar
     chart_height = len(chart_data) * 25
+
+    # Last updated
+    last_updated = datetime.now().strftime("%d %B %Y")
 
     # Full HTML
     html_doc = f"""<!doctype html>
@@ -212,6 +162,13 @@ def build():
     height: {chart_height}px;
     min-width: 800px;
   }}
+  footer {{
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #c6c6c6;
+    border-top: 1px solid #393939;
+    padding-top: 0.5rem;
+  }}
 </style>
 </head>
 <body>
@@ -220,7 +177,7 @@ def build():
 {sections_html}
 
 <section id="overview">
-  <h2>Entries per sub-collection</h2>
+  <h2>Entries per collection</h2>
   <div class="chart-scroll">
     <div class="chart-container">
       <canvas id="barChart"></canvas>
@@ -228,26 +185,33 @@ def build():
   </div>
 </section>
 
+<footer>
+  Last updated: {last_updated}
+</footer>
+
 <script>
 const pills = document.querySelectorAll('.pill');
 const sections = document.querySelectorAll('.coll-section');
+
+function activateSection(pill) {{
+  pills.forEach(x => x.classList.remove('active'));
+  pill.classList.add('active');
+  sections.forEach(sec => sec.classList.add('hidden'));
+  const show = document.getElementById(pill.dataset.target);
+  if (show) {{
+    show.classList.remove('hidden');
+    show.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+  }}
+}}
+
 pills.forEach(p => {{
-  p.addEventListener('click', () => {{
-    pills.forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    sections.forEach(sec => sec.classList.add('hidden'));
-    const show = document.getElementById(p.dataset.target);
-    if (show) {{
-      show.classList.remove('hidden');
-      show.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
-    }}
-  }});
+  p.addEventListener('click', () => activateSection(p));
 }});
 if (pills.length) pills[0].click();
 
 const ctx = document.getElementById('barChart').getContext('2d');
 const data = {chart_data};
-new Chart(ctx, {{
+const chart = new Chart(ctx, {{
   type: 'bar',
   data: {{
     labels: data.map(d => d.label),
@@ -267,6 +231,14 @@ new Chart(ctx, {{
     scales: {{
       x: {{ grid: {{ color: '#393939' }}, ticks: {{ color: '#f4f4f4' }} }},
       y: {{ grid: {{ color: '#393939' }}, ticks: {{ color: '#f4f4f4' }} }}
+    }},
+    onClick: (e, elements) => {{
+      if (elements.length > 0) {{
+        const index = elements[0].index;
+        const label = chart.data.labels[index];
+        const pill = Array.from(pills).find(p => p.dataset.label === label);
+        if (pill) activateSection(pill);
+      }}
     }}
   }}
 }});
@@ -276,7 +248,7 @@ new Chart(ctx, {{
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     OUT.write_text(html_doc, encoding="utf-8")
-    print(f"Wrote Reference library with scrollable chart to {OUT}")
+    print(f"Wrote Reference library with dual-entry UI + last updated date to {OUT}")
 
 
 if __name__ == "__main__":

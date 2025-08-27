@@ -14,8 +14,15 @@
   }
   .chart-container {
     position: relative;
-    height: 1375px;
+    height: 1025px;
     min-width: 800px;
+  }
+  footer {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    color: #c6c6c6;
+    border-top: 1px solid #393939;
+    padding-top: 0.5rem;
   }
 </style>
 </head>
@@ -322,7 +329,7 @@
 
 
 <section id="overview">
-  <h2>Entries per sub-collection</h2>
+  <h2>Entries per collection</h2>
   <div class="chart-scroll">
     <div class="chart-container">
       <canvas id="barChart"></canvas>
@@ -330,26 +337,33 @@
   </div>
 </section>
 
+<footer>
+  Last updated: 27 August 2025
+</footer>
+
 <script>
 const pills = document.querySelectorAll('.pill');
 const sections = document.querySelectorAll('.coll-section');
+
+function activateSection(pill) {
+  pills.forEach(x => x.classList.remove('active'));
+  pill.classList.add('active');
+  sections.forEach(sec => sec.classList.add('hidden'));
+  const show = document.getElementById(pill.dataset.target);
+  if (show) {
+    show.classList.remove('hidden');
+    show.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
 pills.forEach(p => {
-  p.addEventListener('click', () => {
-    pills.forEach(x => x.classList.remove('active'));
-    p.classList.add('active');
-    sections.forEach(sec => sec.classList.add('hidden'));
-    const show = document.getElementById(p.dataset.target);
-    if (show) {
-      show.classList.remove('hidden');
-      show.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
+  p.addEventListener('click', () => activateSection(p));
 });
 if (pills.length) pills[0].click();
 
 const ctx = document.getElementById('barChart').getContext('2d');
-const data = [{'label': '0 Backlog (to be read)', 'value': 8}, {'label': '1 Archer', 'value': 0}, {'label': '2 DDR archive', 'value': 0}, {'label': '3 Archival Research | foundational', 'value': 0}, {'label': '4 Archival Research | emerging', 'value': 0}, {'label': '5 Theoretical framework', 'value': 1}, {'label': '6 Methodological toolkit', 'value': 0}, {'label': '7 AI/ML/CE/RAG/NLP', 'value': 0}, {'label': '8 Taxonomy', 'value': 0}, {'label': '9 Critical librarianship', 'value': 1}, {'label': '10 Thesis', 'value': 2}, {'label': '11 Context', 'value': 0}, {'label': '12 Not applicable', 'value': 0}, {'label': 'Academic CS papers', 'value': 4}, {'label': 'Admin / misc.', 'value': 0}, {'label': 'AI/ML in archives (humanities perspective)', 'value': 3}, {'label': 'Applications in design and archives', 'value': 1}, {'label': 'Articles and papers', 'value': 3}, {'label': 'Books', 'value': 0}, {'label': 'Classification and power', 'value': 1}, {'label': 'Contemporary archival theory', 'value': 3}, {'label': 'Critical theory', 'value': 2}, {'label': 'Design Issues', 'value': 5}, {'label': 'Design methods taxonomies', 'value': 0}, {'label': 'Design research paradigms', 'value': 3}, {'label': 'Design Studies', 'value': 0}, {'label': 'Digital humanities', 'value': 3}, {'label': 'Grey literature', 'value': 0}, {'label': 'Historiography and philosophy of archives', 'value': 1}, {'label': 'Hybrid / systems approaches (decision-support, prototyping)', 'value': 1}, {'label': 'Information ethics', 'value': 0}, {'label': 'Interpretivism', 'value': 3}, {'label': 'Journal articles', 'value': 0}, {'label': 'Knowledge organisation theory', 'value': 1}, {'label': 'Library / archival taxonomies', 'value': 0}, {'label': 'MIT', 'value': 1}, {'label': 'Monographs and thesis', 'value': 4}, {'label': 'Off-topic', 'value': 2}, {'label': 'Open access and infrastructures', 'value': 0}, {'label': 'Other institutions', 'value': 0}, {'label': 'Others', 'value': 3}, {'label': 'Primary documents', 'value': 0}, {'label': 'Qualitative (interviews, ethnography, discourse analysis)', 'value': 1}, {'label': 'Quantitative (stats, modelling, surveys)', 'value': 0}, {'label': 'RCA', 'value': 1}, {'label': 'Related archives (V&A, Design Council, BL)', 'value': 0}, {'label': 'RMIT', 'value': 0}, {'label': 'Secondary analysis', 'value': 0}, {'label': 'Secondary commentary', 'value': 2}, {'label': 'She Ji', 'value': 7}, {'label': 'Taxonomic theory', 'value': 21}, {'label': 'Visible Language', 'value': 0}, {'label': '★ Core', 'value': 14}, {'label': '★High priority', 'value': 1}, {'label': '☆ Low priority', 'value': 0}];
-new Chart(ctx, {
+const data = [{'label': '0 Backlog (to be read) > Books', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b\u200bJournal articles', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b\u200b\u200b\u200b\u200bGrey literature', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b\u200b☆ Low priority', 'value': 0}, {'label': '0 Backlog (to be read) > \u200b★High priority', 'value': 1}, {'label': '1 Archer > Articles and papers', 'value': 2}, {'label': '1 Archer > Monographs and thesis', 'value': 4}, {'label': '1 Archer > Secondary commentary', 'value': 2}, {'label': '2 DDR archive > Primary documents', 'value': 0}, {'label': '2 DDR archive > Related archives (V&A, Design Council, BL)', 'value': 0}, {'label': '2 DDR archive > Secondary analysis', 'value': 0}, {'label': '3 Archival Research | foundational > Historiography and philosophy of archives', 'value': 1}, {'label': '4 Archival Research | emerging > AI/ML in archives (humanities perspective)', 'value': 3}, {'label': '4 Archival Research | emerging > Contemporary archival theory', 'value': 3}, {'label': '4 Archival Research | emerging > Digital humanities', 'value': 3}, {'label': '4 Archival Research | emerging > Open access and infrastructures', 'value': 0}, {'label': '5 Theoretical framework > Critical theory', 'value': 2}, {'label': '5 Theoretical framework > Design research paradigms', 'value': 3}, {'label': '5 Theoretical framework > Interpretivism', 'value': 3}, {'label': '6 Methodological toolkit > Hybrid / systems approaches (decision-support, prototyping)', 'value': 1}, {'label': '6 Methodological toolkit > Qualitative (interviews, ethnography, discourse analysis)', 'value': 1}, {'label': '6 Methodological toolkit > Quantitative (stats, modelling, surveys)', 'value': 0}, {'label': '7 AI/ML/CE/RAG/NLP > Academic CS papers', 'value': 4}, {'label': '7 AI/ML/CE/RAG/NLP > Applications in design and archives', 'value': 1}, {'label': '8 Taxonomy > Design methods taxonomies', 'value': 0}, {'label': '8 Taxonomy > Knowledge organisation theory', 'value': 1}, {'label': '8 Taxonomy > Library / archival taxonomies', 'value': 0}, {'label': '8 Taxonomy > Taxonomic theory', 'value': 21}, {'label': '9 Critical librarianship > Classification and power', 'value': 1}, {'label': '9 Critical librarianship > Information ethics', 'value': 0}, {'label': '10 Thesis > MIT', 'value': 1}, {'label': '10 Thesis > Other institutions', 'value': 0}, {'label': '10 Thesis > RCA', 'value': 1}, {'label': '10 Thesis > RMIT', 'value': 0}, {'label': '11 Context > Design Issues', 'value': 5}, {'label': '11 Context > Design Studies', 'value': 0}, {'label': '11 Context > Others', 'value': 3}, {'label': '11 Context > She Ji', 'value': 7}, {'label': '11 Context > Visible Language', 'value': 0}, {'label': '12 Not applicable > Admin / misc.', 'value': 0}, {'label': '12 Not applicable > Off-topic', 'value': 2}];
+const chart = new Chart(ctx, {
   type: 'bar',
   data: {
     labels: data.map(d => d.label),
@@ -369,6 +383,14 @@ new Chart(ctx, {
     scales: {
       x: { grid: { color: '#393939' }, ticks: { color: '#f4f4f4' } },
       y: { grid: { color: '#393939' }, ticks: { color: '#f4f4f4' } }
+    },
+    onClick: (e, elements) => {
+      if (elements.length > 0) {
+        const index = elements[0].index;
+        const label = chart.data.labels[index];
+        const pill = Array.from(pills).find(p => p.dataset.label === label);
+        if (pill) activateSection(pill);
+      }
     }
   }
 });
