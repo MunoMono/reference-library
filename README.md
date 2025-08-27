@@ -90,7 +90,7 @@ It is intended as a **shared dataset**:
 
 - <a id='Archer1963SystematicMethodDesigners'></a>**Systematic Method for Designers**  — Archer, L Bruce, 1963, Design, Article
 - <a id='Archer1968StructureDesignProcesses'></a>**The Structure of Design Processes**  — Archer, L Bruce, 1968, Phdthesis
-- <a id='Archer1971TechnologicalInnovationMethodology'></a>**Technological Innovation--a Methodology**  — Archer, L Bruce, 1971, Science Policy Foundation {\textbar} Special publications series, Book
+- <a id='Archer1971TechnologicalInnovationMethodology'></a>**Technological Innovation--a Methodology**  — Archer, L Bruce, 1971, Science Policy Foundation Special publications series, Book
 - <a id='Archer1974DesignAwarenessPlanned'></a>**Design awareness and planned creativity in industry**  — Archer, L Bruce, 1974, {Office of Design, Department of Industry, Trade and Commerce (Ottawa); Design Council of Great Britain (London)}, Book
 - <a id='Archer1978TimeRevolutionArt'></a>**Time for a Revolution in Art and Design Education**  — Archer, L Bruce, 1978, Techreport
 - <a id='Archer1995'></a> — Archer, L Bruce, 1995, Co-design, interdisciplinary journal of design, Article
@@ -258,7 +258,7 @@ It is intended as a **shared dataset**:
 
 ### Theoretical paper
 
-- <a id='Archer1971TechnologicalInnovationMethodology'></a>**Technological Innovation--a Methodology**  — Archer, L Bruce, 1971, Science Policy Foundation {\textbar} Special publications series, Book
+- <a id='Archer1971TechnologicalInnovationMethodology'></a>**Technological Innovation--a Methodology**  — Archer, L Bruce, 1971, Science Policy Foundation Special publications series, Book
 - <a id='Archer1978TimeRevolutionArt'></a>**Time for a Revolution in Art and Design Education**  — Archer, L Bruce, 1978, Techreport
 - <a id='Bayazit2004InvestigatingDesignReview'></a>**Investigating Design: {{A}} Review of Forty Years of Design Research**  — Bayazit, Nigan, 2004, Design Issues, Article · DOI: [10.1162/074793604772933739](https://doi.org/10.1162/074793604772933739)
 - <a id='Beilin2018CriticalLibrarianshipAcademic'></a>**Critical Librarianship as an Academic Pursuit**  — Beilin, Ian, 2018, The Politics of Theory and the Practice of Critical Librarianship, Incollection · [Link](http://libraryjuicepress.com/journals/index.php/jclis.)
@@ -289,6 +289,4 @@ It is intended as a **shared dataset**:
 
 ### (Untagged)
 
-- <a id='zotero-item-1726'></a> — Book
-- <a id='Archer1971'></a>**Technological Innovation--a Methodology**  — Archer, L. Bruce, 1971, Misc
 - <a id='Archer1971'></a>**Technological Innovation--a Methodology**  — Archer, L. Bruce, 1971, Misc

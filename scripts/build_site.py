@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
 """
-Build a static HTML page at docs/index.html from library.bib, grouped by:
-- Zotero collections (Better BibTeX "Include collections")
-- Tags (BibTeX keywords; comma/semicolon separated)
+Build a static HTML page at docs/index.html from library.bib.
 
-Adds minimal TeX cleanup for labels (e.g., {\textbar} -> |).
-Outputs HTML that links to docs/styles.css (no inline CSS for styles, but charts are inlined as SVG).
+Enhancements:
+- Pull Zotero Collections via API (for top-of-page clickable "pills")
+- Keep existing grouping sections (Collections + Tags) for browsing
+- Add a flat "All entries" list that can be client-side sorted by clicking a pill
+- Emit data attributes on each entry for fast search/sort:
+  - data-text (search haystack)
+  - data-title (secondary sort)
+  - data-collections (pipe-separated collection paths)
+
+Charts remain inlined as SVG; styles live in docs/styles.css.
 """
 
 import re
@@ -14,10 +20,11 @@ import unicodedata
 from pathlib import Path
 import bibtexparser
 
-# chart generator (make sure we can import it when run as a script)
+# Allow imports from the scripts/ directory when run as a script
 import sys as _sys
 _sys.path.append(str(Path(__file__).resolve().parent))
 from generate_charts import build_charts
+from zotero_api import fetch_collections, build_collection_paths  # NEW
 
 ROOT = Path(__file__).resolve().parents[1]
 BIB_PATH = ROOT / "library.bib"
@@ -49,6 +56,7 @@ def norm_list(value: str):
     return [clean_tex(w.strip()) for w in raw if w.strip()]
 
 def entry_collections(e):
+    # Better BibTeX "Include collections" places paths into 'collections' or 'groups'
     return norm_list(e.get("collections") or e.get("groups") or "")
 
 def format_authors(persons: str):
@@ -105,7 +113,7 @@ def tag_key(label: str) -> str:
 
 # ------------------------------------------------------------
 
-def entry_html(e):
+def entry_html(e, *, include_anchor: bool = True) -> str:
     key = e.get("ID", "")
     typ = (e.get("ENTRYTYPE") or "").capitalize()
     title = (e.get("title") or "").strip(" {}")
@@ -153,16 +161,21 @@ def entry_html(e):
         " ".join(tags), " ".join(colls)
     ]).lower()
 
+    # NEW: data-collections + data-title (used by the pills sorter)
+    data_attr = f" data-text=\"{html.escape(dataset_text)}\" data-title=\"{esc(title)}\" data-collections=\"{esc('|'.join(colls))}\""
+
+    anchor = f"<a id='{esc(key)}'></a>" if include_anchor and key else ""
+
     return f"""
-<li class="entry" data-text="{html.escape(dataset_text)}">
-  <a id="{esc(key)}"></a>
+<li class="entry"{data_attr}>
+  {anchor}
   <div class="entry-main">{''.join(bits)}
     {' · ' + ' · '.join(tail) if tail else ''}
   </div>
   <div class="entry-tags">{tags_html} {colls_html}</div>
 </li>""".strip()
-# -------------------------------------------------------
 
+# ------------------------------------------------------------
 
 def build():
     if not BIB_PATH.exists():
@@ -178,7 +191,23 @@ def build():
     paper_svg_inline = paper_svg_path.read_text(encoding="utf-8")
     coll_svg_inline  = coll_svg_path.read_text(encoding="utf-8")
 
-    # Collections groups
+    # ---- Collections list for pills (from Zotero API) ----
+    try:
+        _cols = fetch_collections()
+        collection_paths, _map = build_collection_paths(_cols)   # ["Parent ▸ Child", ...]
+    except Exception as e:
+        print(f"[warn] Zotero collections unavailable: {e}")
+        collection_paths = []
+
+    def render_pills(items, css_class="pill"):
+        return "\n".join(
+            f'<button class="{css_class}" data-collection="{html.escape(i, quote=True)}">{html.escape(i)}</button>'
+            for i in items
+        )
+
+    collection_pills_html = render_pills(collection_paths) if collection_paths else ""
+
+    # Collections groups (for sectioned browsing)
     coll_groups = {}
     for e in db.entries:
         for path in entry_collections(e):
@@ -187,7 +216,7 @@ def build():
             coll_groups[k]["entries"].append(e)
     ordered_colls = sorted(coll_groups.values(), key=lambda g: g["label"].lower())
 
-    # Tag groups
+    # Tag groups (for sectioned browsing)
     tag_groups, untagged = {}, []
     for e in db.entries:
         kws = norm_keywords(e.get("keywords","") or e.get("keyword",""))
@@ -199,7 +228,7 @@ def build():
                 tag_groups[gkey]["entries"].append(e)
     ordered_tags = sorted(tag_groups.values(), key=lambda g: g["label"].lower())
 
-    # Build indices
+    # Build indices (section navs)
     coll_index_html = ""
     if ordered_colls:
         links = " · ".join(
@@ -216,10 +245,10 @@ def build():
         )
         tag_index_html = f"<nav class='tag-index'>{links}</nav>"
 
-    # Sections
+    # Sectioned (browsable) views — anchors omitted to avoid duplicate IDs
     coll_sections = []
     for g in ordered_colls:
-        items = "\n".join(entry_html(e) for e in sorted(g["entries"], key=entry_sort_key))
+        items = "\n".join(entry_html(e, include_anchor=False) for e in sorted(g["entries"], key=entry_sort_key))
         coll_sections.append(f"""
 <section id="{g['label'].lower().replace(' ', '-').replace('>', '')}" class="tag-section">
   <h2>{html.escape(g['label'])}</h2>
@@ -230,7 +259,7 @@ def build():
 
     tag_sections = []
     for g in ordered_tags:
-        items = "\n".join(entry_html(e) for e in sorted(g["entries"], key=entry_sort_key))
+        items = "\n".join(entry_html(e, include_anchor=False) for e in sorted(g["entries"], key=entry_sort_key))
         tag_sections.append(f"""
 <section id="{g['label'].lower().replace(' ', '-')}" class="tag-section">
   <h2>{html.escape(g['label'])}</h2>
@@ -240,7 +269,7 @@ def build():
 </section>""".strip())
 
     if untagged:
-        items = "\n".join(entry_html(e) for e in sorted(untagged, key=entry_sort_key))
+        items = "\n".join(entry_html(e, include_anchor=False) for e in sorted(untagged, key=entry_sort_key))
         tag_sections.append(f"""
 <section id="untagged" class="tag-section">
   <h2>(Untagged)</h2>
@@ -248,6 +277,9 @@ def build():
     {items}
   </ul>
 </section>""".strip())
+
+    # Flat list (for pill-driven sorting) — includes per-entry anchors
+    all_entries_html = "\n".join(entry_html(e, include_anchor=True) for e in sorted(db.entries, key=entry_sort_key))
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -259,7 +291,7 @@ def build():
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="dark" />
 <title>Reference Library</title>
-<link rel="stylesheet" href="styles.css?v=6" />
+<link rel="stylesheet" href="styles.css?v=7" />
 </head>
 <body>
 <main class="container">
@@ -272,7 +304,17 @@ def build():
     <input id="q" type="search" placeholder="Search title, authors, venue, year, tag, or collection…" aria-label="Search references" />
   </div>
 
-  <!-- Charts directly under the search box -->
+  {"<section class='collections'><div class='pill-row' role='list'>" + collection_pills_html + "</div></section>" if collection_pills_html else ""}
+
+  <!-- Flat list primarily for client-side sorting via pills -->
+  <section id="flat" class="tag-section" style="margin-top:1rem;">
+    <h2>All entries</h2>
+    <ul id="entries" class="entries">
+      {all_entries_html}
+    </ul>
+  </section>
+
+  <!-- Charts directly under the flat list -->
   <section id="overview" class="tag-section" style="margin-top:1.25rem;">
     <h2>Overview</h2>
     <div class="entries" style="list-style:none; display:grid; gap:1rem;">
@@ -294,10 +336,10 @@ def build():
 
 <script>
 (function() {{
+  // ===== Live search across all sections (unchanged) =====
   const q = document.getElementById('q');
   const allSections = Array.from(document.querySelectorAll('.tag-section'));
-  // Exclude the overview section from hide/show logic
-  const sections = allSections.filter(sec => sec.id !== 'overview');
+  const sections = allSections.filter(sec => sec.id !== 'overview'); // don't hide overview
   const entries = Array.from(document.querySelectorAll('.entry'));
 
   function applyFilter() {{
@@ -319,8 +361,38 @@ def build():
       sec.classList.toggle('hidden', !anyVisible);
     }});
   }}
-
   q.addEventListener('input', applyFilter);
+
+  // ===== Clickable collection pills: sort the flat list (#entries) =====
+  const list   = document.querySelector('#entries');
+  const pills  = Array.from(document.querySelectorAll('.pill'));
+  const flatEntries = list ? Array.from(list.querySelectorAll('.entry')) : [];
+
+  function entryHasCollection(entry, label) {{
+    const data = (entry.getAttribute('data-collections') || "").toLowerCase();
+    return data.includes(label.toLowerCase());
+  }}
+
+  function sortByCollection(label) {{
+    if (!list) return;
+    const sorted = flatEntries.slice().sort((a, b) => {{
+      const ah = entryHasCollection(a, label) ? 0 : 1;
+      const bh = entryHasCollection(b, label) ? 0 : 1;
+      if (ah !== bh) return ah - bh;
+      return (a.dataset.title || "").localeCompare(b.dataset.title || "", undefined, {{sensitivity:'base'}});
+    }});
+    list.innerHTML = "";
+    for (const e of sorted) list.appendChild(e);
+  }}
+
+  pills.forEach(p => {{
+    p.addEventListener('click', () => {{
+      pills.forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      const label = p.dataset.collection || p.textContent.trim();
+      sortByCollection(label);
+    }});
+  }});
 }})();
 </script>
 
