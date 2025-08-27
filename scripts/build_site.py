@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 Reference library with:
-- Pills sorted by numeric prefix (children only)
+- Pills sorted by numeric prefix
 - Items rendered per sub-collection
-- Scrollable horizontal bar chart (all collections, including 0 entries)
+- Scrollable vertical bar chart (static data from list_breadcrumbs.sh)
 - Chart bars clickable -> activate pill + scroll
 """
 
@@ -104,11 +104,7 @@ def build():
     colls_data = [c["data"] for c in colls]
     paths = build_collection_paths(colls_data)
 
-    # all collections (for chart + counts)
-    all_sorted = sorted(colls_data, key=lambda c: sort_key(paths[c["key"]]))
-
-    # children only (for pills + sections)
-    children = [c for c in colls_data if c.get("parentCollection")]
+    children = [c["data"] for c in colls if c["data"].get("parentCollection")]
     children_sorted = sorted(children, key=lambda c: sort_key(paths[c["key"]]))
 
     # Pills
@@ -119,16 +115,12 @@ def build():
         for c in children_sorted
     )
 
-    # Sections + counts
+    # Sections
     sections_html = ""
-    counts = {paths[c["key"]]: 0 for c in all_sorted}  # initialise all collections
-
-    for c in children_sorted:  # only children have sections
+    for c in children_sorted:
         key = c["key"]
         items = fetch_items(key)
         entries = [item_html(it) for it in items if item_html(it)]
-        counts[paths[key]] = len(entries)
-
         items_html = "\n".join(entries)
         sections_html += f"""
 <section id='{key}' class='coll-section hidden'>
@@ -137,9 +129,68 @@ def build():
 </section>
 """
 
-    # Chart data (all collections, sorted)
-    chart_data = [{"label": k, "value": v} for k, v in counts.items()]
+    # Hardcoded chart data (from list_breadcrumbs.sh run)
+    chart_data = [
+        {"label": "Taxonomic theory", "value": 21},
+        {"label": "★ Core", "value": 14},
+        {"label": "Design Studies", "value": 0},
+        {"label": "Visible Language", "value": 0},
+        {"label": "Admin / misc.", "value": 0},
+        {"label": "Off-topic", "value": 2},
+        {"label": "12 Not applicable", "value": 0},
+        {"label": "Others", "value": 3},
+        {"label": "Design Issues", "value": 5},
+        {"label": "She Ji", "value": 7},
+        {"label": "11 Context", "value": 0},
+        {"label": "Other institutions", "value": 0},
+        {"label": "RMIT", "value": 0},
+        {"label": "MIT", "value": 1},
+        {"label": "RCA", "value": 1},
+        {"label": "10 Thesis", "value": 2},
+        {"label": "Open access and infrastructures", "value": 0},
+        {"label": "Classification and power", "value": 1},
+        {"label": "Information ethics", "value": 0},
+        {"label": "9 Critical librarianship", "value": 1},
+        {"label": "Knowledge organisation theory", "value": 1},
+        {"label": "Library / archival taxonomies", "value": 0},
+        {"label": "Design methods taxonomies", "value": 0},
+        {"label": "8 Taxonomy", "value": 0},
+        {"label": "Applications in design and archives", "value": 1},
+        {"label": "Academic CS papers", "value": 4},
+        {"label": "7 AI/ML/CE/RAG/NLP", "value": 0},
+        {"label": "Hybrid / systems approaches (decision-support, prototyping)", "value": 1},
+        {"label": "Quantitative (stats, modelling, surveys)", "value": 0},
+        {"label": "Qualitative (interviews, ethnography, discourse analysis)", "value": 1},
+        {"label": "6 Methodological toolkit", "value": 0},
+        {"label": "Design research paradigms", "value": 3},
+        {"label": "Critical theory", "value": 2},
+        {"label": "Interpretivism", "value": 3},
+        {"label": "5 Theoretical framework", "value": 1},
+        {"label": "AI/ML in archives (humanities perspective)", "value": 3},
+        {"label": "Contemporary archival theory", "value": 3},
+        {"label": "Digital humanities", "value": 3},
+        {"label": "4 Archival Research | emerging", "value": 0},
+        {"label": "Historiography and philosophy of archives", "value": 1},
+        {"label": "3 Archival Research | foundational", "value": 0},
+        {"label": "Related archives (V&A, Design Council, BL)", "value": 0},
+        {"label": "Secondary analysis", "value": 0},
+        {"label": "Primary documents", "value": 0},
+        {"label": "2 DDR archive", "value": 0},
+        {"label": "Secondary commentary", "value": 2},
+        {"label": "Articles and papers", "value": 3},
+        {"label": "Monographs and thesis", "value": 4},
+        {"label": "1 Archer", "value": 0},
+        {"label": "Grey literature", "value": 0},
+        {"label": "Books", "value": 0},
+        {"label": "Journal articles", "value": 0},
+        {"label": "☆ Low priority", "value": 0},
+        {"label": "★High priority", "value": 1},
+        {"label": "0 Backlog (to be read)", "value": 8},
+    ]
     chart_data.sort(key=lambda d: sort_key(d["label"]))
+
+    # Chart height = 25px per bar
+    chart_height = len(chart_data) * 25
 
     # Full HTML
     html_doc = f"""<!doctype html>
@@ -149,6 +200,19 @@ def build():
 <title>Reference library</title>
 <link rel="stylesheet" href="styles.css" />
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  .chart-scroll {{
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid #393939;
+    padding: 0.5rem;
+  }}
+  .chart-container {{
+    position: relative;
+    height: {chart_height}px;
+    min-width: 800px;
+  }}
+</style>
 </head>
 <body>
 <h1>Reference library</h1>
@@ -183,7 +247,7 @@ if (pills.length) pills[0].click();
 
 const ctx = document.getElementById('barChart').getContext('2d');
 const data = {chart_data};
-const chart = new Chart(ctx, {{
+new Chart(ctx, {{
   type: 'bar',
   data: {{
     labels: data.map(d => d.label),
@@ -203,14 +267,6 @@ const chart = new Chart(ctx, {{
     scales: {{
       x: {{ grid: {{ color: '#393939' }}, ticks: {{ color: '#f4f4f4' }} }},
       y: {{ grid: {{ color: '#393939' }}, ticks: {{ color: '#f4f4f4' }} }}
-    }},
-    onClick: (e, elements) => {{
-      if (elements.length > 0) {{
-        const index = elements[0].index;
-        const label = chart.data.labels[index];
-        const pill = Array.from(pills).find(p => p.dataset.label === label);
-        if (pill) pill.click();
-      }}
     }}
   }}
 }});
@@ -220,7 +276,7 @@ const chart = new Chart(ctx, {{
 
     DOCS_DIR.mkdir(parents=True, exist_ok=True)
     OUT.write_text(html_doc, encoding="utf-8")
-    print(f"Wrote Reference library with clickable chart to {OUT}")
+    print(f"Wrote Reference library with scrollable chart to {OUT}")
 
 
 if __name__ == "__main__":
