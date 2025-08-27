@@ -11,7 +11,7 @@ Live version: [https://munomono.github.io/reference-library/index.html](https://
 ## 📚 About
 
 This repository contains the full set of references collected for my research projects.  
-It functions as a **reference library**, not just a bibliography for a single paper.  Yeah.
+It functions as a **reference library**, not just a bibliography for a single paper. Yeah Dad
 
 - **Format**: [BibTeX](https://en.wikipedia.org/wiki/BibTeX) (`library.bib`)  
 - **Viewer**: static site generated at `docs/index.html`  
@@ -75,6 +75,7 @@ It is intended as a **shared dataset**:
 
 - <a id='Cassell2018SAGEHandbookQualitative'></a>**The {{SAGE Handbook}} of Qualitative Business and Management Research Methods: Methods and Challenges**  — Cassell, Catherine et al., 2018, The SAGE Handbook of Qualitative Business and Management Research Methods: Methods and Challenges, Book · DOI: [10.4135/9781526430236](https://doi.org/10.4135/9781526430236) · [Link](https://doi.org/10.4135/9781526430236)
 - <a id='Friedman2020SheJiNext'></a>**She Ji: The next Five Years**  — Friedman, Ken et al., 2020, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2020.02.002](https://doi.org/10.1016/j.sheji.2020.02.002)
+- <a id='Gilliland2018ArchivalRecordkeepingResearch'></a>**Archival and Recordkeeping Research**  — Gilliland, Anne J. & McKemmish, Sue, 2018, Research {{Methods}}, Incollection · DOI: [10.1016/B978-0-08-102220-7.00004-2](https://doi.org/10.1016/B978-0-08-102220-7.00004-2) · [Link](https://linkinghub.elsevier.com/retrieve/pii/B9780081022207000042)
 - <a id='PadillaVancouverStatementCollections'></a>**Vancouver Statement on Collections as Data**  — Padilla, T., Techreport · [Link](https://doi.org/10.5281/zenodo.8341519.)
 
 ### AI/ML/CE/RAG/NLP
@@ -92,6 +93,7 @@ It is intended as a **shared dataset**:
 - <a id='Archer1971TechnologicalInnovationMethodology'></a>**Technological Innovation--a Methodology**  — Archer, L Bruce, 1971, Science Policy Foundation {\textbar} Special publications series, Book
 - <a id='Archer1974DesignAwarenessPlanned'></a>**Design awareness and planned creativity in industry**  — Archer, L Bruce, 1974, {Office of Design, Department of Industry, Trade and Commerce (Ottawa); Design Council of Great Britain (London)}, Book
 - <a id='Archer1978TimeRevolutionArt'></a>**Time for a Revolution in Art and Design Education**  — Archer, L Bruce, 1978, Techreport
+- <a id='Archer1995'></a> — Archer, L Bruce, 1995, Co-design, interdisciplinary journal of design, Article
 - <a id='BoydDavis2017DialogueRealworldOperational'></a>**A Dialogue between the Real-World and the Operational Model--the Realities of Design in {{Bruce Archer}}'s 1968 Doctoral Thesis**  — Boyd Davis, Stephen & Gristwood, Simone, 2017, Design Studies, Article · DOI: [10.1016/j.destud.2017.11.005](https://doi.org/10.1016/j.destud.2017.11.005)
 - <a id='Davis2016ComputingDesignArt'></a>**Computing, Design, Art: {{Reflections}} on an Innovative Moment in History**  — Davis, Stephen Boyd & Gristwood, Simone, 2016, {{IFIP Advances}} in {{Information}} and {{Communication Technology}}, Inproceedings · DOI: [10.1007/978-3-319-47286-7_7](https://doi.org/10.1007/978-3-319-47286-7_7)
 
@@ -113,12 +115,15 @@ It is intended as a **shared dataset**:
 
 ### Backlog to be read
 
+- <a id='Archer1995'></a> — Archer, L Bruce, 1995, Co-design, interdisciplinary journal of design, Article
+- <a id='Bowker1999SortingThingsOut'></a>**Sorting Things out: Classification and Its Consequences**  — Bowker, Geoffrey C. & Star, Susan Leigh, 1999, MIT Press, Book
 - <a id='BoydDavis2017DialogueRealworldOperational'></a>**A Dialogue between the Real-World and the Operational Model--the Realities of Design in {{Bruce Archer}}'s 1968 Doctoral Thesis**  — Boyd Davis, Stephen & Gristwood, Simone, 2017, Design Studies, Article · DOI: [10.1016/j.destud.2017.11.005](https://doi.org/10.1016/j.destud.2017.11.005)
 - <a id='Cross1982DesignerlyWaysKnowing'></a>**Designerly Ways of Knowing**  — Cross, Nigel, 1982, Design Studies, Article
 - <a id='Cross2007FortyYearsDesign'></a>**Forty Years of Design Research**  — Cross, Nigel, 2007, Design Studies, Article · DOI: [10.1016/j.destud.2006.11.004](https://doi.org/10.1016/j.destud.2006.11.004)
 - <a id='Freire2014PedagogyOppressed30th'></a>**Pedagogy of the Oppressed: 30th {{Anniversary Edition**  — Freire, Paulo & Macedo, Donaldo P., 2014, Bloomsbury Publishing, Book
 - <a id='Geertz2009InterpretationCulturesSelected'></a>**The Interpretation of Cultures: Selected Essays**  — Geertz, Clifford, 2009, Basic Books, Book
 - <a id='GeertzInterpretationCultures'></a>**The {{Interpretation}} of {{Cultures**  — Geertz, Clifford, Article
+- <a id='Gilliland2018ArchivalRecordkeepingResearch'></a>**Archival and Recordkeeping Research**  — Gilliland, Anne J. & McKemmish, Sue, 2018, Research {{Methods}}, Incollection · DOI: [10.1016/B978-0-08-102220-7.00004-2](https://doi.org/10.1016/B978-0-08-102220-7.00004-2) · [Link](https://linkinghub.elsevier.com/retrieve/pii/B9780081022207000042)
 - <a id='Horkheimer2002CriticalTheorySelected'></a>**Critical Theory: Selected Essays**  — Horkheimer, Max & Horkheimer, Max, 2002, Continuum, Book
 - <a id='King1994DesigningSocialInquiry'></a>**Designing Social Inquiry: {{Scientific}} Inference in Qualitative Research**  — King, G et al., 1994, Princeton University Press, Book
 
@@ -126,6 +131,7 @@ It is intended as a **shared dataset**:
 
 - <a id='Archer1974DesignAwarenessPlanned'></a>**Design awareness and planned creativity in industry**  — Archer, L Bruce, 1974, {Office of Design, Department of Industry, Trade and Commerce (Ottawa); Design Council of Great Britain (London)}, Book
 - <a id='Bongiovanni2021TheoryPracticeDesign'></a>**Theory and Practice of Design Thinking: {{Perspectives}} of Designers and Business Consultants**  — Bongiovanni, Ivano & Louis, Cynthea Premala, 2021, International Journal of Design Creativity and Innovation, Article · DOI: [10.1080/21650349.2021.1929501](https://doi.org/10.1080/21650349.2021.1929501)
+- <a id='Bowker1999SortingThingsOut'></a>**Sorting Things out: Classification and Its Consequences**  — Bowker, Geoffrey C. & Star, Susan Leigh, 1999, MIT Press, Book
 - <a id='Davis2016ComputingDesignArt'></a>**Computing, Design, Art: {{Reflections}} on an Innovative Moment in History**  — Davis, Stephen Boyd & Gristwood, Simone, 2016, {{IFIP Advances}} in {{Information}} and {{Communication Technology}}, Inproceedings · DOI: [10.1007/978-3-319-47286-7_7](https://doi.org/10.1007/978-3-319-47286-7_7)
 - <a id='Drabinski2019WhatCriticalCritical'></a>**What Is Critical about Critical Librarianship?**  — Drabinski, Emily, 2019, Art Libraries Journal, Article · DOI: [10.1017/alj.2019.3](https://doi.org/10.1017/alj.2019.3)
 - <a id='Freire2014PedagogyOppressed30th'></a>**Pedagogy of the Oppressed: 30th {{Anniversary Edition**  — Freire, Paulo & Macedo, Donaldo P., 2014, Bloomsbury Publishing, Book
@@ -197,6 +203,7 @@ It is intended as a **shared dataset**:
 - <a id='Hodel2022SupervisedUnsupervisedApproaches'></a>**Supervised and Unsupervised: Approaches to Machine Learning for Textual Entities**  — Hodel, T, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.1007/978-3-476-05446-3_20](https://doi.org/10.1007/978-3-476-05446-3_20) · [Link](http://link.springer.com/10.1007/978-3-476-05446-3_20)
 - <a id='Jaillant2022ArchivesAccessArtificial'></a>**Archives, Access and Artificial Intelligence - Working with Born-Digital and Digitized Archival Collections**  — Jaillant, L, 2022, Bielefeld University Press, Book · [Link](www.aura-network.net)
 - <a id='King1994DesigningSocialInquiry'></a>**Designing Social Inquiry: {{Scientific}} Inference in Qualitative Research**  — King, G et al., 1994, Princeton University Press, Book
+- <a id='Koskinen2011DesignResearchPractice'></a>**Design Research through Practice: From the Lab, Field, and Showroom**  — Koskinen, Ilpo Kalevi, 2011, Morgan Kaufmann/Elsevier, Book
 - <a id='Upadhayaya2024EfficientLLMContext'></a>**Efficient {{LLM}} Context Distillation**  — Upadhayaya, Rajesh et al., 2024 (arXiv submission date), Techreport
 
 ### Methods | tutorial paper
@@ -221,6 +228,7 @@ It is intended as a **shared dataset**:
 
 ### Position paper
 
+- <a id='Archer1995'></a> — Archer, L Bruce, 1995, Co-design, interdisciplinary journal of design, Article
 - <a id='Liu2012AutomaticTaxonomyConstruction'></a>**Automatic Taxonomy Construction from Keywords**  — Liu, Xueqing et al., 2012, Proceedings of {{KDD}}'12 -- 18th {{ACM SIGKDD}} International Conference on Knowledge Discovery and Data Mining, Inproceedings · DOI: [10.1145/2339530.2339754](https://doi.org/10.1145/2339530.2339754) · [Link](http://www.wikipedia.org/)
 - <a id='Terras2022InvitingAIArchives'></a>**Inviting {{AI}} into the Archives: The Reception of Handwritten Recognition Technology into Historical Manuscript Transcription**  — Terras, Melissa, 2022, Archives, Access and Artificial Intelligence Working with Born-Digital and Digitized Archival Collections, Incollection · DOI: [10.16995/dscn.12](https://doi.org/10.16995/dscn.12)
 - <a id='vanUffelen2024DealingWickedProblems'></a>**Dealing with Wicked Problems: Normative Paradigms for Design Thinking**  — {van Uffelen}, Nynke et al., 2024, She ji: the journal of design, economics, and innovation, Article · DOI: [10.1016/j.sheji.2024.11.003](https://doi.org/10.1016/j.sheji.2024.11.003)
@@ -228,6 +236,8 @@ It is intended as a **shared dataset**:
 ### Review paper
 
 - <a id='Brown2009DesignActionHow'></a>**Design for Action How to Use Design Thinking to Make Great Things Actually Happen**  — Brown, Tim & Martin, Roger, 2009, Harvard Business Review, Article
+- <a id='Fallan2010DesignHistoryUnderstanding'></a>**Design History: Understanding Theory and Method**  — Fallan, Kjetil, 2010, Berg Publishers, Book · DOI: [10.5040/9781474293716](https://doi.org/10.5040/9781474293716)
+- <a id='Gilliland2018ArchivalRecordkeepingResearch'></a>**Archival and Recordkeeping Research**  — Gilliland, Anne J. & McKemmish, Sue, 2018, Research {{Methods}}, Incollection · DOI: [10.1016/B978-0-08-102220-7.00004-2](https://doi.org/10.1016/B978-0-08-102220-7.00004-2) · [Link](https://linkinghub.elsevier.com/retrieve/pii/B9780081022207000042)
 
 ### Reviewed
 
@@ -252,6 +262,7 @@ It is intended as a **shared dataset**:
 - <a id='Archer1978TimeRevolutionArt'></a>**Time for a Revolution in Art and Design Education**  — Archer, L Bruce, 1978, Techreport
 - <a id='Bayazit2004InvestigatingDesignReview'></a>**Investigating Design: {{A}} Review of Forty Years of Design Research**  — Bayazit, Nigan, 2004, Design Issues, Article · DOI: [10.1162/074793604772933739](https://doi.org/10.1162/074793604772933739)
 - <a id='Beilin2018CriticalLibrarianshipAcademic'></a>**Critical Librarianship as an Academic Pursuit**  — Beilin, Ian, 2018, The Politics of Theory and the Practice of Critical Librarianship, Incollection · [Link](http://libraryjuicepress.com/journals/index.php/jclis.)
+- <a id='Bowker1999SortingThingsOut'></a>**Sorting Things out: Classification and Its Consequences**  — Bowker, Geoffrey C. & Star, Susan Leigh, 1999, MIT Press, Book
 - <a id='BoydDavis2017DialogueRealworldOperational'></a>**A Dialogue between the Real-World and the Operational Model--the Realities of Design in {{Bruce Archer}}'s 1968 Doctoral Thesis**  — Boyd Davis, Stephen & Gristwood, Simone, 2017, Design Studies, Article · DOI: [10.1016/j.destud.2017.11.005](https://doi.org/10.1016/j.destud.2017.11.005)
 - <a id='Buchanan2019SurroundingsEnvironmentsFourth'></a>**Surroundings and Environments in Fourth Order Design**  — Buchanan, Richard, 2019, Design Issues, Article · DOI: [10.1162/desi_a_00517](https://doi.org/10.1162/desi_a_00517)
 - <a id='Bunnin2003BlackwellCompanionPhilosophy'></a>**The {{Blackwell}} Companion to Philosophy**  — Bunnin, Nicholas & {Tsui-James}, E P, 2003, Blackwell, Book · [Link](https://onlinelibrary.wiley.com/doi/)
@@ -260,6 +271,7 @@ It is intended as a **shared dataset**:
 - <a id='Cross2007FortyYearsDesign'></a>**Forty Years of Design Research**  — Cross, Nigel, 2007, Design Studies, Article · DOI: [10.1016/j.destud.2006.11.004](https://doi.org/10.1016/j.destud.2006.11.004)
 - <a id='Dixon2024DesignMakingThings'></a>**Design and Making Things Better: Relating the Pragmatism of {{John Dewey}} and {{Richard McKeon}} in Design Inquiry**  — Dixon, Brian & Kaszynska, Patrycja, 2024, Design Issues, Article · DOI: [10.1162/desi_a_00778](https://doi.org/10.1162/desi_a_00778) · [Link](https://direct.mit.edu/desi/article/40/4/29/124765/Design-and-Making-Things-Better-Relating-the)
 - <a id='GeertzInterpretationCultures'></a>**The {{Interpretation}} of {{Cultures**  — Geertz, Clifford, Article
+- <a id='Gilliland2016RecordsTheirImaginaries'></a>**Records and Their Imaginaries: Imagining the Impossible, Making Possible the Imagined**  — Gilliland, Anne J. & Caswell, Michelle, 2016, Archival Science, Article · DOI: [10.1007/s10502-015-9259-z](https://doi.org/10.1007/s10502-015-9259-z) · [Link](http://link.springer.com/10.1007/s10502-015-9259-z)
 - <a id='Horkheimer2002CriticalTheorySelected'></a>**Critical Theory: Selected Essays**  — Horkheimer, Max & Horkheimer, Max, 2002, Continuum, Book
 - <a id='Jaillant2024AreUsersDigital'></a>**Are Users of Digital Archives Ready for the {{AI}} Era? {{Obstacles}} to the Application of Computational Research Methods and New Opportunities**  — Jaillant, Lise & Aske, Katherine, 2024, Journal on Computing and Cultural Heritage, Article · DOI: [10.1145/3631125](https://doi.org/10.1145/3631125)
 - <a id='Kaszynska2022PracticeResearchDesign'></a>**Practice Research in Design: {{Towards}} a Novel Definition**  — Kaszynska, Patrycja et al., 2022, Techreport · [Link](https://www.arts.ac.uk/ual-social-design-institute/publications/practice-research-in-design-towards-a-novel-definition)
@@ -277,5 +289,6 @@ It is intended as a **shared dataset**:
 
 ### (Untagged)
 
+- <a id='zotero-item-1726'></a> — Book
 - <a id='Archer1971'></a>**Technological Innovation--a Methodology**  — Archer, L. Bruce, 1971, Misc
 - <a id='Archer1971'></a>**Technological Innovation--a Methodology**  — Archer, L. Bruce, 1971, Misc
