@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Content, Grid, Column, Button } from "@carbon/react";
+import { Content, Grid, Column } from "@carbon/react";
 import HeaderBar from "./components/HeaderBar";
 import PillRow from "./components/PillRow";
 import SearchBox from "./components/SearchBox";
 import EntriesChart from "./components/EntriesChart";
 import CollectionSection from "./components/CollectionSection";
+import Footer from "./components/Footer";
 import { fetchCollections, fetchItems, buildCollectionPaths } from "./api";
 
 function App({ toggleTheme, theme }) {
@@ -26,10 +27,19 @@ function App({ toggleTheme, theme }) {
         setPaths(builtPaths);
 
         setCollections(
-          children.map((c) => ({
-            key: c.key,
-            label: builtPaths[c.key],
-          }))
+          children
+            .map((c) => ({
+              key: c.key,
+              label: builtPaths[c.key],
+            }))
+            .sort((a, b) => {
+              const numA = parseInt(a.label, 10);
+              const numB = parseInt(b.label, 10);
+              return (
+                (isNaN(numA) ? Infinity : numA) -
+                (isNaN(numB) ? Infinity : numB)
+              );
+            })
         );
 
         const countMap = {};
@@ -88,15 +98,10 @@ function App({ toggleTheme, theme }) {
 
   return (
     <>
-      <HeaderBar />
+      <HeaderBar theme={theme} toggleTheme={toggleTheme} />
       <Content>
-        <Grid className="cds--grid cds--grid--narrow"> {/* Center like Carbon docs */}
+        <Grid className="cds--grid cds--grid--narrow">
           <Column lg={12} md={8} sm={4}>
-            <div style={{ display: "flex", justifyContent: "flex-end" }}>
-              <Button size="sm" kind="ghost" onClick={toggleTheme}>
-                Toggle theme ({theme})
-              </Button>
-            </div>
             <SearchBox query={query} setQuery={setQuery} />
             <PillRow
               pills={filteredCollections}
@@ -113,6 +118,7 @@ function App({ toggleTheme, theme }) {
           </Column>
         </Grid>
       </Content>
+      <Footer />
     </>
   );
 }

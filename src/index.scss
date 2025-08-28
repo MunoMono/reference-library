@@ -93,3 +93,35 @@ li {
   min-width: 600px;
   height: 500px;
 }
+
+/* Footer */
+.app-footer {
+  text-align: right;
+  padding: 1rem 2rem;
+  font-size: 0.85rem;
+  color: var(--cds-text-secondary);
+}
+
+/* Collection entries with hanging punctuation */
+.entry-list {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    margin: 0.5rem 0; /* half rem vertical spacing */
+    padding-left: 1.25rem; /* space for hanging dash */
+    line-height: 1.5; /* better readability */
+    font-size: 0.95rem;
+    color: var(--cds-text-primary);
+
+    /* Hanging dash bullet */
+    &::before {
+      content: "–"; /* en dash */
+      position: absolute;
+      left: 0;
+      color: var(--cds-text-secondary);
+    }
+  }
+}

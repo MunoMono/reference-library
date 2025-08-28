@@ -6,7 +6,7 @@ import "@carbon/styles/css/styles.css";
 import { Theme } from "@carbon/react";
 
 function Root() {
-  const [theme, setTheme] = useState("g90"); // default dark
+  const [theme, setTheme] = useState("g90"); // start dark
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === "g90" ? "g10" : "g90"));
