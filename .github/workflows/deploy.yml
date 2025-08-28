@@ -4,8 +4,10 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'scripts/**'
-      - 'docs/**'
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'vite.config.js'
       - '.github/workflows/deploy.yml'
       - 'README.md'
   workflow_dispatch:
@@ -26,22 +28,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.x'
-          cache: 'pip'
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install deps
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Build static site (docs/index.html)
-        run: python scripts/build_site.py
+      - name: Build with Vite
+        run: npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs
+          path: dist
 
   deploy:
     needs: build
