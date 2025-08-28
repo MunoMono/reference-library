@@ -12,10 +12,12 @@ function App({ toggleTheme, theme }) {
   const [collections, setCollections] = useState([]);
   const [activePill, setActivePill] = useState(null);
   const [entries, setEntries] = useState([]);
+  const [allEntries, setAllEntries] = useState({});
   const [query, setQuery] = useState("");
   const [counts, setCounts] = useState({});
   const [paths, setPaths] = useState({});
 
+  // Load collections + all entries once
   useEffect(() => {
     async function loadData() {
       try {
@@ -26,31 +28,49 @@ function App({ toggleTheme, theme }) {
         const builtPaths = buildCollectionPaths(collsData);
         setPaths(builtPaths);
 
-        setCollections(
-          children
-            .map((c) => ({
-              key: c.key,
-              label: builtPaths[c.key],
-            }))
-            .sort((a, b) => {
-              const numA = parseInt(a.label, 10);
-              const numB = parseInt(b.label, 10);
-              return (
-                (isNaN(numA) ? Infinity : numA) -
-                (isNaN(numB) ? Infinity : numB)
-              );
-            })
-        );
+        const collectionsList = children
+          .map((c) => ({
+            key: c.key,
+            label: builtPaths[c.key],
+          }))
+          .sort((a, b) => {
+            const numA = parseInt(a.label, 10);
+            const numB = parseInt(b.label, 10);
+            return (
+              (isNaN(numA) ? Infinity : numA) -
+              (isNaN(numB) ? Infinity : numB)
+            );
+          });
 
+        setCollections(collectionsList);
+
+        // Fetch all items for search and counts
+        const entryMap = {};
         const countMap = {};
         for (let c of children) {
           const items = await fetchItems(c.key);
-          const clean = items.filter((it) => {
-            const t = it.data.title?.trim();
-            return t && !["PDF", "UNTITLED"].includes(t.toUpperCase());
-          });
+          const clean = items
+            .map((it) => {
+              const d = it.data;
+              const title = d.title?.trim();
+              if (!title || ["PDF", "UNTITLED"].includes(title.toUpperCase())) {
+                return null;
+              }
+              const authors = (d.creators || [])
+                .filter((cr) => cr.creatorType === "author")
+                .map((cr) => cr.lastName)
+                .join(", ");
+              const year = (d.date || "").split("-")[0];
+              const venue =
+                d.publicationTitle || d.bookTitle || d.conferenceName || "";
+              return [title, authors, year, venue].filter(Boolean).join(" — ");
+            })
+            .filter(Boolean);
+
+          entryMap[c.key] = clean;
           countMap[c.key] = clean.length;
         }
+        setAllEntries(entryMap);
         setCounts(countMap);
       } catch (err) {
         console.error("Error loading data", err);
@@ -59,36 +79,38 @@ function App({ toggleTheme, theme }) {
     loadData();
   }, []);
 
+  // When pill clicked, load its entries
   useEffect(() => {
-    async function loadEntries() {
-      if (activePill) {
-        const items = await fetchItems(activePill);
-        const formatted = items
-          .map((it) => {
-            const d = it.data;
-            const title = d.title?.trim();
-            if (!title || ["PDF", "UNTITLED"].includes(title.toUpperCase())) {
-              return null;
-            }
-            const authors = (d.creators || [])
-              .filter((c) => c.creatorType === "author")
-              .map((c) => c.lastName)
-              .join(", ");
-            const year = (d.date || "").split("-")[0];
-            const venue =
-              d.publicationTitle || d.bookTitle || d.conferenceName || "";
-            return [title, authors, year, venue].filter(Boolean).join(" — ");
-          })
-          .filter(Boolean);
-        setEntries(formatted);
-      }
+    if (activePill) {
+      setEntries(allEntries[activePill] || []);
+    } else {
+      setEntries([]);
     }
-    loadEntries();
-  }, [activePill]);
+  }, [activePill, allEntries]);
 
-  const filteredCollections = collections.filter((c) =>
-    c.label.toLowerCase().includes(query.toLowerCase())
-  );
+  // Helper: highlight matches
+  function highlight(text, q) {
+    if (!q) return text;
+    const regex = new RegExp(`(${q})`, "gi");
+    return text.replace(regex, "<mark>$1</mark>");
+  }
+
+  // Filter pills: by label OR by entry content
+  const filteredCollections = collections.filter((c) => {
+    const q = query.toLowerCase();
+    const labelMatch = c.label.toLowerCase().includes(q);
+    const entryMatch = (allEntries[c.key] || []).some((e) =>
+      e.toLowerCase().includes(q)
+    );
+    return labelMatch || entryMatch;
+  });
+
+  // Filter entries if pill active
+  const filteredEntries = activePill
+    ? (allEntries[activePill] || []).filter((e) =>
+        e.toLowerCase().includes(query.toLowerCase())
+      )
+    : [];
 
   const chartData = collections.map((c) => ({
     label: c.label,
@@ -103,22 +125,32 @@ function App({ toggleTheme, theme }) {
         <Grid className="cds--grid cds--grid--narrow">
           <Column lg={12} md={8} sm={4}>
             <SearchBox query={query} setQuery={setQuery} />
+
             <PillRow
               pills={filteredCollections}
               activePill={activePill}
               setActivePill={setActivePill}
             />
+
             {activePill && (
               <CollectionSection
                 title={paths[activePill] || "Collection"}
-                entries={entries}
+                entries={filteredEntries.map((e, i) => (
+                  <span
+                    key={i}
+                    dangerouslySetInnerHTML={{
+                      __html: highlight(e, query),
+                    }}
+                  />
+                ))}
               />
             )}
+
             <EntriesChart data={chartData} onBarClick={setActivePill} />
           </Column>
         </Grid>
+        <Footer />
       </Content>
-      <Footer />
     </>
   );
 }

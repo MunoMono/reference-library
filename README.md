@@ -2,8 +2,8 @@
 
 [![Deploy Reference Library Site](https://github.com/MunoMono/reference-library/actions/workflows/deploy.yml/badge.svg)](https://github.com/MunoMono/reference-library/actions/workflows/deploy.yml)
 
-A live, browsable reference library powered by the **Zotero API**.  
-The site renders all child collections as interactive pills, shows their entries, and visualises counts with a clickable chart.
+A live, browsable **reference library** powered by the **Zotero API**, built with **React, Vite, and IBM Carbon Design System**.  
+It renders Zotero collections as interactive pills, visualises counts in a chart, and provides live search across both collections and entries.
 
 Live version: [https://munomono.github.io/reference-library/](https://munomono.github.io/reference-library/)
 
@@ -13,15 +13,18 @@ Live version: [https://munomono.github.io/reference-library/](https://munomono.g
 
 This repository connects directly to my Zotero library and publishes an **interactive reference library site** via GitHub Pages.
 
-- **Data source**: Zotero API (all collections + items)  
-- **Viewer**: static site in `docs/index.html` with:
-  - pills for each child collection (55 total),
-  - breadcrumb labels for hierarchy,
-  - dynamically rendered items,
-  - a scrollable bar chart of counts per sub-collection.  
-- **Styling**: [IBM Carbon Design](https://carbondesignsystem.com/) inspired CSS (`docs/styles.css`)  
-- **Build process**: `scripts/build_site.py` fetches data from Zotero and generates the static site  
-- **Deployment**: automated with GitHub Actions  
+- **Data source**: Zotero API (collections + items)  
+- **Framework**: React + Vite  
+- **UI**: IBM Carbon Design System (`@carbon/react`, `@carbon/styles`)  
+- **Features**:
+  - Pills navigation with numeric ordering (`0 Backlog` → `12 Not applicable`)  
+  - Parent > Child breadcrumbs in pill labels  
+  - Clean entry rendering (title, authors, year, venue)  
+  - Search/filter across both collection titles *and* entries (with keyword highlighting)  
+  - Interactive bar chart (clickable → activates pill)  
+  - Light/dark theme toggle (Carbon g90 + white theme override)  
+  - Responsive Carbon grid layout with proper margins  
+  - Footer with auto-updating “Last updated dd mmm yyyy”  
 
 ---
 
@@ -30,51 +33,71 @@ This repository connects directly to my Zotero library and publishes an **intera
 - **View online**:  
   [https://munomono.github.io/reference-library/](https://munomono.github.io/reference-library/)
 
-- **Build locally**:
+- **Run locally**:
 
 ```bash
 git clone https://github.com/MunoMono/reference-library.git
 cd reference-library
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python scripts/build_site.py
-open docs/index.html
+npm install
+npm run dev
 ```
+
+- **Build for production**:
+
+```bash
+npm run build
+npm run preview
+```
+
+Deployment is automated via GitHub Actions → GitHub Pages.
 
 ---
 
 ## 🧩 Features
 
 - **Pills navigation**  
-  All Zotero child collections appear as pills, sorted by numeric prefix (e.g. `0 Backlog` → `12 Not applicable`).
+  Zotero child collections appear as pills, ordered numerically by prefix (e.g. `0 Backlog` → `12 Not applicable`).
 
 - **Breadcrumbs**  
-  Each pill shows its full path in the collection hierarchy (e.g. `4 Archival Research | emerging > AI/ML in archives`).
+  Pills show their full collection hierarchy (`5 Theoretical framework → Critical theory`).
 
 - **Entries view**  
-  On clicking a pill, entries are fetched and displayed (cleaned of placeholder items like `PDF`).
+  Clicking a pill displays the cleaned Zotero items (ignores placeholders like `PDF`, `Untitled`).  
+
+- **Search & Highlight**  
+  Filter pills *and* entries by keywords. Matches inside entries are highlighted (e.g., author surname).
 
 - **Interactive chart**  
-  A horizontal scrollable bar chart visualises the number of entries per sub-collection.  
-  Clicking a bar activates the corresponding pill and scrolls to the section.
+  A horizontal bar chart visualises entry counts per sub-collection. Clicking a bar activates the corresponding pill.
 
-- **Responsive design**  
-  Chart and pills adapt for mobile with horizontal scrolling.
+- **Theme toggle**  
+  Light/dark mode switch (Carbon g90 theme vs light).
+
+- **Responsive grid**  
+  All content sits within a Carbon grid, giving consistent margins like the IBM Design System site.
+
+- **Footer**  
+  Shows a small “Last updated” date stamp at bottom-right.
 
 ---
 
-## 🐍 Development
+## 🛠 Development
 
-Key scripts:
+Key source files:
 
-- `scripts/build_site.py` — main builder, fetches Zotero collections + items and generates `docs/index.html`  
-- `docs/styles.css` — Carbon-inspired site styling  
-- `scripts/list_collections.sh` / `scripts/list_counts.sh` — helpers for testing API responses  
+- `src/App.jsx` — main application logic  
+- `src/components/` — modular components (HeaderBar, PillRow, SearchBox, EntriesChart, Footer, etc.)  
+- `src/index.scss` — Carbon theme overrides + custom styling  
+
+Run locally with:
+
+```bash
+npm run dev
+```
 
 ---
 
 ## 🔖 License
 
 - Bibliographic **data** is licensed under [CC BY 4.0](./LICENSE-CC-BY-4.0.txt).  
-- Repository configuration, scripts, and documentation are licensed under [MIT](./LICENSE).  
+- Application code, configuration, and documentation are licensed under [MIT](./LICENSE).  

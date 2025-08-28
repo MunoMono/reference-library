@@ -1,4 +1,5 @@
 @use '@carbon/styles'; /* pull in Carbon’s base styles */
+@use '@carbon/styles/scss/type' as type;
 
 /* Force light (g10) and dark (g90) theme tokens */
 :root[data-theme="g10"] {
@@ -96,10 +97,16 @@ li {
 
 /* Footer */
 .app-footer {
-  text-align: right;
+  text-align: left;
   padding: 1rem 2rem;
-  font-size: 0.85rem;
   color: var(--cds-text-secondary);
+
+  small {
+    @include type.type-style('helper-text-01'); // ~11–12px
+    font-size: 0.75rem; // backup
+    line-height: 1.2;
+    display: block;
+  }
 }
 
 /* Collection entries with hanging punctuation */

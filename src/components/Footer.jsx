@@ -1,7 +1,8 @@
 import React from "react";
 
 function Footer() {
-  const lastUpdated = new Date().toLocaleDateString("en-GB", {
+  const today = new Date();
+  const formatted = today.toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "short",
     year: "numeric",
@@ -9,7 +10,7 @@ function Footer() {
 
   return (
     <footer className="app-footer">
-      <p>Last updated {lastUpdated}</p>
+      <small>Last updated {formatted}</small>
     </footer>
   );
 }
