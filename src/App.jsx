@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Content, Grid, Column } from "@carbon/react";
+import { Content, Grid, Column, Loading } from "@carbon/react";
 import HeaderBar from "./components/HeaderBar";
 import PillRow from "./components/PillRow";
 import SearchBox from "./components/SearchBox";
@@ -16,11 +16,13 @@ function App({ toggleTheme, theme }) {
   const [query, setQuery] = useState("");
   const [counts, setCounts] = useState({});
   const [paths, setPaths] = useState({});
+  const [loading, setLoading] = useState(true); // ← NEW
 
   // Load collections + all entries once
   useEffect(() => {
     async function loadData() {
       try {
+        setLoading(true); // ← NEW
         const colls = await fetchCollections();
         const collsData = colls.map((c) => c.data);
         const children = collsData.filter((c) => c.parentCollection);
@@ -74,6 +76,8 @@ function App({ toggleTheme, theme }) {
         setCounts(countMap);
       } catch (err) {
         console.error("Error loading data", err);
+      } finally {
+        setLoading(false); // ← NEW
       }
     }
     loadData();
@@ -120,8 +124,18 @@ function App({ toggleTheme, theme }) {
 
   return (
     <>
+      {/* Full-page overlay spinner while initial Zotero fetch is in-flight */}
+      {loading && (
+        <Loading
+          active
+          withOverlay
+          description="Loading Zotero data…"
+          data-testid="zotero-loading"
+        />
+      )}
+
       <HeaderBar theme={theme} toggleTheme={toggleTheme} />
-      <Content>
+      <Content aria-busy={loading}>
         <Grid className="cds--grid cds--grid--narrow">
           <Column lg={12} md={8} sm={4}>
             <SearchBox query={query} setQuery={setQuery} />
