@@ -125,9 +125,9 @@ function App({ toggleTheme, theme }) {
     <>
       {/* Full-page overlay spinner while initial Zotero fetch is in-flight */}
       {loading && (
-        <div className="loading-overlay">
+        <div className="app-loading-overlay" role="status" aria-live="polite">
           <Loading active withOverlay={false} />
-          <p className="cds--loading-text">Loading Zotero data…</p>
+          <div className="app-loading-text">Loading Zotero data…</div>
         </div>
       )}
 

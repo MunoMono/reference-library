@@ -132,19 +132,22 @@ li {
     }
   }
 }
-.loading-overlay {
+.app-loading-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7); // or use Carbon token
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
 
-  .cds--loading-text {
-    margin-top: 1rem;
-    color: var(--cds-text-primary);
-    @include type-style("body-01"); // if using Carbon SCSS helpers
-  }
+  // dim the page behind the spinner
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.app-loading-text {
+  margin-top: 0.75rem;
+  color: var(--cds-text-on-color); // good contrast on dark overlay
+  // If you use Carbon’s SCSS helpers, you could also do:
+  // @include type-style("body-01");
 }
