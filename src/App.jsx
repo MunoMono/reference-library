@@ -39,8 +39,7 @@ function App({ toggleTheme, theme }) {
             const numA = parseInt(a.label, 10);
             const numB = parseInt(b.label, 10);
             return (
-              (isNaN(numA) ? Infinity : numA) -
-              (isNaN(numB) ? Infinity : numB)
+              (isNaN(numA) ? Infinity : numA) - (isNaN(numB) ? Infinity : numB)
             );
           });
 
@@ -126,12 +125,10 @@ function App({ toggleTheme, theme }) {
     <>
       {/* Full-page overlay spinner while initial Zotero fetch is in-flight */}
       {loading && (
-        <Loading
-          active
-          withOverlay
-          description="Loading Zotero data…"
-          data-testid="zotero-loading"
-        />
+        <div className="loading-overlay">
+          <Loading active withOverlay={false} />
+          <p className="cds--loading-text">Loading Zotero data…</p>
+        </div>
       )}
 
       <HeaderBar theme={theme} toggleTheme={toggleTheme} />
