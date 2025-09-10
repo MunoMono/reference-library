@@ -4,6 +4,7 @@ import { useOutletContext, useSearchParams, Link } from "react-router-dom";
 import SearchBox from "../components/SearchBox.jsx";
 import PillRow from "../components/PillRow.jsx";
 import CollectionSection from "../components/CollectionSection.jsx";
+import NotesTag from "../components/NotesTag.jsx";
 
 /* Utils */
 function escapeRegExp(s) {
@@ -111,7 +112,7 @@ export default function Home() {
         }}
       />
 
-      {/* SEARCH MODE: results first; each result ends with a collection pill (as a Link) */}
+      {/* SEARCH MODE: results first; each result ends with a collection pill (as Link) and a NotesTag (if present) */}
       {query.trim() && (
         <div style={{ marginTop: "1rem" }}>
           <CollectionSection
@@ -147,6 +148,8 @@ export default function Home() {
                 >
                   {e.collectionLabel}
                 </Link>
+                {" "}
+                {e.hasNotes && <NotesTag href={e.notesUrl} />}
               </span>
             ))}
           />
@@ -170,6 +173,8 @@ export default function Home() {
                   {e.title} — {(e.authors || []).join(", ")}
                   {e.year ? `, ${e.year}` : ""}{" "}
                   {e.venue ? <em> — {e.venue}</em> : null}
+                  {" "}
+                  {e.hasNotes && <NotesTag href={e.notesUrl} />}
                 </span>
               ))}
             />

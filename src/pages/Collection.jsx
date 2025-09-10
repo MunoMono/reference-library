@@ -3,6 +3,7 @@ import React, { useMemo } from "react";
 import { useOutletContext, useParams, useSearchParams, Link } from "react-router-dom";
 import Crumb from "../components/Crumb.jsx";
 import CollectionSection from "../components/CollectionSection.jsx";
+import NotesTag from "../components/NotesTag.jsx";
 
 function escapeRegExp(s) {
   return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -14,7 +15,7 @@ function highlightHTML(text, query) {
 }
 
 export default function CollectionPage() {
-  const { key } = useParams(); // collection key
+  const { key } = useParams();
   const [searchParams] = useSearchParams();
   const q = searchParams.get("q") || "";
 
@@ -39,6 +40,8 @@ export default function CollectionPage() {
             <span dangerouslySetInnerHTML={{ __html: highlightHTML(e.venue, q) }} />
           </em>
         ) : null}
+        {" "}
+        {e.hasNotes && <NotesTag href={e.notesUrl} />}
       </span>
     ));
   }, [entries, q]);
@@ -47,16 +50,18 @@ export default function CollectionPage() {
     <>
       <Crumb
         trail={[
-          { label: "Homsdsdsddse", to: "/" },
+          { label: "Home", to: "/" },
           { label, isCurrentPage: true },
         ]}
       />
 
       <h1 className="section-title" style={{ marginTop: 0 }}>{label}</h1>
 
-      <CollectionSection title={`${items.length} entr${items.length === 1 ? "y" : "ies"}`} entries={items} />
+      <CollectionSection
+        title={`${items.length} entr${items.length === 1 ? "y" : "ies"}`}
+        entries={items}
+      />
 
-      {/* Quick link back to Home preserving the query */}
       <p style={{ marginTop: "1rem" }}>
         <Link to={q ? `/?q=${encodeURIComponent(q)}` : "/"}>← Back to search</Link>
       </p>

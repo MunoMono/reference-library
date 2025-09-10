@@ -162,3 +162,8 @@ li {
 
 /* (Optional) If a page renders Carbon’s breadcrumb directly, ensure spacing too */
 .cds--breadcrumb { margin-bottom: 2rem; }
+
+/* in src/index.scss (already loaded) */
+.notes-tag-link {
+  margin-left: 0.5rem;
+}
